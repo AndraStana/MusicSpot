@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Infrastructure;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200308192406_Mig1")]
+    partial class Mig1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -166,7 +168,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("ArtistId");
 
-                    b.ToTable("Albums");
+                    b.ToTable("Album");
                 });
 
             modelBuilder.Entity("Persistence.DAL.Artist", b =>
@@ -197,41 +199,6 @@ namespace Persistence.Migrations
                     b.ToTable("Libraries");
                 });
 
-            modelBuilder.Entity("Persistence.DAL.LibrarySong", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("LibraryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SongId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LibraryId");
-
-                    b.HasIndex("SongId");
-
-                    b.ToTable("LibrarySong");
-                });
-
-            modelBuilder.Entity("Persistence.DAL.PopularityRanking", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PopularityRanking");
-                });
-
             modelBuilder.Entity("Persistence.DAL.Song", b =>
                 {
                     b.Property<Guid>("Id")
@@ -247,17 +214,12 @@ namespace Persistence.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PopularityRankingId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AlbumId");
-
-                    b.HasIndex("PopularityRankingId");
 
                     b.ToTable("Songs");
                 });
@@ -280,9 +242,6 @@ namespace Persistence.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<Guid>("LibraryId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -324,8 +283,6 @@ namespace Persistence.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LibraryId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -398,41 +355,11 @@ namespace Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Persistence.DAL.LibrarySong", b =>
-                {
-                    b.HasOne("Persistence.DAL.Library", "Library")
-                        .WithMany("LibrarySong")
-                        .HasForeignKey("LibraryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Persistence.DAL.Song", "Song")
-                        .WithMany("LibrarySong")
-                        .HasForeignKey("SongId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Persistence.DAL.Song", b =>
                 {
                     b.HasOne("Persistence.DAL.Album", "Album")
                         .WithMany("Songs")
                         .HasForeignKey("AlbumId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Persistence.DAL.PopularityRanking", "PopularityRanking")
-                        .WithMany("Songs")
-                        .HasForeignKey("PopularityRankingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Persistence.DAL.User", b =>
-                {
-                    b.HasOne("Persistence.DAL.Library", "Library")
-                        .WithMany()
-                        .HasForeignKey("LibraryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

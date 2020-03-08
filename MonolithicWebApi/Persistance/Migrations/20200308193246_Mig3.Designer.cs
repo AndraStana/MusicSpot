@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Infrastructure;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200308193246_Mig3")]
+    partial class Mig3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -218,20 +220,6 @@ namespace Persistence.Migrations
                     b.ToTable("LibrarySong");
                 });
 
-            modelBuilder.Entity("Persistence.DAL.PopularityRanking", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PopularityRanking");
-                });
-
             modelBuilder.Entity("Persistence.DAL.Song", b =>
                 {
                     b.Property<Guid>("Id")
@@ -247,17 +235,12 @@ namespace Persistence.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PopularityRankingId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AlbumId");
-
-                    b.HasIndex("PopularityRankingId");
 
                     b.ToTable("Songs");
                 });
@@ -418,12 +401,6 @@ namespace Persistence.Migrations
                     b.HasOne("Persistence.DAL.Album", "Album")
                         .WithMany("Songs")
                         .HasForeignKey("AlbumId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Persistence.DAL.PopularityRanking", "PopularityRanking")
-                        .WithMany("Songs")
-                        .HasForeignKey("PopularityRankingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

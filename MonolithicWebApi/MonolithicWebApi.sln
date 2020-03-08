@@ -8,6 +8,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{40B768A0-D70F-4017-AB02-921349A118E0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistance\Persistence.csproj", "{D19BF4A1-B5C6-42EA-B829-BF4AE43C6D94}"
+	ProjectSection(ProjectDependencies) = postProject
+		{40B768A0-D70F-4017-AB02-921349A118E0} = {40B768A0-D70F-4017-AB02-921349A118E0}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{83B91DFE-EB2D-485C-9864-AF54F475F0CE}"
 EndProject
