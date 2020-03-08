@@ -6,13 +6,14 @@ using System.Text;
 
 namespace Persistence.Infrastructure
 {
-    class AppDbContext : DbContext
+    public class AppDbContext : DbContext
     {
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\SQLEXPRESS;Database=MusicSpot;Trusted_Connection=True;");
         }
+
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,6 +21,8 @@ namespace Persistence.Infrastructure
         public DbSet<User> Users { get; set; }
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Song> Songs { get; set; }
+        public DbSet<Playlist> Playlists { get; set; }
+
 
     }
 }
