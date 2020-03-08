@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Infrastructure;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200308211817_Mig15")]
+    partial class Mig15
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -179,27 +181,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Artists");
-                });
-
-            modelBuilder.Entity("Persistence.DAL.Friendship", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("FirstFriendId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SecondFriendId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FirstFriendId");
-
-                    b.HasIndex("SecondFriendId");
-
-                    b.ToTable("Friendships");
                 });
 
             modelBuilder.Entity("Persistence.DAL.Library", b =>
@@ -429,21 +410,6 @@ namespace Persistence.Migrations
                         .WithMany("Albums")
                         .HasForeignKey("ArtistId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Persistence.DAL.Friendship", b =>
-                {
-                    b.HasOne("Persistence.DAL.User", "FirstFriend")
-                        .WithMany("FirstFriends")
-                        .HasForeignKey("FirstFriendId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("Persistence.DAL.User", "SecondFriend")
-                        .WithMany("SecondFriends")
-                        .HasForeignKey("SecondFriendId")
-                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 

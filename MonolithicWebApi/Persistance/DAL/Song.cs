@@ -17,7 +17,7 @@ namespace Persistence.DAL
 
         public List<LibrarySong> LibrarySong { get; set; }
 
-        public Guid PopularityRankingId { get; set; }
-        public PopularityRanking PopularityRanking { get; set; }
+        public Guid? PopularityRankingId { get; set; }
+        public PopularityRanking? PopularityRanking { get; set; }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Infrastructure;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200308212038_Mig17")]
+    partial class Mig17
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -193,11 +195,16 @@ namespace Persistence.Migrations
                     b.Property<Guid>("SecondFriendId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("FirstFriendId");
 
                     b.HasIndex("SecondFriendId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Friendships");
                 });
@@ -441,10 +448,14 @@ namespace Persistence.Migrations
                         .IsRequired();
 
                     b.HasOne("Persistence.DAL.User", "SecondFriend")
-                        .WithMany("SecondFriends")
+                        .WithMany()
                         .HasForeignKey("SecondFriendId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("Persistence.DAL.User", null)
+                        .WithMany("SecondFriends")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Persistence.DAL.LibrarySong", b =>
