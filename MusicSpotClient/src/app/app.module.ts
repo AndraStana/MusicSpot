@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +17,10 @@ import { LoginPageComponent } from './modules/authentication/pages/login-page/lo
     BrowserModule,
     AppRoutingModule,
     AuthenticationModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    
 
     RouterModule.forRoot([
       { path: '', component: LoginPageComponent, pathMatch: 'full' },
