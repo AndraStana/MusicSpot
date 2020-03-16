@@ -1,4 +1,10 @@
-export class UserAccount{
+
+export class LoginAccount{
     email: string;
     password: string;
+}
+
+export class RegisterAccount extends LoginAccount{
+    username: string;
+    yearOfBirth: number;
 }

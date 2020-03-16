@@ -24,45 +24,28 @@ namespace MonolithicWebApi.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
             _libraryService = libraryService;
-            //_userManager.UserValidators = UserValidator<User>(UserManager<User>) { AllowOnlyAlphanumericUserNames = false };
-            //_userManager.UserValidators   = new UserValidator<User>() { AllowOnlyAlphanumericUserNames = false };
-
             _userManager.UserValidators.Clear();
-            //_userManager.UserValidators.Add(new UserValidator<User>() { AllowOnlyAlphanumericUserNames = false };)
-        
-        //var ee = new UserValidator<User>(_userManager) { AllowOnlyAlphanumericUserNames = false };
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> Register([FromBody]UserAccountModel account)
+        public async Task<IActionResult> Register([FromBody]RegisterAccountModel account)
         {
-            //var newUser = new IdentityUser(account.Email)
-            //{
-            //    Email = account.Email
-            //};
-
             var newUser = new User()
             {
-                Email = account.Email
+                Email = account.Email,
+                UserName = account.Username,
+                YearOfBirth = account.YearOfBirth
             };
-
-            //TODO create Library
 
             var libraryId = _libraryService.Add(new LibraryDTO()
             {
                 Name = newUser.Email + "_Library"
             });
 
-
             newUser.LibraryId = libraryId;
 
-            newUser.YearOfBirth = 1997;
-            //newUser.SecurityStamp = Guid.NewGuid().ToString();
-
-
             var creationResult = await _userManager.CreateAsync(newUser, account.Password);
-
             if (!creationResult.Succeeded)
             {
                 return BadRequest(creationResult.Errors.Select(error => error.Description).Aggregate((errorDescriptions, identityError) => errorDescriptions + $", {identityError}"));
@@ -72,7 +55,7 @@ namespace MonolithicWebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<bool> Login([FromBody]UserAccountModel account)
+        public async Task<bool> Login([FromBody]LoginAccountModel account)
         {
             var user = await _userManager.FindByEmailAsync(account.Email);
             if (user == null)
@@ -92,16 +75,5 @@ namespace MonolithicWebApi.Controllers
             await _signInManager.SignOutAsync();
             return NoContent();
         }
-
-
-
-        //[HttpPost]
-
-        //public bool Login([FromBody] UserAccountModel account)
-        //{
-        //    var ee = account;
-        //    return true;
-            
-        //}
     }
 }

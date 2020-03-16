@@ -7,13 +7,23 @@ using Microsoft.EntityFrameworkCore;
 using Persistence.DAL;
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Text;
-
+using System.Threading.Tasks;
 
 namespace Persistence.Infrastructure
 {
     public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
+
+        //public class ApplicationUser : IdentityUser
+        //{
+        //    public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        //    {
+        //        var userIdentity = await manager.CreateAsync(this);
+        //        return userIdentity;
+        //    }
+        //}
 
         public DbSet<User> Users { get; set; }
         public DbSet<Artist> Artists { get; set; }

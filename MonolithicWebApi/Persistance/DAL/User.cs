@@ -7,6 +7,8 @@ using System.Text;
 
 namespace Persistence.DAL
 {
+ 
+
     public class User: IdentityUser<Guid>
     {
 
@@ -18,6 +20,12 @@ namespace Persistence.DAL
 
         public List<Friendship> FirstFriends { get; set; }
         public List<Friendship> SecondFriends { get; set; }
+
+        //public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        //{
+        //    var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+        //    return userIdentity;
+        //}
 
     }
 }

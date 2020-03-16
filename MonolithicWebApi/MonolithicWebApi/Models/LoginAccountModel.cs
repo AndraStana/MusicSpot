@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MonolithicWebApi.Models
 {
-    public class UserAccountModel
+    public class LoginAccountModel
     {
         public string Email { get; set; }
         public string Password { get; set; }

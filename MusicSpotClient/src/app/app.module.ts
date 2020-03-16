@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AuthenticationModule } from './modules/authentication/authentication.module';
 import { RouterModule } from '@angular/router';
 import { LoginPageComponent } from './modules/authentication/pages/login-page/login-page.component';
+import { RegisterPageComponent } from './modules/authentication/pages/register-page/register-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LoginPageComponent } from './modules/authentication/pages/login-page/lo
     
 
     RouterModule.forRoot([
-      { path: '', component: LoginPageComponent, pathMatch: 'full' },
+      { path: 'login', component: LoginPageComponent, pathMatch: 'full' },
+      { path: 'register', component: RegisterPageComponent, pathMatch: 'full' },
     
     ]),
   ],
