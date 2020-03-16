@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { AccountService } from '../../services/account.service';
+import { UserAccount } from '../../models/account.model';
 
 @Component({
   selector: 'app-login-page',
@@ -10,7 +12,8 @@ export class LoginPageComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+     private _accountService: AccountService) { }
 
   ngOnInit() {
 
@@ -21,13 +24,43 @@ export class LoginPageComponent implements OnInit {
   }
 
   login(){
-    alert( this.loginForm.get("email").value + '... ' + this.loginForm.get("password").value );
 
+    var email = this.loginForm.get("email").value;
+    var password =  this.loginForm.get("password").value;
+    if(email && password)
+    alert(  + '... ' );
 
+    this._accountService.login(<UserAccount>{email, password}).subscribe(res =>{
+      if(res === true){
+        console.log("logged in");
+      }
+      else{
+        console.log("nope");
+
+      }
+    });
   }
 
-  register(){
-    alert("register");
-  }
+
+  public register(): void{
+    var email = this.loginForm.get("email").value;
+    var password =  this.loginForm.get("password").value;
+    if(email && password)
+    alert(  + '... ' );
+
+    this._accountService.register(<UserAccount>{email, password}).subscribe(res =>{
+      if(res === true){
+        console.log("logged in");
+      }
+      else{
+        console.log("nope");
+
+      }
+    });
+
+    }
+
+
+
 
 }
