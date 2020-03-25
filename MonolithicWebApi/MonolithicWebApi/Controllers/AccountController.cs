@@ -29,7 +29,7 @@ namespace MonolithicWebApi.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Register([FromBody]RegisterAccountModel account)
+        public async Task<ActionResult<LoggedInUserModel>> Register([FromBody]RegisterAccountModel account)
         {
             var newUser = new User()
             {
@@ -48,25 +48,25 @@ namespace MonolithicWebApi.Controllers
             var creationResult = await _userManager.CreateAsync(newUser, account.Password);
             if (!creationResult.Succeeded)
             {
-                return BadRequest(creationResult.Errors.Select(error => error.Description).Aggregate((errorDescriptions, identityError) => errorDescriptions + $", {identityError}"));
+                return null;
             }
 
-            return NoContent();
+            return new LoggedInUserModel { Username = account.Username };
         }
 
         [HttpPost]
-        public async Task<bool> Login([FromBody]LoginAccountModel account)
+        public async Task<ActionResult<LoggedInUserModel>> Login([FromBody]LoginAccountModel account)
         {
             var user = await _userManager.FindByEmailAsync(account.Email);
             if (user == null)
-                return false;
+                return null;
 
             var signInResult = await _signInManager.PasswordSignInAsync(user, account.Password, isPersistent: true, lockoutOnFailure: false); //lockout on failure is off because this is a demo
 
             if (!signInResult.Succeeded)
-                return false;
+                return null;
 
-            return true;
+            return new LoggedInUserModel { Username = user.UserName };
         }
 
         [HttpPost]

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from './services/account.service';
-import { SharedModule } from 'src/app/shared/routing/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { AccountService } from '../../services/account.service';
 import { RegisterAccount } from '../../models/account.model';
+import { Router } from '@angular/router';
+import { LocalStorageService, LocalStorageKeys } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-register-page',
@@ -11,9 +13,12 @@ import { RegisterAccount } from '../../models/account.model';
 export class RegisterPageComponent implements OnInit {
 
   registerForm: FormGroup;
+  errorMessage = "";
 
   constructor(private formBuilder: FormBuilder,
-     private _accountService: AccountService) { }
+    private _accountService: AccountService,
+    private _localStorage: LocalStorageService,
+    private _router: Router) { }
 
   ngOnInit() {
 
@@ -26,24 +31,27 @@ export class RegisterPageComponent implements OnInit {
   }
 
 
-  public register(): void{
+  public register(): void {
     var email = this.registerForm.get("email").value;
-    var password =  this.registerForm.get("password").value;
-    
+    var password = this.registerForm.get("password").value;
+
     var username = this.registerForm.get("username").value;
-    var yearOfBirth =  this.registerForm.get("yearOfBirth").value;
+    var yearOfBirth = this.registerForm.get("yearOfBirth").value;
 
-    if(email && password && username && yearOfBirth){
+    if (email && password && username && yearOfBirth) {
 
-      this._accountService.register(<RegisterAccount>{email, password, username, yearOfBirth: Number(yearOfBirth)}).subscribe(res =>{
-        if(res === true){
-          console.log("registered in");
+      this._accountService.register(<RegisterAccount>{ email, password, username, yearOfBirth: Number(yearOfBirth) }).subscribe(user => {
+        if (user) {
+
+          console.log("user ", user);
+          this._localStorage.setItem<string>(LocalStorageKeys.LOGGED_IN_USER_NAME, user.username);
+          this._router.navigateByUrl("");
         }
-        else{
-          console.log("nope");
+        else {
+          this.errorMessage = "Could not register this account";
         }
       });
-      }
     }
+  }
 
 }

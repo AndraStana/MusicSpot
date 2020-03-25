@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { AccountService } from '../../services/account.service';
 import { LoginAccount } from '../../models/account.model';
+import { LocalStorageService, LocalStorageKeys } from 'src/app/shared/services/local-storage.service';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -11,13 +13,16 @@ import { LoginAccount } from '../../models/account.model';
 export class LoginPageComponent implements OnInit {
 
   loginForm: FormGroup;
+  errorMessage = "";
 
-  constructor(private formBuilder: FormBuilder,
-     private _accountService: AccountService) { }
+  constructor(private _formBuilder: FormBuilder,
+     private _accountService: AccountService,
+     private _localeStorage: LocalStorageService,
+     private _router: Router) { }
 
   ngOnInit() {
 
-    this.loginForm = this.formBuilder.group({
+    this.loginForm = this._formBuilder.group({
       email: new FormControl(null),
       password: new FormControl(null)
     })
@@ -29,13 +34,14 @@ export class LoginPageComponent implements OnInit {
     var password =  this.loginForm.get("password").value;
     if(email && password)
     {
-        this._accountService.login(<LoginAccount>{email, password}).subscribe(res =>{
-          if(res === true){
-            console.log("logged in");
+        this._accountService.login(<LoginAccount>{email, password}).subscribe(user =>{
+          if(user){
+            this._localeStorage.setItem<boolean>(LocalStorageKeys.IS_LOGGED_IN, true);
+            this._localeStorage.setItem<string>(LocalStorageKeys.LOGGED_IN_USER_NAME, user.username);
+            this._router.navigateByUrl('');
           }
           else{
-            console.log("nope");
-
+            this.errorMessage = "Invalid Credentials";
           }
         });
       }
