@@ -1,4 +1,4 @@
-import { MyLibraryComponent } from './pages/my-library/my-library.component';
+import { LibraryComponent } from './pages/library/library.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -7,7 +7,7 @@ import { NgModule } from '@angular/core';
 
 @NgModule({
     declarations: [
-      MyLibraryComponent
+      LibraryComponent
     ],
     imports: [
       BrowserModule,
@@ -17,7 +17,7 @@ import { NgModule } from '@angular/core';
       SharedModule
       
     ],
-    exports:[MyLibraryComponent],
+    exports:[LibraryComponent],
     // providers: [AccountService],
   })
-  export class MyLibraryModule { }
+  export class LibraryModule { }

@@ -1,2 +1,22 @@
-<p>{{username}}</p>
-<button (click)="logout()"> Log out</button>
+<div class="toolbar flex-row">
+    <img  src="./../../../../../assets/images/Logo.png" alt="IMG">
+   
+    <div class="right-side-toolbar flex-row">
+      <div [routerLink]="['explore']" class="explore flex-row menu-item">
+        <mat-icon class="search-icon" aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+        <span>Explore</span>
+      </div>
+
+      <div class="user-account flex-row menu-item">
+        <span> Hello {{username}} </span>
+        <mat-icon (click)="logout()" title="Logout" class="logout-icon" aria-hidden="false" aria-label="Example home icon">power_settings_new</mat-icon>
+      </div>
+    </div>
+
+  <ul class="flex-row basic-menu">
+      <li class="menu-item"><a [routerLink]="['']">My library</a></li>
+      <li class="menu-item"><a [routerLink]="['news']">News</a></li>
+      <li class="menu-item"><a [routerLink]="['friends']">Friends</a></li>
+      <li class="menu-item"><a [routerLink]="['recommended']">Recommended</a></li>
+  </ul>
+</div>

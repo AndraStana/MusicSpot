@@ -1,0 +1,80 @@
+@import '../../../../assets/css/shared/variables.scss';
+
+.toolbar{
+    border-bottom: 2px solid $pink-dark;
+    font-size: 22px;
+    font-weight: 400;
+
+    mat-icon{
+        cursor: pointer;
+    }
+
+    img{
+        margin: 0px 0px 1px 20px;
+        height:85px;
+    }
+
+    .basic-menu {
+        list-style-type: none;
+        margin: 0px 140px;
+        padding: 0;
+        overflow: hidden;
+        align-self: center;
+        position: relative;
+        width: -webkit-fill-available;
+        li{
+            margin-right: 40px;
+        }
+    }
+
+    a{
+        font-size: 22px;
+        text-decoration: none;
+        color: Black;
+    }
+
+    .right-side-toolbar{
+        position: absolute;
+        right:0;
+
+        margin-right: 112px;
+        top: 20;
+        top: 10px;
+
+        .search-icon{
+            font-size:28px;
+            margin-right: 25px;
+            cursor: pointer;
+
+        }
+
+        .explore{
+            padding-left:15px;
+        }
+
+        .user-account{
+            margin-left:80px;
+            mat-icon{
+                margin-left: 20px;
+                font-size:28px;
+                position: relative;
+                cursor: pointer;
+            }
+            padding-right: 20px;
+            }
+    }
+
+    .menu-item{
+        border: 1px solid $pink-dark;
+        background-color: $pink-light;
+        padding:10px 30px;
+        border-radius: 25px;
+
+        cursor:pointer;
+    }
+
+    .menu-item:hover{
+        background-color: $light-grey;
+    }
+}
+
