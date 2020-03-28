@@ -1,12 +1,24 @@
+
 <div class="page-container flex-row">
 
+    <button (click)="stop()">STOP</button>
+
     <div class="left-side">
+
+        <app-timer #monolithTimer></app-timer>
+
         <app-page-title [title]="title"> </app-page-title>
+
+
+
     </div >
 
     <app-page-divider></app-page-divider>
 
     <div class="right-side">
+
+        <app-timer #microservicesTimer></app-timer>
+
         <app-page-title [title]="title"> </app-page-title>
     </div >
 

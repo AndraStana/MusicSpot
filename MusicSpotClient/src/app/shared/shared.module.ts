@@ -37,10 +37,17 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { PageTitleComponent } from './components/page-title/page-title.component';
+import { PageDividerComponent } from './components/page-divider/page-divider.component';
+import { DatePipe } from '@angular/common';
+import { TimerComponent } from './components/timer/timer.component';
 
 @NgModule({
   declarations: [
-    ToolbarComponent
+    ToolbarComponent,
+    PageTitleComponent,
+    PageDividerComponent,
+    TimerComponent,
   ],
   imports: [
     BrowserModule,
@@ -119,9 +126,12 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     MatSortModule,
     MatPaginatorModule,
 
-    ToolbarComponent
+    ToolbarComponent,
+    PageTitleComponent,
+    PageDividerComponent,
+    TimerComponent
 ],
-  providers: [LocalStorageService],
+  providers: [LocalStorageService, DatePipe],
 })
 export class SharedModule { }
 

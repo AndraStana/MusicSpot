@@ -7,7 +7,7 @@ import { LoginAccount, RegisterAccount, LoggedInUser } from '../models/account.m
 
 @Injectable()
 export class AccountService{
-    private baseUrl = `${environment.baseUrl}`;
+    private baseUrl = `${environment.baseMonolithUrl}`;
 
     constructor(private httpClient: HttpClient) {
     }

@@ -1,0 +1,7 @@
+
+<div class="timer flex-column">
+    <span> Start Time: {{startTime | date:'HH:mm:ss.SSS'}}</span>
+    <span> End Time: {{endTime | date:'HH:mm:ss.SSS'}}</span>
+    <span *ngIf="duration"> Duration: {{duration.hours}}:{{duration.minutes}}:{{duration.seconds}}: {{duration.miliseconds}}  </span>
+</div>
+

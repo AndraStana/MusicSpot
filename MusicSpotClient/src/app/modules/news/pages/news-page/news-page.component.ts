@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsPageComponent implements OnInit {
 
+  public title = "NEWS";
+
   constructor() { }
 
   ngOnInit() {

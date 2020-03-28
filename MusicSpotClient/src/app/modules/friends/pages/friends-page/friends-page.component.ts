@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FriendsPageComponent implements OnInit {
 
+  public title = "FRIENDS";
+
   constructor() { }
 
   ngOnInit() {
