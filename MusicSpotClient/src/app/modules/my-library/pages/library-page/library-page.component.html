@@ -1,13 +1,17 @@
 
-<div class="page-container flex-row">
 
     <button (click)="stop()">STOP</button>
 
+<div class="page-container flex-row">
+
+
     <div class="left-side">
 
-        <app-timer #monolithTimer></app-timer>
+        <app-timer #monolithTimer [architectureType] ="'Monolith'"></app-timer>
 
         <app-page-title [title]="title"> </app-page-title>
+
+        <app-loader></app-loader>
 
 
 
@@ -17,9 +21,12 @@
 
     <div class="right-side">
 
-        <app-timer #microservicesTimer></app-timer>
+        <app-timer #microservicesTimer [architectureType] ="'Microservices'"></app-timer>
 
         <app-page-title [title]="title"> </app-page-title>
+
+        <app-loader></app-loader>
+
     </div >
 
 </div>

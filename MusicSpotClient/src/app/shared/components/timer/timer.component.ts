@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
@@ -7,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TimerComponent implements OnInit {
 
+  @Input() architectureType = "";
+
   public startTime: Date;
   public endTime: Date;
 
-  public duration;
-
+  public duration: any;
   public intervalListener: any; 
 
   constructor() { }

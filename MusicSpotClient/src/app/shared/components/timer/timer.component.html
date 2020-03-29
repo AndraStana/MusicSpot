@@ -1,7 +1,23 @@
 
-<div class="timer flex-column">
-    <span> Start Time: {{startTime | date:'HH:mm:ss.SSS'}}</span>
-    <span> End Time: {{endTime | date:'HH:mm:ss.SSS'}}</span>
-    <span *ngIf="duration"> Duration: {{duration.hours}}:{{duration.minutes}}:{{duration.seconds}}: {{duration.miliseconds}}  </span>
+<div class="flex-row timer">
+
+    <div class="flex-column">
+        <div class="time-container start-end-container">
+            <span> Start Time: {{startTime | date:'HH:mm:ss.SSS'}}</span>
+        </div>
+
+        <div class="time-container start-end-container">
+            <span> End Time: {{endTime | date:'HH:mm:ss.SSS'}}</span>
+        </div>
+        
+        <div *ngIf="duration" class="time-container duration-container">
+            <span> Duration: {{duration.hours}}:{{duration.minutes}}:{{duration.seconds}}: {{duration.miliseconds}}  </span>
+        </div>
+    </div>
+
+    <div class="architecture-type">
+        <h2>{{architectureType}}</h2>
+    </div>
+
 </div>
 
