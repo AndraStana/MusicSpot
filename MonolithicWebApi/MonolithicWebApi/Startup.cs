@@ -9,13 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MonolithicWebApi.Seeder;
 using Persistence.DAL;
 using Persistence.Infrastructure;
 using System;
 using System.Threading.Tasks;
-
-
-
 
 namespace MonolithicWebApi
 {
@@ -28,15 +26,15 @@ namespace MonolithicWebApi
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
 
             services.AddTransient<ILibraryService, LibraryService>();
+            services.AddScoped<IAppSeeder, AppSeeder>();
+
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
-
 
             services.AddIdentity<User, IdentityRole<Guid>>(options => {
                 options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
@@ -47,24 +45,8 @@ namespace MonolithicWebApi
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
-
-
             })
                 .AddEntityFrameworkStores<AppDbContext>();
-
-        
-
-            //services.Configure<IdentityOptions>(options =>
-            //{
-            //    options.Password.RequireDigit = false;
-            //    options.Password.RequiredLength = 1;
-            //    options.Password.RequiredUniqueChars = 1;
-            //    options.Password.RequireLowercase = false;
-            //    options.Password.RequireNonAlphanumeric = false;
-            //    options.Password.RequireUppercase = false;
-
-            //    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-            //});
 
 
             services.AddAuthentication(options => {
@@ -89,10 +71,8 @@ namespace MonolithicWebApi
                     .AllowAnyMethod()
                     .AllowAnyHeader();
             }));
-
         }
 
-      
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -107,8 +87,15 @@ namespace MonolithicWebApi
 
             app.UseCors("MyPolicy");
 
-
             app.UseAuthorization();
+
+            var provider = app.ApplicationServices;
+
+            //seeding mock data
+            var scope = app.ApplicationServices.CreateScope();
+            IAppSeeder seeder = scope.ServiceProvider.GetRequiredService<IAppSeeder>();
+            seeder.SeedAll();
+
 
             app.UseEndpoints(endpoints =>
             {

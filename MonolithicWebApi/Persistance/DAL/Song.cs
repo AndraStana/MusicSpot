@@ -11,6 +11,7 @@ namespace Persistence.DAL
         public string Name { get; set; }
         public int Year { get; set; }
         public GenreEnum Genre { get; set; }
+        public string Url { get; set; }
 
         public Guid AlbumId { get; set; }
         public Album Album { get; set; }

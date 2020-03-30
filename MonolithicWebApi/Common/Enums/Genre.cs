@@ -10,7 +10,18 @@ namespace Common.Enums
         Pop = 1,
         Indie = 2,
         Metal = 3,
-        Classic = 4,
-        House = 5
+        Classical = 4,
+        House = 5,
+        HipHop = 6,
+        Jazz = 7,
+        Rap = 8,
+        Raggae=9,
+        Punk = 10,
+        Disco = 11,
+        Electronica = 12,
+        Dance = 13,
+        Techno = 14,
+        Folk = 15
+
     }
 }
