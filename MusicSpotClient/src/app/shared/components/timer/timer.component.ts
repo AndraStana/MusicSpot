@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ArchitectureTypeEnum } from '../../enums/enums';
 
 @Component({
   selector: 'app-timer',
@@ -7,7 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TimerComponent implements OnInit {
 
-  @Input() architectureType = "";
+  @Input() architectureType: ArchitectureTypeEnum;
+  public title: string;
 
   public startTime: Date;
   public endTime: Date;
@@ -18,6 +20,8 @@ export class TimerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.title =
+      this.architectureType === ArchitectureTypeEnum.Monolith ? "Monolith" : "Microservices";
   }
  
 

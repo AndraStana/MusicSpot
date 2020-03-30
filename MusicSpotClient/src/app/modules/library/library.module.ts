@@ -4,10 +4,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { LibraryPageContentComponent } from './components/library-page-content/library-page-content.component';
 
 @NgModule({
     declarations: [
-      LibraryPageComponent
+      LibraryPageComponent,
+      LibraryPageContentComponent
     ],
     imports: [
       BrowserModule,

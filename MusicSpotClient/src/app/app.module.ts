@@ -9,7 +9,7 @@ import { AuthenticationModule } from './modules/authentication/authentication.mo
 import { RouterModule } from '@angular/router';
 import { LoginPageComponent } from './modules/authentication/pages/login-page/login-page.component';
 import { RegisterPageComponent } from './modules/authentication/pages/register-page/register-page.component';
-import { LibraryModule } from './modules/my-library/library.module';
+import { LibraryModule } from './modules/library/library.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './shared/guard/auth-guard';
 import { SharedModule } from './shared/shared.module';
@@ -21,7 +21,7 @@ import { FriendsPageComponent } from './modules/friends/pages/friends-page/frien
 import { NewsPageComponent } from './modules/news/pages/news-page/news-page.component';
 import { ExplorePageComponent } from './modules/explore/pages/explore-page/explore-page.component';
 import { RecommendedPageComponent } from './modules/recommended/pages/recommended-page/recommended-page.component';
-import { LibraryPageComponent } from './modules/my-library/pages/library-page/library-page.component';
+import { LibraryPageComponent } from './modules/library/pages/library-page/library-page.component';
 
 @NgModule({
   declarations: [
