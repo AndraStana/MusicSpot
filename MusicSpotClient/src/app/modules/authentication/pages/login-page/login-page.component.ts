@@ -17,7 +17,7 @@ export class LoginPageComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,
      private _accountService: AccountService,
-     private _localeStorage: LocalStorageService,
+     private _localStorage: LocalStorageService,
      private _router: Router) { }
 
   ngOnInit() {
@@ -36,9 +36,11 @@ export class LoginPageComponent implements OnInit {
     {
         this._accountService.login(<LoginAccount>{email, password}).subscribe(user =>{
           if(user){
-            this._localeStorage.setItem<boolean>(LocalStorageKeys.IS_LOGGED_IN, true);
-            this._localeStorage.setItem<string>(LocalStorageKeys.LOGGED_IN_USER_NAME, user.username);
-            this._router.navigateByUrl('');
+            this._localStorage.setItem<boolean>(LocalStorageKeys.IS_LOGGED_IN, true);
+            this._localStorage.setItem<string>(LocalStorageKeys.LOGGED_IN_USER_NAME, user.username);
+            this._localStorage.setItem<string>(LocalStorageKeys.LOGGED_IN_USER_ID, user.userId);
+
+            this._router.navigateByUrl('/library/' +user.userId);
           }
           else{
             this.errorMessage = "Invalid Credentials";

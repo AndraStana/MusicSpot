@@ -18,5 +18,6 @@ export class LocalStorageService{
 
 export enum LocalStorageKeys{
     IS_LOGGED_IN = "IS_LOGGED_IN",
-    LOGGED_IN_USER_NAME = "LOGGED_IN_USER_NAME"
+    LOGGED_IN_USER_NAME = "LOGGED_IN_USER_NAME",
+    LOGGED_IN_USER_ID = "LOGGED_IN_USER_ID",
 }

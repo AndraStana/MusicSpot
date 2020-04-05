@@ -7,8 +7,7 @@ import { TimerComponent } from 'src/app/shared/components/timer/timer.component'
   templateUrl: './library-page-content.component.html',
   styleUrls: ['./library-page-content.component.scss']
 })
-export class LibraryPageContentComponent implements OnInit, AfterViewInit {
-
+export class LibraryPageContentComponent implements OnInit {
 
   @ViewChild(TimerComponent, {static:false} ) timer: TimerComponent;
 
@@ -20,15 +19,12 @@ export class LibraryPageContentComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   }
 
-  ngAfterViewInit(): void {
-    this.timer.startTimerAsync().then();
-  }
-  
-  stop(){ 
+  requestFinish(){
     this.timer.stopTimerAsync().then();
   }
-
-
+  requestStart(){
+    this.timer.startTimerAsync().then();
+  }
 
 }
 

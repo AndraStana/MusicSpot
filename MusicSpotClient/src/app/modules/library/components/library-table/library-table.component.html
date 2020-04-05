@@ -1,0 +1,51 @@
+
+
+
+<div class="spinner-container" *ngIf="dataSource.loading$ | async">
+    <app-loader></app-loader>
+</div>
+
+
+<!-- {{dataSource.loading$ | async}}
+{{ !(dataSource.loading$ | async)}} -->
+
+{{displayTable}}
+
+<div >
+
+    <mat-table class="mat-elevation-z8"  [dataSource]="dataSource">
+    
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Song</mat-header-cell>
+            <mat-cell *matCellDef="let song">{{song.name}}</mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="artist">
+            <mat-header-cell *matHeaderCellDef>Artist</mat-header-cell>
+            <mat-cell *matCellDef="let song">{{song.artist}}</mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="album">
+            <mat-header-cell *matHeaderCellDef>Album</mat-header-cell>
+            <mat-cell *matCellDef="let song">{{song.album}}</mat-cell>
+        </ng-container>
+
+        
+        <ng-container matColumnDef="year">
+            <mat-header-cell *matHeaderCellDef>Year</mat-header-cell>
+            <mat-cell *matCellDef="let song">{{song.year}}</mat-cell>
+        </ng-container>
+        
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        
+    </mat-table>
+
+
+    <mat-paginator [length]="songsNumber" [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
+
+</div>
+
+

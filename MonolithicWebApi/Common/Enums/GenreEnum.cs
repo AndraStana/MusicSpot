@@ -22,6 +22,5 @@ namespace Common.Enums
         Dance = 13,
         Techno = 14,
         Folk = 15
-
     }
 }

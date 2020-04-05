@@ -1,5 +1,9 @@
-export enum AccountAPI {
-    LOGIN = "Account/Login",
-    REGISTER = "Account/Register",
-    LOGOUT = "Account/Logout"
+export enum ApplicationAPI {
+    ACCOUNT_LOGIN = "Account/Login",
+    ACCOUNT_REGISTER = "Account/Register",
+    ACCOUNT_LOGOUT = "Account/Logout",
+
+    LIBRARY_GET_SONGS_NUMBER="Library/GetSongsNumber",
+    LIBRARY_GET_SONGS = "Library/GetLibrarySongs"
+
 }

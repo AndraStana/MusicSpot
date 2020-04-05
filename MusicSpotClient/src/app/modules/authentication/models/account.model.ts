@@ -11,4 +11,5 @@ export class RegisterAccount extends LoginAccount{
 
 export class LoggedInUser{
     username: string;
+    userId: string;
 }

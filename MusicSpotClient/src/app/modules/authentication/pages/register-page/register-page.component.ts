@@ -42,10 +42,11 @@ export class RegisterPageComponent implements OnInit {
 
       this._accountService.register(<RegisterAccount>{ email, password, username, yearOfBirth: Number(yearOfBirth) }).subscribe(user => {
         if (user) {
-
-          console.log("user ", user);
+          this._localStorage.setItem<boolean>(LocalStorageKeys.IS_LOGGED_IN, true);
           this._localStorage.setItem<string>(LocalStorageKeys.LOGGED_IN_USER_NAME, user.username);
-          this._router.navigateByUrl("");
+          this._localStorage.setItem<string>(LocalStorageKeys.LOGGED_IN_USER_ID, user.userId);
+
+          this._router.navigateByUrl('/library/'+user.userId);
         }
         else {
           this.errorMessage = "Could not register this account";

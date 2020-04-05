@@ -5,11 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LibraryPageContentComponent } from './components/library-page-content/library-page-content.component';
+import { LibraryTableComponent } from './components/library-table/library-table.component';
+import { LibraryService } from './services/library.service';
 
 @NgModule({
     declarations: [
       LibraryPageComponent,
-      LibraryPageContentComponent
+      LibraryPageContentComponent,
+      LibraryTableComponent
     ],
     imports: [
       BrowserModule,
@@ -20,6 +23,6 @@ import { LibraryPageContentComponent } from './components/library-page-content/l
       
     ],
     exports:[LibraryPageComponent],
-    // providers: [AccountService],
+    providers: [LibraryService],
   })
   export class LibraryModule { }

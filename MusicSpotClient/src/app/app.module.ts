@@ -44,7 +44,9 @@ import { LibraryPageComponent } from './modules/library/pages/library-page/libra
     RecommendedModule,
     
     RouterModule.forRoot([
-      { path: '', component: LibraryPageComponent, pathMatch: 'full',  canActivate: [AuthGuard] },
+
+      { path: 'library/:userId', component: LibraryPageComponent },
+      // { path: '', component: LibraryPageComponent, pathMatch: 'full',  canActivate: [AuthGuard] },
       { path: 'friends', component: FriendsPageComponent, pathMatch: 'full',  canActivate: [AuthGuard] },
       { path: 'news', component: NewsPageComponent, pathMatch: 'full',  canActivate: [AuthGuard] },
       { path: 'explore', component: ExplorePageComponent, pathMatch: 'full',  canActivate: [AuthGuard] },
