@@ -27,18 +27,18 @@ namespace MonolithicWebApi.Controllers
             _libraryService = libraryService;
         }
 
-        [HttpGet]
-        public int GetSongsNumber(Guid userId)
-        {
-            return _libraryService.GetSongsNumber(userId);
-        }
 
         [HttpPost]
 
-        public List<SongModel> GetLibrarySongs([FromBody] LibraryPageFilter filter)
+        public LibraryPageModel GetLibrarySongs([FromBody] LibraryPageFilter filter)
         {
-            return _libraryService.GetLibrarySongs(filter)
-                .Select(s => SongWebConverter.ToModel(s)).ToList();
+            var (totaNumber, songs) = _libraryService.GetLibrarySongs(filter);
+
+            return new LibraryPageModel()
+            {
+                Songs = songs.Select(s => SongWebConverter.ToModel(s)).ToList(),
+                TotalNumber = totaNumber
+            };
         }
 
         public List<PopularityRankingModel> GetPopularityRankings()

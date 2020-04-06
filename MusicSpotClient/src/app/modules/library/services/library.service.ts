@@ -7,6 +7,7 @@ import { ApplicationAPI } from 'src/app/shared/routing/api-urls';
 import { environment } from 'src/environments/environment';
 import { ArchitectureTypeEnum } from 'src/app/shared/enums/enums';
 import { PopularityRanking } from '../models/popularity-ranking.model';
+import { LibraryPageModel } from '../models/library-page.model';
 
 @Injectable()
 export class LibraryService {
@@ -15,25 +16,8 @@ export class LibraryService {
 
     constructor(private _httpClient: HttpClient) { }
 
-    public getLibrarySongsNumber(userId: string, architectureType: ArchitectureTypeEnum): Observable<number>{
-        var url = "";
 
-        switch (architectureType){
-            case ArchitectureTypeEnum.Monolith:
-                url = `${this.baseMonolithUrl}${ApplicationAPI.LIBRARY_GET_SONGS_NUMBER}` ;
-                break;
-            case ArchitectureTypeEnum.Microservices:
-                url = `${this.baseMicroservicesUrl}${ApplicationAPI.LIBRARY_GET_SONGS_NUMBER}` ;
-                break;
-        }
-
-        var params = {
-            userId
-        }
-        return this._httpClient.get<number>(url, {params});
-    }
-
-    public getLibrarySongs(filter: LibraryPageFilter, architectureType: ArchitectureTypeEnum): Observable<Song[]> {
+    public getLibrarySongs(filter: LibraryPageFilter, architectureType: ArchitectureTypeEnum): Observable<LibraryPageModel> {
         var url = "";
 
         switch (architectureType){
@@ -44,7 +28,7 @@ export class LibraryService {
                 url = `${this.baseMicroservicesUrl}${ApplicationAPI.LIBRARY_GET_SONGS}` ;
                 break;
         }
-        return this._httpClient.post<Song[]>(url, filter);
+        return this._httpClient.post<LibraryPageModel>(url, filter);
     }
 
     public getPopularityRankings(architectureType: ArchitectureTypeEnum): Observable<PopularityRanking[]>{

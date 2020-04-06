@@ -10,8 +10,7 @@ namespace Common.Interfaces.Services
     public interface ILibraryService
     {
         Guid Add(LibraryDTO library);
-        int GetSongsNumber(Guid userId);
-        List<SongDTO> GetLibrarySongs(LibraryPageFilter filter);
+        (int, List<SongDTO>) GetLibrarySongs(LibraryPageFilter filter);
         List<PopularityRankingDTO> GetPopularityRankings();
     }
 }

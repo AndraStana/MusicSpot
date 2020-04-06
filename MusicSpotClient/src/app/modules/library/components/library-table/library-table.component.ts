@@ -50,12 +50,6 @@ export class LibraryTableComponent implements OnInit {
       this.userId = this._route.snapshot.paramMap.get('userId');
       this.initFilter();
 
-     
-
-      this._libraryService.getLibrarySongsNumber(this.filter.userId, this.architectureType ).subscribe(
-        res => {this.songsNumber = res;}
-      );
-
       this.dataSource = new LibraryDataSource(this._libraryService);
       this.dataSource.getLibrarySongs(this.filter, this.architectureType);
    }
@@ -71,7 +65,11 @@ export class LibraryTableComponent implements OnInit {
           this.displayTable = false;
 
         }
-      })
+      });
+
+      this.dataSource.libraryCount$.subscribe(res=>{
+          this.songsNumber = res;
+        });
 
       this.paginator.page.pipe(
               tap(() => {
