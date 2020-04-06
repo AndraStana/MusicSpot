@@ -27,7 +27,5 @@ namespace MonolithicWebApi.Converters
                 Url = songDTO.Url
             };
         }
-
-
     }
 }

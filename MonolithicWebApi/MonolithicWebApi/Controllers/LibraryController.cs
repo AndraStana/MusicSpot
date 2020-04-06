@@ -40,5 +40,12 @@ namespace MonolithicWebApi.Controllers
             return _libraryService.GetLibrarySongs(filter)
                 .Select(s => SongWebConverter.ToModel(s)).ToList();
         }
+
+        public List<PopularityRankingModel> GetPopularityRankings()
+        {
+            return _libraryService.GetPopularityRankings()
+                .Select(p => PopularityRankingWebConverter.ToModel(p)).ToList();
+
+        }
     }
 }

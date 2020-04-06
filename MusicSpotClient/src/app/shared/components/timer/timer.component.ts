@@ -26,6 +26,7 @@ export class TimerComponent implements OnInit {
  
 
   public async startTimerAsync():  Promise<void> {
+    this.duration = null;
     this.startTime = new Date();
     this.endTime = new Date();
 

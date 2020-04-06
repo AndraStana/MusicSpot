@@ -4,9 +4,12 @@ import { LibraryService } from '../../services/library.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatPaginator } from '@angular/material';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 import { LocalStorageService, LocalStorageKeys } from 'src/app/shared/services/local-storage.service';
 import { ArchitectureTypeEnum } from 'src/app/shared/enums/enums';
+import { DropdownItem } from 'src/app/shared/components/dropdown/dropdown.component';
+import { GenreFilterHelper } from 'src/app/shared/helpers/genre-filter-helper';
+import { DecadeFilterHelper } from 'src/app/shared/helpers/decade-filter-helper';
 
 
 @Component({
@@ -17,7 +20,7 @@ import { ArchitectureTypeEnum } from 'src/app/shared/enums/enums';
 export class LibraryTableComponent implements OnInit {
 
   @Input() public architectureType: ArchitectureTypeEnum;
-  @Output() public onRequestFinish: EventEmitter<void> =new EventEmitter<void>();
+  @Output() public onRequestFinish: EventEmitter<void> = new EventEmitter<void>();
   @Output() public onRequestStart: EventEmitter<void> = new EventEmitter<void>();
 
 
@@ -27,6 +30,10 @@ export class LibraryTableComponent implements OnInit {
   public userId: string;
 
   public displayTable = false;
+
+  public genreDropdownItems: DropdownItem[] = [];
+  public decadeDropdownItems: DropdownItem[] = [];
+  public popularityDropdownItems: DropdownItem[] = [];
 
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
@@ -38,6 +45,8 @@ export class LibraryTableComponent implements OnInit {
       private _route: ActivatedRoute) {}
 
     ngOnInit() {
+
+      this.initDropdownItems();
       this.userId = this._route.snapshot.paramMap.get('userId');
       this.initFilter();
 
@@ -77,6 +86,38 @@ export class LibraryTableComponent implements OnInit {
         this.dataSource.getLibrarySongs(this.filter, this.architectureType);
     }
 
+    public onGenreChanged(event: string){
+      if(event == "-1"){
+        this.filter.genre = null;
+      }
+      else{
+        this.filter.genre = Number(event);
+      }
+
+      this.loadLibrarySongs(this.filter);
+    }
+
+    public onDecadeChanged(event: string){
+      if(event == "-1"){
+        this.filter.decade = null;
+      }
+      else{
+        this.filter.decade = Number(event);
+      }
+      this.loadLibrarySongs(this.filter);
+    }
+
+    public onPopularityChanged(event: string){
+
+      if(event == "-1"){
+        this.filter.popularityRankingId = null;
+      }
+      else{
+        this.filter.popularityRankingId = event;
+      }
+      this.loadLibrarySongs(this.filter);
+    }
+
     private initFilter(): void{
       this.filter = <LibraryPageFilter>{
         userId: this.userId,
@@ -87,5 +128,17 @@ export class LibraryTableComponent implements OnInit {
         pageSize: 5
      }
     }
+
+      private initDropdownItems(): void{
+        this.genreDropdownItems = GenreFilterHelper.createGenreDropdownItemList();
+        this.decadeDropdownItems = DecadeFilterHelper.createDecadeDropdownItemList();
+        this._libraryService.getPopularityRankings(this.architectureType)
+          .subscribe(
+            res =>{
+              this.popularityDropdownItems = res.map(p=> <DropdownItem> p);
+              this.popularityDropdownItems.unshift(<DropdownItem> {id : "-1", name : "ALL"})
+            }
+          )
+      }
 }
 

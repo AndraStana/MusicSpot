@@ -52,7 +52,7 @@ export class LibraryPageFilter{
     public userId: string;
     public genre: GenreEnum;
     public decade: DecadeEnum;
-    public popularityRankingId: PopularityRanking; 
+    public popularityRankingId: string; 
     public pageIndex: number;
     public pageSize: number;
 }

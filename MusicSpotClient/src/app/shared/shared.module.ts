@@ -42,6 +42,7 @@ import { PageDividerComponent } from './components/page-divider/page-divider.com
 import { DatePipe } from '@angular/common';
 import { TimerComponent } from './components/timer/timer.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     PageDividerComponent,
     TimerComponent,
     LoaderComponent,
+    DropdownComponent,
   ],
   imports: [
     BrowserModule,
@@ -132,7 +134,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     PageTitleComponent,
     PageDividerComponent,
     TimerComponent,
-    LoaderComponent
+    LoaderComponent,
+    DropdownComponent
 ],
   providers: [LocalStorageService, DatePipe],
 })

@@ -41,6 +41,11 @@ namespace Core.Services
                 .Library.LibrarySong.Count();
         }
 
+        public List<PopularityRankingDTO> GetPopularityRankings()
+        {
+            return _context.PopularityRankings.Select(p => PopularityRankingCoreConverter.ToDTO(p)).ToList();
+        }
+
         public List<SongDTO> GetLibrarySongs(LibraryPageFilter filter)
         {
            

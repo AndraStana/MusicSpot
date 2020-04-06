@@ -1,17 +1,30 @@
 
 
+    <app-dropdown [items]="genreDropdownItems" [label]="'Genre'" (onChange)="onGenreChanged($event)"></app-dropdown>
+    <app-dropdown [items]="decadeDropdownItems" [label]="'Decade'" (onChange)="onDecadeChanged($event)"></app-dropdown>
+    <app-dropdown [items]="popularityDropdownItems" [label]="'Popularity Ranking'" (onChange)="onPopularityChanged($event)"></app-dropdown>
+
+
+
+
+
 
 <div class="spinner-container" *ngIf="dataSource.loading$ | async">
     <app-loader></app-loader>
 </div>
 
 
-<!-- {{dataSource.loading$ | async}}
-{{ !(dataSource.loading$ | async)}} -->
+<div [hidden]="!displayTable">
 
-{{displayTable}}
 
-<div >
+
+
+
+
+
+
+
+
 
     <mat-table class="mat-elevation-z8"  [dataSource]="dataSource">
     

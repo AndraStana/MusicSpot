@@ -6,6 +6,7 @@ import { LibraryPageFilter } from '../data-sources/library-data-source';
 import { ApplicationAPI } from 'src/app/shared/routing/api-urls';
 import { environment } from 'src/environments/environment';
 import { ArchitectureTypeEnum } from 'src/app/shared/enums/enums';
+import { PopularityRanking } from '../models/popularity-ranking.model';
 
 @Injectable()
 export class LibraryService {
@@ -44,57 +45,19 @@ export class LibraryService {
                 break;
         }
         return this._httpClient.post<Song[]>(url, filter);
-        // return of(
-        //     [
-        //         <Song>{
-        //             name: "song1",
-        //             artist: "artist1",
-        //             album: "album1",
-        //             year: 1993
-        //         },
-        //         <Song>{
-        //             name: "song2",
-        //             artist: "artist2",
-        //             album: "album2",
-        //             year: 1993
-        //         },
-        //         <Song>{
-        //             name: "song3",
-        //             artist: "artist1",
-        //             album: "album1",
-        //             year: 1993
-        //         },
-        //         <Song>{
-        //             name: "song4",
-        //             artist: "artist2",
-        //             album: "album2",
-        //             year: 1993
-        //         },
-        //         <Song>{
-        //             name: "song5",
-        //             artist: "artist1",
-        //             album: "album1",
-        //             year: 1993
-        //         },
-        //         <Song>{
-        //             name: "song6",
-        //             artist: "artist2",
-        //             album: "album2",
-        //             year: 1993
-        //         },
-        //         <Song>{
-        //             name: "song7",
-        //             artist: "artist1",
-        //             album: "album1",
-        //             year: 1993
-        //         },
-        //         <Song>{
-        //             name: "song8",
-        //             artist: "artist2",
-        //             album: "album2",
-        //             year: 1993
-        //         }
+    }
 
-        //     ]
+    public getPopularityRankings(architectureType: ArchitectureTypeEnum): Observable<PopularityRanking[]>{
+        var url = "";
+
+        switch (architectureType){
+            case ArchitectureTypeEnum.Monolith:
+                url = `${this.baseMonolithUrl}${ApplicationAPI.LIBRARY_GET_POPULARITY_RANKINGS}` ;
+                break;
+            case ArchitectureTypeEnum.Microservices:
+                url = `${this.baseMicroservicesUrl}${ApplicationAPI.LIBRARY_GET_POPULARITY_RANKINGS}` ;
+                break;
+        }
+        return this._httpClient.get<PopularityRanking[]>(url);
     }
 }

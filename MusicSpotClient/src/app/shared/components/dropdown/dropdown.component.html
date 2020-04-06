@@ -1,0 +1,8 @@
+<mat-form-field *ngIf="items">
+  <mat-label>{{label}}</mat-label>
+  <mat-select [value]="items[0].id" (selectionChange)="onChangeOption($event)">
+    <mat-option *ngFor="let item of items" [value]="item.id">
+      {{item.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

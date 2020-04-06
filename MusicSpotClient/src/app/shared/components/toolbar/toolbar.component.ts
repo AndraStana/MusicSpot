@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class ToolbarComponent implements OnInit {
 
   public username = "";
+  public userId="";
 
   constructor(private _localStorage : LocalStorageService,
     private _accountService: AccountService,
@@ -19,6 +20,8 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.username = this._localStorage.getItem(LocalStorageKeys.LOGGED_IN_USER_NAME);
+    this.userId = this._localStorage.getItem(LocalStorageKeys.LOGGED_IN_USER_ID);
+
   }
 
   logout(): void{
