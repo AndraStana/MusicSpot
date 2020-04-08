@@ -1,12 +1,11 @@
 
 
+<div class="dropdown-container flex-row">
     <app-dropdown [items]="genreDropdownItems" [label]="'Genre'" (onChange)="onGenreChanged($event)"></app-dropdown>
     <app-dropdown [items]="decadeDropdownItems" [label]="'Decade'" (onChange)="onDecadeChanged($event)"></app-dropdown>
     <app-dropdown [items]="popularityDropdownItems" [label]="'Popularity Ranking'" (onChange)="onPopularityChanged($event)"></app-dropdown>
 
-
-
-
+</div>
 
 
 <div class="spinner-container" *ngIf="dataSource.loading$ | async">
@@ -14,23 +13,13 @@
 </div>
 
 
-<div [hidden]="!displayTable">
-
-
-
-
-
-
-
-
-
-
+<div class="table-container" [hidden]="!displayTable">
 
     <mat-table class="mat-elevation-z8"  [dataSource]="dataSource">
     
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef>Song</mat-header-cell>
-            <mat-cell *matCellDef="let song">{{song.name}}</mat-cell>
+            <mat-cell *matCellDef="let song"><a href="{{song.url}}">{{song.name}}</a></mat-cell>
         </ng-container>
     
         <ng-container matColumnDef="artist">
@@ -43,20 +32,19 @@
             <mat-cell *matCellDef="let song">{{song.album}}</mat-cell>
         </ng-container>
 
-        
         <ng-container matColumnDef="year">
             <mat-header-cell *matHeaderCellDef>Year</mat-header-cell>
-            <mat-cell *matCellDef="let song">{{song.year}}</mat-cell>
+            <mat-cell  *matCellDef="let song">{{song.year}}</mat-cell>
         </ng-container>
         
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-header-row class="header-row" *matHeaderRowDef="displayedColumns"></mat-header-row>
         
-        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        <mat-row  [ngClass]="{'odd-row': i%2===1, 'even-row': i%2===0}" *matRowDef="let row; columns: displayedColumns; let i = index"></mat-row>
         
     </mat-table>
 
 
-    <mat-paginator [length]="songsNumber" [pageSize]="5"
+    <mat-paginator class="header-row" [length]="songsNumber" [pageSize]="5"
     [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
 
 </div>

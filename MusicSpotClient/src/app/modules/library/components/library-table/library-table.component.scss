@@ -1,0 +1,85 @@
+
+@import './../../../../../assets/css/shared/variables.scss';
+
+.table-container{
+    margin:15px;
+}
+
+::ng-deep mat-cell:first-of-type, mat-footer-cell:first-of-type, mat-header-cell:first-of-type {
+    padding-left: 25px;
+}
+
+::ng-deep .mat-header-cell {
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    color:white !important;
+
+}
+
+::ng-deep .mat-cell, .mat-footer-cell {
+    font-size: 16px;
+    color:white !important;
+
+}
+
+::ng-deep  .header-row{
+    background-color:$color-library-header-row;
+    color:white !important;
+    font-size: 16px !important;
+
+    .mat-paginator-range-actions {
+        display: flex;
+        align-items: self-start;
+        margin-top: 14px;
+    }
+
+    .mat-paginator-pagr-size{
+        padding-top: 3px;
+    }
+
+    .mat-select-value {
+        color:white;
+        font-size: 16px !important;
+    }
+
+    .mat-form-field-wrapper {
+        padding-bottom: 16px !important;
+    }
+
+    .mat-form-field-infix {
+        border-top: 0 solid transparent;
+    }
+
+    .mat-select-arrow {
+        color:white;
+    font-size: 16px !important;
+
+    }
+
+}
+
+.odd-row{
+    background-color:$color-library-odd-row-table  !important;
+    color:white !important;
+
+}
+
+.even-row{
+    background-color:$color-library-even-row-table !important;
+    color:white !important;
+
+}
+
+.dropdown-container{
+    justify-content: space-evenly;
+    margin:25px;
+}
+
+.url{
+    cursor:pointer;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}

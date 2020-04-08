@@ -34,10 +34,34 @@ namespace MonolithicWebApi.Controllers
         {
             var (totaNumber, songs) = _libraryService.GetLibrarySongs(filter);
 
+            //return new LibraryPageModel()
+            //{
+            //    Songs = songs.Select(s => SongWebConverter.ToModel(s)).ToList(),
+            //    TotalNumber = totaNumber
+            //};
+
+            var songss = new List<SongModel>();
+
+            for(int i = 0; i < filter.PageSize; i++)
+            {
+
+                var song = new SongModel()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "song1",
+                    Artist = "artist1",
+                    Album = "Album1",
+                    Year = 2008,
+                    Url = "https://www.youtube.com/watch?v=BKc4I_cK0JU"
+                };
+                songss.Add(song);
+            }
+
+
             return new LibraryPageModel()
             {
-                Songs = songs.Select(s => SongWebConverter.ToModel(s)).ToList(),
-                TotalNumber = totaNumber
+                Songs =songss,
+                TotalNumber = 100
             };
         }
 
