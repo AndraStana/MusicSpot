@@ -4,10 +4,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FriendsPageComponent } from './pages/friends-page/friends-page.component';
+import { FriendsTableComponent } from './components/friends-table/friends-table.component';
+import { FriendsPageContentComponent } from './components/friends-page-content/friends-page-content.component';
+import { FriendsService } from './services/friends.service';
 
 @NgModule({
     declarations: [
-      FriendsPageComponent
+      FriendsPageComponent,
+      FriendsTableComponent,
+      FriendsPageContentComponent
     ],
     imports: [
       BrowserModule,
@@ -18,6 +23,6 @@ import { FriendsPageComponent } from './pages/friends-page/friends-page.componen
       
     ],
     exports:[FriendsPageComponent],
-    // providers: [AccountService],
+    providers: [FriendsService],
   })
   export class FriendsModule { }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ArchitectureTypeEnum } from 'src/app/shared/enums/enums';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-friends-page',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FriendsPageComponent implements OnInit {
 
-  public title = "FRIENDS";
+  ArchitectureTypeEnum = ArchitectureTypeEnum;
 
-  constructor() { }
+  constructor(private _datePipe: DatePipe) { 
+  }
 
   ngOnInit() {
   }

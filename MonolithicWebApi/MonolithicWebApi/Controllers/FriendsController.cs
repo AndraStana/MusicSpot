@@ -1,28 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using Common.Interfaces.Services;
 using Common.Shared;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MonolithicWebApi.Converters;
 using MonolithicWebApi.Models;
-using Persistence.DAL;
 
 namespace MonolithicWebApi.Controllers
 {
- 
     [ApiController]
     [Route("api/[controller]/[action]")]
-    public class LibraryController : ControllerBase
+    public class FriendsController : ControllerBase
     {
         private readonly ILibraryService _libraryService;
 
 
-        public LibraryController(ILibraryService libraryService)
+        public FriendsController(ILibraryService libraryService)
         {
             _libraryService = libraryService;
         }
@@ -30,7 +24,7 @@ namespace MonolithicWebApi.Controllers
 
         [HttpPost]
 
-        public LibraryPageModel GetLibrarySongs([FromBody] LibraryPageFilter filter)
+        public FriendsPageModel GetFriends([FromBody] FriendsPageFilter filter)
         {
             //var (totaNumber, songs) = _libraryService.GetLibrarySongs(filter);
 
@@ -40,36 +34,27 @@ namespace MonolithicWebApi.Controllers
             //    TotalNumber = totaNumber
             //};
 
-            var songss = new List<SongModel>();
+            var friends = new List<FriendModel>();
 
             for (int i = 0; i < filter.PageSize; i++)
             {
 
-                var song = new SongModel()
+                var friend = new FriendModel()
                 {
                     Id = Guid.NewGuid(),
-                    Name = "song1",
-                    Artist = "artist1",
-                    Album = "Album1",
-                    Year = 2008,
-                    Url = "https://www.youtube.com/watch?v=BKc4I_cK0JU"
+                    Name = "Friend 1",
+                    Age = 20,
+                    LibraryName = "Friend1's Library"
                 };
-                songss.Add(song);
+                friends.Add(friend);
             }
 
 
-            return new LibraryPageModel()
+            return new FriendsPageModel()
             {
-                Songs = songss,
+                Friends = friends,
                 TotalNumber = 100
             };
-        }
-
-        public List<PopularityRankingModel> GetPopularityRankings()
-        {
-            return _libraryService.GetPopularityRankings()
-                .Select(p => PopularityRankingWebConverter.ToModel(p)).ToList();
-
         }
     }
 }

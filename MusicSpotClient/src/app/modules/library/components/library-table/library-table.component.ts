@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { LibraryDataSource, LibraryPageFilter } from '../../data-sources/library-data-source';
 import { LibraryService } from '../../services/library.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatPaginator } from '@angular/material';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { LocalStorageService, LocalStorageKeys } from 'src/app/shared/services/local-storage.service';
 import { ArchitectureTypeEnum } from 'src/app/shared/enums/enums';
@@ -17,12 +17,11 @@ import { DecadeFilterHelper } from 'src/app/shared/helpers/decade-filter-helper'
   templateUrl: './library-table.component.html',
   styleUrls: ['./library-table.component.scss']
 })
-export class LibraryTableComponent implements OnInit {
+export class LibraryTableComponent implements OnInit, OnDestroy {
 
   @Input() public architectureType: ArchitectureTypeEnum;
   @Output() public onRequestFinish: EventEmitter<void> = new EventEmitter<void>();
   @Output() public onRequestStart: EventEmitter<void> = new EventEmitter<void>();
-
 
   public displayedColumns = ["name", "artist", "album", "year"];
   public songsNumber: number;
@@ -35,6 +34,7 @@ export class LibraryTableComponent implements OnInit {
   public decadeDropdownItems: DropdownItem[] = [];
   public popularityDropdownItems: DropdownItem[] = [];
 
+  subscriber:Subscription;
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
@@ -44,6 +44,11 @@ export class LibraryTableComponent implements OnInit {
       private _localStorage: LocalStorageService,
       private _route: ActivatedRoute) {}
 
+
+  ngOnDestroy(): void {
+      this.subscriber.unsubscribe();
+  }
+
     ngOnInit() {
 
       this.initDropdownItems();
@@ -51,19 +56,23 @@ export class LibraryTableComponent implements OnInit {
       this.initFilter();
 
       this.dataSource = new LibraryDataSource(this._libraryService);
+
+      setTimeout(() => {
       this.dataSource.getLibrarySongs(this.filter, this.architectureType);
+        
+      });
    }
 
     public ngAfterViewInit(): void {
-      this.dataSource.loading$.subscribe(res=>{
-        if(res === false){
-          this.onRequestFinish.emit();
-          this.displayTable = true;
-        }
+    this.subscriber =  this.dataSource.loading$.subscribe(res=>{
         if(res === true){
           this.onRequestStart.emit();
           this.displayTable = false;
 
+        }
+        if(res === false){
+          this.onRequestFinish.emit();
+          this.displayTable = true;
         }
       });
 

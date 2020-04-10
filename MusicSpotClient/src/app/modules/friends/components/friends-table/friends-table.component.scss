@@ -3,6 +3,7 @@
 
 .table-container{
     margin:15px;
+}
 
 ::ng-deep mat-cell:first-of-type, mat-footer-cell:first-of-type, mat-header-cell:first-of-type {
     padding-left: 25px;
@@ -17,7 +18,9 @@
 
 ::ng-deep .mat-cell, .mat-footer-cell {
     font-size: 16px;
-    color:white !important;
+    // color:white !important;
+    font-weight: 400 !important;
+
 
 }
 
@@ -55,32 +58,23 @@
 
     }
 
-    }
 }
 
-
 .odd-row{
-    background-color:$color-library-odd-row-table  !important;
-    color:white !important;
+    background-color:$color-friends-odd-row-table  !important;
+    // color:white !important;
 
 }
 
 .even-row{
-    background-color:$color-library-even-row-table !important;
-    color:white !important;
-
-}
-
-.dropdown-container{
-    justify-content: space-evenly;
-    margin:25px;
+    background-color:$color-friends-even-row-table !important;
+    // color:white !important;
 }
 
 .url{
     cursor:pointer;
 }
 
-a{
-    text-decoration: none;
-    color: white;
+.view-icon{
+    cursor:pointer;
 }
