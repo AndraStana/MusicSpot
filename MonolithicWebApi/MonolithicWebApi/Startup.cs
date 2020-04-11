@@ -1,4 +1,5 @@
 using Common.Interfaces.Services;
+using Core.Interfaces.Services;
 using Core.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,8 @@ namespace MonolithicWebApi
             services.AddControllers();
 
             services.AddTransient<ILibraryService, LibraryService>();
+            services.AddTransient<IFriendsService, FriendsService>();
+
             services.AddScoped<IAppSeeder, AppSeeder>();
 
 

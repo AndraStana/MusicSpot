@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Common.Interfaces.Services;
 using Common.Shared;
+using Core.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
+using MonolithicWebApi.Converters;
 using MonolithicWebApi.Models;
 
 namespace MonolithicWebApi.Controllers
@@ -13,12 +15,12 @@ namespace MonolithicWebApi.Controllers
     [Route("api/[controller]/[action]")]
     public class FriendsController : ControllerBase
     {
-        private readonly ILibraryService _libraryService;
+        private readonly IFriendsService _friendsService;
 
 
-        public FriendsController(ILibraryService libraryService)
+        public FriendsController(IFriendsService friendsService)
         {
-            _libraryService = libraryService;
+            _friendsService = friendsService;
         }
 
 
@@ -26,35 +28,35 @@ namespace MonolithicWebApi.Controllers
 
         public FriendsPageModel GetFriends([FromBody] FriendsPageFilter filter)
         {
-            //var (totaNumber, songs) = _libraryService.GetLibrarySongs(filter);
-
-            //return new LibraryPageModel()
-            //{
-            //    Songs = songs.Select(s => SongWebConverter.ToModel(s)).ToList(),
-            //    TotalNumber = totaNumber
-            //};
-
-            var friends = new List<FriendModel>();
-
-            for (int i = 0; i < filter.PageSize; i++)
-            {
-
-                var friend = new FriendModel()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Friend 1",
-                    Age = 20,
-                    LibraryName = "Friend1's Library"
-                };
-                friends.Add(friend);
-            }
-
+            var (totaNumber, friends) = _friendsService.GetFriends(filter);
 
             return new FriendsPageModel()
             {
-                Friends = friends,
-                TotalNumber = 100
+                Friends = friends.Select(s => FriendWebConverter.ToModel(s)).ToList(),
+                TotalNumber = totaNumber
             };
+
+            //var friends = new List<FriendModel>();
+
+            //for (int i = 0; i < filter.PageSize; i++)
+            //{
+
+            //    var friend = new FriendModel()
+            //    {
+            //        Id = Guid.NewGuid(),
+            //        Name = "Friend 1",
+            //        Age = 20,
+            //        LibraryName = "Friend1's Library"
+            //    };
+            //    friends.Add(friend);
+            //}
+
+
+            //return new FriendsPageModel()
+            //{
+            //    Friends = friends,
+            //    TotalNumber = 100
+            //};
         }
     }
 }
