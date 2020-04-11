@@ -9,7 +9,7 @@ namespace Core.CoreConverters
 {
     public class FriendCoreConverter
     {
-        public static FriendDTO ToDTO(User user)
+        public static FriendDTO ToDTO(User user, bool isFriend)
         {
             if (user == null)
             {
@@ -21,7 +21,8 @@ namespace Core.CoreConverters
                 Id = user.Id,
                 Name = user.UserName,
                 Age = DateTime.Now.Year - user.YearOfBirth,
-                Library = user.Library != null  ? LibraryCoreConverter.ToDTO( user.Library) : null
+                Library = user.Library != null  ? LibraryCoreConverter.ToDTO( user.Library) : null,
+                IsFriend = isFriend
             };
         }
     }

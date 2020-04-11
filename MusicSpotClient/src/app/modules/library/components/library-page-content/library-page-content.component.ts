@@ -23,7 +23,7 @@ export class LibraryPageContentComponent implements OnInit {
     this.timer.stopTimerAsync().then();
   }
   requestStart(){
-    this.timer.startTimerAsync().then();
+    this.timer.startTimerAsync("Get library's songs").then();
   }
 
 }

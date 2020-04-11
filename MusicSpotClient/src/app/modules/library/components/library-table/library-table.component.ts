@@ -85,11 +85,11 @@ export class LibraryTableComponent implements OnInit, OnDestroy {
                 this.filter.pageIndex =  this.paginator.pageIndex;
                 this.filter.pageSize =  this.paginator.pageSize;
 
-                this.loadLibrarySongs(this.filter);
+                this.loadLibrarySongs();
               })).subscribe();
       }
 
-    public loadLibrarySongs(filter: LibraryPageFilter) {
+    public loadLibrarySongs() {
         this.dataSource.getLibrarySongs(this.filter, this.architectureType);
     }
 
@@ -101,7 +101,7 @@ export class LibraryTableComponent implements OnInit, OnDestroy {
         this.filter.genre = Number(event);
       }
 
-      this.loadLibrarySongs(this.filter);
+      this.loadLibrarySongs();
     }
 
     public onDecadeChanged(event: string){
@@ -111,7 +111,7 @@ export class LibraryTableComponent implements OnInit, OnDestroy {
       else{
         this.filter.decade = Number(event);
       }
-      this.loadLibrarySongs(this.filter);
+      this.loadLibrarySongs();
     }
 
     public onPopularityChanged(event: string){
@@ -122,7 +122,11 @@ export class LibraryTableComponent implements OnInit, OnDestroy {
       else{
         this.filter.popularityRankingId = event;
       }
-      this.loadLibrarySongs(this.filter);
+      this.loadLibrarySongs();
+    }
+
+    public refreshTable(): void{
+       this.loadLibrarySongs()
     }
 
     private initFilter(): void{
@@ -132,7 +136,7 @@ export class LibraryTableComponent implements OnInit, OnDestroy {
         decade: null,
         popularityRankingId: null,
         pageIndex: 0,
-        pageSize: 5
+        pageSize: 7
      }
     }
 

@@ -2,5 +2,13 @@
 
 <app-page-title [title]="title"> </app-page-title>
 
+<div class="button-container">
+
+    <button (click)="openFriendsModal()" mat-mini-fab>
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
+
+
 <app-friends-table [architectureType]="architectureType" (onRequestFinish)="requestFinish()" (onRequestStart)="requestStart()"></app-friends-table>
 

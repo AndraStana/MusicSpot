@@ -21,7 +21,8 @@ namespace MonolithicWebApi.Converters
                 Id = friendDTO.Id,
                 Name = friendDTO.Name,
                 Age = friendDTO.Age,
-                LibraryName = friendDTO.Library.Name
+                LibraryName = friendDTO.Library!=null ? friendDTO.Library.Name: null,
+                IsFriend = friendDTO.IsFriend
             };
         }
     }

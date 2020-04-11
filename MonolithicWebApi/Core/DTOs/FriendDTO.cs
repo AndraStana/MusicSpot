@@ -10,6 +10,8 @@ namespace Core.DTOs
         public Guid Id { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
-        public LibraryDTO Library { get;set; } 
+        public LibraryDTO Library { get;set; }
+        public bool IsFriend { get; set; }
+
     }
 }

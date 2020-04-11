@@ -1,0 +1,51 @@
+
+@import './../../../../../assets/css/shared/variables.scss';
+
+// $color-add-friend-dialog : #bfb0b3;
+
+$color-add-friend-dialog : #e3d8f2;
+
+$color-add-friend-card: #bfb0b3;
+
+ .dialog{
+
+    .all-friends-container{
+        margin-top:10px;
+    }
+
+    // width: 500px;
+
+    .follow-button{
+        background-color: $color-follow-friend-button;
+        color:white;
+
+    }
+
+    .remove-button{
+        background-color:$color-remove-friend-button;
+        color:white;
+
+    }
+
+    .friend-container{
+        justify-content: space-between;
+
+        .friend-name{
+            align-self: center;
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+
+
+    mat-card{
+        // background-color:$color-add-friend-card;
+        margin:2px;
+        padding: 12px !important;
+    }
+}
+
+
+::ng-deep .mat-dialog-container{
+    background-color:$color-add-friend-dialog !important;
+}

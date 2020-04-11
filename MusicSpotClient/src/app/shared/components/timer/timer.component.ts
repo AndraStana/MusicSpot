@@ -11,6 +11,8 @@ export class TimerComponent implements OnInit {
   @Input() architectureType: ArchitectureTypeEnum;
   public title: string;
 
+  public operationName: string;
+
   public startTime: Date;
   public endTime: Date;
 
@@ -27,7 +29,9 @@ export class TimerComponent implements OnInit {
   }
  
 
-  public async startTimerAsync():  Promise<void> {
+  public async startTimerAsync(operationName: string):  Promise<void> {
+
+    this.operationName = operationName;
     this.timerStarted = true;
 
     this.duration = null;
@@ -45,8 +49,15 @@ export class TimerComponent implements OnInit {
       clearInterval(this.intervalListener);
       this.duration = this.getDataDiff(this.startTime,this.endTime);
   }
+}
 
+
+  public resetTimer(): void{
+    this.duration = null;
+    this.startTime = null;
+    this.endTime = null;
   }
+
 
   getDataDiff(startDate, endDate) {
     if(startDate !=null && startDate !== undefined 

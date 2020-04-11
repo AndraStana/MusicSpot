@@ -15,6 +15,8 @@
 
 <div class="table-container" [hidden]="!displayTable">
 
+    <mat-icon (click) ="refreshTable()" class="refresh-icon">autorenew</mat-icon>
+
     <mat-table class="mat-elevation-z8"  [dataSource]="dataSource">
     
         <ng-container matColumnDef="name">
@@ -44,8 +46,8 @@
     </mat-table>
 
 
-    <mat-paginator class="header-row" [length]="songsNumber" [pageSize]="5"
-    [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
+    <mat-paginator class="header-row" [length]="songsNumber" [pageSize]="7"
+    [pageSizeOptions]="[7, 10, 15]"></mat-paginator>
 
 </div>
 

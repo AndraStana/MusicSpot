@@ -7,12 +7,15 @@ import { FriendsPageComponent } from './pages/friends-page/friends-page.componen
 import { FriendsTableComponent } from './components/friends-table/friends-table.component';
 import { FriendsPageContentComponent } from './components/friends-page-content/friends-page-content.component';
 import { FriendsService } from './services/friends.service';
+import { FriendsDialogComponent } from './components/friends-dialog/friends-dialog.component';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @NgModule({
     declarations: [
       FriendsPageComponent,
       FriendsTableComponent,
-      FriendsPageContentComponent
+      FriendsPageContentComponent,
+      FriendsDialogComponent
     ],
     imports: [
       BrowserModule,
@@ -23,6 +26,7 @@ import { FriendsService } from './services/friends.service';
       
     ],
     exports:[FriendsPageComponent],
-    providers: [FriendsService],
+    providers: [FriendsService, LocalStorageService],
+    entryComponents:[FriendsDialogComponent]
   })
   export class FriendsModule { }

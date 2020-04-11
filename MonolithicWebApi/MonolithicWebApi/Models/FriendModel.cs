@@ -12,6 +12,7 @@ namespace MonolithicWebApi.Models
         public string Name { get; set; }
         public int Age { get; set; }
         public string LibraryName { get; set; }
+        public bool IsFriend { get; set; }
 
     }
 }

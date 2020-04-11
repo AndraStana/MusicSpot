@@ -66,21 +66,24 @@ export class FriendsTableComponent implements OnInit {
                 this.filter.pageIndex =  this.paginator.pageIndex;
                 this.filter.pageSize =  this.paginator.pageSize;
 
-                this.loadFriendsSongs(this.filter);
+                this.loadFriendsSongs();
               })).subscribe();
       }
 
-    public loadFriendsSongs(filter: FriendsPageFilter) {
+    public loadFriendsSongs() {
         this.dataSource.getFriends(this.filter, this.architectureType);
     }
 
+    public refreshTable(): void{
+      this.loadFriendsSongs();
+    }
  
   
     private initFilter(): void{
       this.filter = <FriendsPageFilter>{
         userId: this.userId,
         pageIndex: 0,
-        pageSize: 5
+        pageSize: 7
      }
     }
 

@@ -1,0 +1,20 @@
+
+
+<div class="dialog">
+    <app-page-title [title]="'Add Friends'"> </app-page-title>
+
+    <div class="all-friends-container" *ngFor="let friend of allFriends">
+
+        <mat-card >
+            <div class="flex-row friend-container">
+                <span class="friend-name"> {{friend.name}} </span>
+                
+                <button mat-flat-button class="button" (click)="onBtnClicked(friend.id, friend.isFriend )"
+                [ngClass]="{'follow-button': !friend.isFriend, 'remove-button': friend.isFriend}">
+                    {{friend.isFriend ? 'Remove' : 'Follow'}}
+                </button>
+        </div>
+
+        </mat-card>
+    </div>
+</div>

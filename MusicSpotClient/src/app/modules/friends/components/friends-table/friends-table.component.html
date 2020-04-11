@@ -6,27 +6,29 @@
 
 
 <div class="table-container" [hidden]="!displayTable">
+    
+    <mat-icon (click) ="refreshTable()" class="refresh-icon">autorenew</mat-icon>
 
     <mat-table class="mat-elevation-z8"  [dataSource]="dataSource">
     
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-            <mat-cell *matCellDef="let friend">{{friend.name}}</mat-cell>
+            <mat-header-cell class="name-column" *matHeaderCellDef>Name</mat-header-cell>
+            <mat-cell  class="name-column" *matCellDef="let friend">{{friend.name}}</mat-cell>
         </ng-container>
     
-        <ng-container matColumnDef="age">
-            <mat-header-cell *matHeaderCellDef>Age</mat-header-cell>
-            <mat-cell *matCellDef="let friend">{{friend.age}}</mat-cell>
+        <ng-container  matColumnDef="age">
+            <mat-header-cell  class="age-column" *matHeaderCellDef>Age</mat-header-cell>
+            <mat-cell class="age-column" *matCellDef="let friend">{{friend.age}}</mat-cell>
         </ng-container>
     
         <ng-container matColumnDef="libraryName">
-            <mat-header-cell *matHeaderCellDef>Library</mat-header-cell>
-            <mat-cell *matCellDef="let friend">{{friend.libraryName}}</mat-cell>
+            <mat-header-cell class="library-name-column" *matHeaderCellDef>Library</mat-header-cell>
+            <mat-cell class="library-name-column " *matCellDef="let friend">{{friend.libraryName}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef>View Library</mat-header-cell>
-            <mat-cell  *matCellDef="let friend">
+            <mat-header-cell class="actions-column flex-content-center" *matHeaderCellDef>View Library</mat-header-cell>
+            <mat-cell class="actions-column flex-content-center" *matCellDef="let friend">
                 <mat-icon class="view-icon" aria-hidden="false" [routerLink]="['../library/' + friend.id]">remove_red_eye</mat-icon>
             </mat-cell>
         </ng-container>
@@ -38,8 +40,8 @@
     </mat-table>
 
 
-    <mat-paginator class="header-row" [length]="friendsNumber" [pageSize]="5"
-    [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
+    <mat-paginator class="header-row" [length]="friendsNumber" [pageSize]="7"
+    [pageSizeOptions]="[7, 10, 15]"></mat-paginator>
 
 </div>
 

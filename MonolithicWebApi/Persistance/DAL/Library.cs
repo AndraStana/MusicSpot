@@ -9,7 +9,6 @@ namespace Persistence.DAL
      public Guid Id { get; set; }
         public string Name { get; set; }
 
-
         public List<LibrarySong> LibrarySong { get; set; }
 
     }

@@ -3,6 +3,7 @@
 
 .table-container{
     margin:15px;
+    position: relative;
 
 ::ng-deep mat-cell:first-of-type, mat-footer-cell:first-of-type, mat-header-cell:first-of-type {
     padding-left: 25px;
@@ -22,6 +23,8 @@
 }
 
 ::ng-deep  .header-row{
+    display:flex;
+
     background-color:$color-library-header-row;
     color:white !important;
     font-size: 16px !important;
@@ -52,9 +55,7 @@
     .mat-select-arrow {
         color:white;
     font-size: 16px !important;
-
-    }
-
+        }
     }
 }
 
@@ -84,3 +85,12 @@ a{
     text-decoration: none;
     color: white;
 }
+
+.refresh-icon{
+    font-size: 20px;
+    position: absolute;
+    top: -148px;
+    cursor: pointer;
+    font-size: 40px;
+}
+

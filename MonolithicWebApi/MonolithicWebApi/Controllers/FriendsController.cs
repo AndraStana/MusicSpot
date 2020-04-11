@@ -23,10 +23,29 @@ namespace MonolithicWebApi.Controllers
             _friendsService = friendsService;
         }
 
+        [HttpGet]
+        public List<FriendModel> GetAllPossibleFriends([FromQuery] Guid userId)
+        {
+            var friends = _friendsService.GetAllPossibleFriends(new FriendsDialogFilter() { UserId = userId } );
+
+            return  friends.Select(s => FriendWebConverter.ToModel(s)).ToList();
+        }
 
         [HttpPost]
+        public void RemoveFriend(AddRemoveFriendModel model)
+        {
+            _friendsService.RemoveFriend(model.UserId, model.FriendId);
+        }
 
-        public FriendsPageModel GetFriends([FromBody] FriendsPageFilter filter)
+        [HttpPost]
+        public void AddFriend(AddRemoveFriendModel model)
+        {
+            _friendsService.AddFriend(model.UserId, model.FriendId);
+        }
+
+
+        [HttpPost]
+        public FriendsPageModel GetFriends(FriendsPageFilter filter)
         {
             var (totaNumber, friends) = _friendsService.GetFriends(filter);
 
@@ -36,27 +55,6 @@ namespace MonolithicWebApi.Controllers
                 TotalNumber = totaNumber
             };
 
-            //var friends = new List<FriendModel>();
-
-            //for (int i = 0; i < filter.PageSize; i++)
-            //{
-
-            //    var friend = new FriendModel()
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        Name = "Friend 1",
-            //        Age = 20,
-            //        LibraryName = "Friend1's Library"
-            //    };
-            //    friends.Add(friend);
-            //}
-
-
-            //return new FriendsPageModel()
-            //{
-            //    Friends = friends,
-            //    TotalNumber = 100
-            //};
         }
     }
 }

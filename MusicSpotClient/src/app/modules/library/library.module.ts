@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { LibraryPageContentComponent } from './components/library-page-content/library-page-content.component';
 import { LibraryTableComponent } from './components/library-table/library-table.component';
 import { LibraryService } from './services/library.service';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,6 @@ import { LibraryService } from './services/library.service';
       
     ],
     exports:[LibraryPageComponent],
-    providers: [LibraryService],
+    providers: [LibraryService, LocalStorageService],
   })
   export class LibraryModule { }

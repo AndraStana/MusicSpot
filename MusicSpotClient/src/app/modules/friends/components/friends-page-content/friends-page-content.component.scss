@@ -1,0 +1,13 @@
+  
+ @import './../../../../../assets/css/shared/variables.scss';
+ 
+ .button-container{
+    position: relative;
+    button{
+            position: absolute;
+            bottom: -5px;
+            top: 10;
+            right: 15px;
+            background-color: $grey-normal;
+    }
+}
