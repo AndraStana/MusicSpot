@@ -9,7 +9,9 @@ export enum ApplicationAPI {
     FRIENDS_GET_FRIENDS = "Friends/GetFriends",
     FRIENDS_GET_ALL_POSSIBLE_FRIENDS = "Friends/GetAllPossibleFriends",
     FRIENDS_ADD_FRIEND = "Friends/AddFriend",
-    FRIENDS_REMOVE_FRIEND = "Friends/RemoveFriend"
+    FRIENDS_REMOVE_FRIEND = "Friends/RemoveFriend",
+
+    NEWS_GET_NEWS = "News/GetNews"
 
 
     

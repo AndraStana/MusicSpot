@@ -15,7 +15,7 @@ import {  AddRemoveFriendModel } from '../models/add-remove-friend.model';
 @Injectable()
 export class FriendsService {
     private baseMonolithUrl = `${environment.baseMonolithUrl}`;
-    private baseMicroservicesUrl = `${environment.basseMicroservicesUrl}`;
+    private baseMicroservicesUrl = `${environment.baseMicroservicesUrl}`;
 
     constructor(private _httpClient: HttpClient) { }
 
@@ -48,8 +48,6 @@ export class FriendsService {
             userId: filter.userId
         }
         // return this.httpClient.get<StudentDetailsModel>(url, {params});
-
-        console.log("url    ", url);
         return this._httpClient.get<Friend[]>(url,{params});
     }
 

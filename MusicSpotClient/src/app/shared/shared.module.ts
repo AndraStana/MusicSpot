@@ -44,6 +44,8 @@ import { TimerComponent } from './components/timer/timer.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 @NgModule({
   declarations: [
     ToolbarComponent,
@@ -59,6 +61,8 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+
+    InfiniteScrollModule,
 
     MatCheckboxModule,
     MatCheckboxModule,
@@ -97,6 +101,8 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+
+    InfiniteScrollModule ,
 
     MatCheckboxModule,
     MatCheckboxModule,

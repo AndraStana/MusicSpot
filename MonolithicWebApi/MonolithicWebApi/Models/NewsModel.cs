@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Persistence.DAL
+namespace MonolithicWebApi.Models
 {
-    public class News
+    public class NewsModel
     {
-        public Guid Id {get;set;}
+        public Guid Id { get; set; }
         public string Description { get; set; }
-        public DateTime CreationDate { get; set; }
         public string UrlPicture { get; set; }
+
     }
 }

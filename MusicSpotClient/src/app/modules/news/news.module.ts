@@ -4,10 +4,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NewsPageComponent } from './pages/news-page/news-page.component';
+import { NewsPageContentComponent } from './components/news-page-content/news-page-content.component';
+import { NewsService } from './services/news.service';
 
 @NgModule({
     declarations: [
-      NewsPageComponent
+      NewsPageComponent,
+      NewsPageContentComponent
     ],
     imports: [
       BrowserModule,
@@ -18,6 +21,6 @@ import { NewsPageComponent } from './pages/news-page/news-page.component';
       
     ],
     exports:[NewsPageComponent],
-    // providers: [AccountService],
+    providers: [NewsService],
   })
   export class NewsModule { }

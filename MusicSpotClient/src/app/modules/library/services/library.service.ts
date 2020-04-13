@@ -12,7 +12,7 @@ import { LibraryPageModel } from '../models/library-page.model';
 @Injectable()
 export class LibraryService {
     private baseMonolithUrl = `${environment.baseMonolithUrl}`;
-    private baseMicroservicesUrl = `${environment.basseMicroservicesUrl}`;
+    private baseMicroservicesUrl = `${environment.baseMicroservicesUrl}`;
 
     constructor(private _httpClient: HttpClient) { }
 

@@ -44,8 +44,6 @@ export class FriendsPageContentComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-
-      console.log('The dialog was closed', result);
         if(result !== undefined && result !== null ){
 
           var userId = this._localStorage.getItem<string>(LocalStorageKeys.LOGGED_IN_USER_ID);

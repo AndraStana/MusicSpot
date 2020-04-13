@@ -1,0 +1,29 @@
+.scroll-container{
+    margin:20px;
+}
+.news-container{
+    border-radius: 30px;
+    padding: 10px;
+    margin: 10px;
+}
+
+span{
+    font-size:28px;
+    justify-self: center;
+    margin-left: 40px;
+    margin-top: 16px;
+
+}
+
+img{
+    height:100px;
+    width:100px;
+    border-radius: 50px;
+
+
+}
+
+.news-container{
+    display:flex;
+    flex-direction: row;
+}

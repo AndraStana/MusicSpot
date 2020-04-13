@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Persistence.DAL
+namespace Core.DTOs
 {
-    public class News
+    public class NewsDTO
     {
-        public Guid Id {get;set;}
+        public Guid Id { get; set; }
         public string Description { get; set; }
-        public DateTime CreationDate { get; set; }
         public string UrlPicture { get; set; }
     }
 }

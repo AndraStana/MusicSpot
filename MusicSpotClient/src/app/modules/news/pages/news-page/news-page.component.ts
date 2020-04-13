@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArchitectureTypeEnum } from 'src/app/shared/enums/enums';
 
 @Component({
   selector: 'app-news-page',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class NewsPageComponent implements OnInit {
 
   public title = "NEWS";
+  ArchitectureTypeEnum = ArchitectureTypeEnum;
 
   constructor() { }
 
