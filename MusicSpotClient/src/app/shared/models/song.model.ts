@@ -5,4 +5,5 @@ export class Song{
     public album: string;
     public year: number;
     public url: string;
+    public albumUrlPicture: string
 }

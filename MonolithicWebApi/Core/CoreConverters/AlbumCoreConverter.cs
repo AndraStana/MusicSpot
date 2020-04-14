@@ -18,7 +18,8 @@ namespace Core.CoreConverters
             return new AlbumDTO()
             {
                 Id = album.Id,
-                Name = album.Name
+                Name = album.Name,
+                UrlPicture = album.UrlPicture
             };
         }
     }

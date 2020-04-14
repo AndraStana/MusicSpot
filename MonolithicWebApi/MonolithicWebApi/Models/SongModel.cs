@@ -13,5 +13,6 @@ namespace MonolithicWebApi.Models
         public string Album { get; set; }
         public int Year { get; set; }
         public string Url { get; set; }
+        public string AlbumUrlPicture { get; set; }
     }
 }

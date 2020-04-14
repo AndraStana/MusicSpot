@@ -34,6 +34,8 @@ namespace Persistence.Infrastructure
         public DbSet<PopularityRanking> PopularityRankings { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<Friendship> Friendships { get; set; }
+        public DbSet<SimilarArtistsRelationship> SimilarArtistsRelationships { get; set; }
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -56,6 +58,16 @@ namespace Persistence.Infrastructure
             .WithMany(m => m.SecondFriends)
            .HasForeignKey(p => p.SecondFriendId).OnDelete(DeleteBehavior.NoAction);
 
+
+            modelBuilder.Entity<SimilarArtistsRelationship>()
+         .HasOne(m => m.FirstArtist)
+          .WithMany(m => m.FirstArtists)
+          .HasForeignKey(p => p.FirstArtistId).OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<SimilarArtistsRelationship>()
+        .HasOne(m => m.SecondArtist)
+            .WithMany(m => m.SecondArtists)
+            .HasForeignKey(p => p.SecondArtistId).OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

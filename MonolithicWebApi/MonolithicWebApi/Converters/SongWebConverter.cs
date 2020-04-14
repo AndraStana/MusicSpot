@@ -24,7 +24,8 @@ namespace MonolithicWebApi.Converters
                 Artist = songDTO.Artist.Name,
                 Album = songDTO.Album.Name,
                 Year = songDTO.Year,
-                Url = songDTO.Url
+                Url = songDTO.Url,
+                AlbumUrlPicture =songDTO.Album.UrlPicture
             };
         }
     }

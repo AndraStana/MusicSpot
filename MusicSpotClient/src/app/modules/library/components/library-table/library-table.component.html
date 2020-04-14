@@ -31,7 +31,8 @@
     
         <ng-container matColumnDef="album">
             <mat-header-cell *matHeaderCellDef>Album</mat-header-cell>
-            <mat-cell *matCellDef="let song">{{song.album}}</mat-cell>
+            <mat-cell *matCellDef="let song">
+                <img src={{song.albumUrlPicture}}>{{song.album}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="year">

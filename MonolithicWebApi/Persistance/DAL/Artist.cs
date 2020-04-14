@@ -11,6 +11,9 @@ namespace Persistence.DAL
 
         public List<Album> Albums { get; set; }
 
-       
+        public List<SimilarArtistsRelationship> FirstArtists { get; set; }
+        public List<SimilarArtistsRelationship> SecondArtists { get; set; }
+
+
     }
 }

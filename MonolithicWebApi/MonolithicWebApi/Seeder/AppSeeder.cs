@@ -33,6 +33,7 @@ namespace MonolithicWebApi.Seeder
             SeedLibrarySongs();
             SeedFriendships();
             SeedNews();
+            SeedSimilarArtistsRelationship();
 
         }
 
@@ -59,6 +60,28 @@ namespace MonolithicWebApi.Seeder
 
         private void SeedAlbums()
         {
+            var urlAlbumsList = new List<string>()
+            {
+                "https://upload.wikimedia.org/wikipedia/en/2/2e/In_Rainbows_Official_Cover.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/A1TYxlY-SFL._AC_SL1500_.jpg",
+                "https://qph.fs.quoracdn.net/main-qimg-358c1786db0d6ea954c93f632bc6240d.webp",
+                "https://lh3.googleusercontent.com/proxy/IErvJw-gh8-5GD_yJFA5gbmXzc6UvbadD_XtlnIWOXKw2RseDnUAyGZWz_LCMYKeclFQQ-ngF1wJhZ0s7WPLZVtLJoHc6gDclYqAvhgK",
+                "https://www.metallica.com/dw/image/v2/BCPJ_PRD/on/demandware.static/-/Sites-Metallica-Library/default/dw9360f051/images/releases/20150807_215637_7549_752897.jpg?sw=269&sh=269&sm=cut&sfrm=jpeg&q=95",
+                "https://e.snmc.io/i/600/w/10ce683d71085969d370cfd61255ea99/2341279",
+                "https://static.qobuz.com/images/covers/rc/fm/d9qon57o5fmrc_600.jpg",
+                "https://s12emagst.akamaized.net/products/3121/3120739/images/res_fd2287403e8e7afa3b61955e8139151c_full.jpg",
+                "https://upload.wikimedia.org/wikipedia/en/8/8c/Gore_-_Deftones.png",
+                "https://bloody-disgusting.com/wp-content/uploads/2012/11/deftoneskoinoyokancover.jpeg",
+                "https://upload.wikimedia.org/wikipedia/en/0/07/Imagine_Dragons_Next_to_Me.jpg",
+                "https://miro.medium.com/max/770/1*MIxADvXPM188pkLOPAaixw.jpeg",
+                "https://img.discogs.com/pwl-BAi_TOor6LA1VgwmmtzWANU=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10850253-1505330937-9408.jpeg.jpg",
+                "https://data.mothership.tools/mothershiptools-ukprod/wp-content/uploads/2019/02/thats-the-spirit.jpg",
+                "https://static.infomusic.ro/media/2018/08/Bring-Me-The-Horizon-Amo-coperta-album-2019-600x600.jpg"
+            };
+
+            var nrImg = 15;
+
+
             if (!_context.Albums.Any())
             {
 
@@ -72,7 +95,8 @@ namespace MonolithicWebApi.Seeder
                     {
                         Id = Guid.NewGuid(),
                         Name = "Album " + i,
-                        ArtistId = artists.ElementAt(random.Next(0, ARTISTS_NR)).Id
+                        ArtistId = artists.ElementAt(random.Next(0, ARTISTS_NR)).Id,
+                        UrlPicture = urlAlbumsList[random.Next(0, nrImg)]
                     };
                     albums.Add(album);
 
@@ -181,6 +205,60 @@ namespace MonolithicWebApi.Seeder
             }
         }
 
+
+        public void SeedSimilarArtistsRelationship()
+        {
+            var random = new Random();
+            if (!_context.SimilarArtistsRelationships.Any())
+            {
+                var artists = _context.Artists.ToList();
+                var relationships = new List<SimilarArtistsRelationship>();
+
+                foreach (var artist in artists)
+                {
+                    var restOfArtists = artists.Where(a => a.Id != artist.Id).ToList();
+
+                    var length = restOfArtists.Count;
+                   
+                    var artistSecond = restOfArtists[random.Next(0, length / 3)];
+                    var relationship = new SimilarArtistsRelationship()
+                    {
+                        Id = Guid.NewGuid(),
+                        FirstArtistId = artist.Id,
+                        SecondArtistId = artistSecond.Id
+                    };
+                    relationships.Add(relationship);
+
+                    var artistSecond2 = restOfArtists[random.Next(length/3+1, length / 2)];
+                    var relationship2 = new SimilarArtistsRelationship()
+                    {
+                        Id = Guid.NewGuid(),
+                        FirstArtistId = artist.Id,
+                        SecondArtistId = artistSecond2.Id
+                    };
+                    relationships.Add(relationship2);
+
+                    var artistSecond3 = restOfArtists[random.Next(length/2+1, length-1)];
+                    var relationship3 = new SimilarArtistsRelationship()
+                    {
+                        Id = Guid.NewGuid(),
+                        FirstArtistId = artist.Id,
+                        SecondArtistId = artistSecond3.Id
+                    };
+                    relationships.Add(relationship3);
+                }
+
+
+
+
+                    _context.SimilarArtistsRelationships.AddRange(relationships);
+                }
+                _context.SaveChanges();
+            
+        }
+
+
+
         public void SeedNews()
         {
             if (!_context.News.Any())
@@ -239,7 +317,7 @@ namespace MonolithicWebApi.Seeder
                         Id = Guid.NewGuid(),
                         Description = "Ten years later, Bill and Tom Kaulitz tell MTV News what happened the night they won Best New Artist",
                         CreationDate = DateTime.Now,
-                        UrlPicture = "https://lh3.googleusercontent.com/proxy/re_Cknd9yiQh6jO-CCZ00qUQ6zge8JXWS62vUPyDL4o1r01ypSlik_hVvG_-0-YFsSa6pemi0EzbGdz2mxC0uNx_7JIx_70KOKp9SHGbCXkuktZqds8VvOEVTv4"
+                        UrlPicture = "https://taiyasmusictips.files.wordpress.com/2013/05/tokio-hotel-band-pic.jpg"
 
 
                     });
