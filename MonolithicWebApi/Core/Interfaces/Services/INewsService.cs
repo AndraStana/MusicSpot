@@ -8,6 +8,6 @@ namespace Core.Interfaces.Services
 {
     public interface INewsService
     {
-        List<NewsDTO> GetNews(NewsPageFilter filter);
+        List<NewsDTO> GetNews(BasicPageFilter filter);
     }
 }

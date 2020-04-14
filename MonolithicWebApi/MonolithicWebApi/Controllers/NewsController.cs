@@ -24,7 +24,7 @@ namespace MonolithicWebApi.Controllers
             _newsService = newsService;
         }
 
-        public List<NewsModel> GetNews(NewsPageFilter filter)
+        public List<NewsModel> GetNews(BasicPageFilter filter)
         {
             return _newsService.GetNews(filter).Select(n=>NewsWebConverter.ToModel(n)).ToList();
         }

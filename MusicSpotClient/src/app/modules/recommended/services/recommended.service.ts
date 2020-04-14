@@ -3,28 +3,28 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { ArchitectureTypeEnum } from 'src/app/shared/enums/enums';
 import { Observable } from 'rxjs';
-import { NewsModel } from '../models/news.model';
 import { ApplicationAPI } from 'src/app/shared/routing/api-urls';
 import { BasicPageFilter } from 'src/app/shared/models/basic-page.filter';
+import { Song } from 'src/app/shared/models/song.model';
 
 @Injectable()
-export class NewsService {
+export class RecommendedService {
     private baseMonolithUrl = `${environment.baseMonolithUrl}`;
     private baseMicroservicesUrl = `${environment.baseMicroservicesUrl}`;
 
     constructor(private _httpClient: HttpClient) { }
 
-    public getNews(filter: BasicPageFilter, architectureType: ArchitectureTypeEnum): Observable<NewsModel[]> {
+    public getRecommendedSongs(filter: BasicPageFilter, architectureType: ArchitectureTypeEnum): Observable<Song[]> {
         var url = "";
 
         switch (architectureType){
             case ArchitectureTypeEnum.Monolith:
-                url = `${this.baseMonolithUrl}${ApplicationAPI.NEWS_GET_NEWS}` ;
+                url = `${this.baseMonolithUrl}${ApplicationAPI.RECOMMENDED_GET_RECOMMENDED_SONGS}` ;
                 break;
             case ArchitectureTypeEnum.Microservices:
-                url = `${this.baseMicroservicesUrl}${ApplicationAPI.NEWS_GET_NEWS}` ;
+                url = `${this.baseMicroservicesUrl}${ApplicationAPI.RECOMMENDED_GET_RECOMMENDED_SONGS}` ;
                 break;
         }
-        return this._httpClient.post<NewsModel[]>(url, filter);
+        return this._httpClient.post<Song[]>(url, filter);
     }
 }

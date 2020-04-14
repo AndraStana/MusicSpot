@@ -4,10 +4,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RecommendedPageComponent } from './pages/recommended-page/recommended-page.component';
+import { RecommendedPageContentComponent } from './components/recommended-page-content/recommended-page-content.component';
+import { RecommendedService } from './services/recommended.service';
 
 @NgModule({
     declarations: [
-      RecommendedPageComponent
+      RecommendedPageComponent,
+      RecommendedPageContentComponent
     ],
     imports: [
       BrowserModule,
@@ -18,6 +21,6 @@ import { RecommendedPageComponent } from './pages/recommended-page/recommended-p
       
     ],
     exports:[RecommendedPageComponent],
-    // providers: [AccountService],
+    providers: [RecommendedService],
   })
   export class RecommendedModule { }

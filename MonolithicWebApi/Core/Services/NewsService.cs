@@ -18,7 +18,7 @@ namespace Core.Services
             _context = context;
         }
 
-        public List<NewsDTO> GetNews(NewsPageFilter filter)
+        public List<NewsDTO> GetNews(BasicPageFilter filter)
         {
             return _context.News.OrderByDescending(n => n.CreationDate)
                 .Skip(filter.PageIndex*filter.PageSize).Take(filter.PageSize)

@@ -11,7 +11,8 @@ export enum ApplicationAPI {
     FRIENDS_ADD_FRIEND = "Friends/AddFriend",
     FRIENDS_REMOVE_FRIEND = "Friends/RemoveFriend",
 
-    NEWS_GET_NEWS = "News/GetNews"
+    NEWS_GET_NEWS = "News/GetNews",
+    RECOMMENDED_GET_RECOMMENDED_SONGS = "Recommended/GetRecommendedSongs"
 
 
     

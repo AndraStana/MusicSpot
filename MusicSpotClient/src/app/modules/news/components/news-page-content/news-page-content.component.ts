@@ -3,8 +3,8 @@ import { TimerComponent } from 'src/app/shared/components/timer/timer.component'
 import { ArchitectureTypeEnum } from 'src/app/shared/enums/enums';
 import { NewsModel } from '../../models/news.model';
 import { NewsService } from '../../services/news.service';
-import { NewsPageFilter } from '../../models/news-page.filter';
 import { concat } from 'rxjs';
+import { BasicPageFilter } from 'src/app/shared/models/basic-page.filter';
 
 @Component({
   selector: 'app-news-page-content',
@@ -19,7 +19,7 @@ export class NewsPageContentComponent implements OnInit, AfterViewInit {
   public title = "NEWS";
 
   allNews: NewsModel[] = [];  
-  page: NewsPageFilter = <NewsPageFilter> {
+  page: BasicPageFilter = <BasicPageFilter> {
     pageIndex : 0,
     pageSize : 20
   };  

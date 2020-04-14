@@ -12,5 +12,6 @@ namespace Common.Interfaces.Services
         Guid Add(LibraryDTO library);
         (int, List<SongDTO>) GetLibrarySongs(LibraryPageFilter filter);
         List<PopularityRankingDTO> GetPopularityRankings();
+        List<SongDTO> GetRecommendedSongs(BasicPageFilter filter);
     }
 }

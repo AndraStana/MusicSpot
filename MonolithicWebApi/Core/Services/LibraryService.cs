@@ -74,6 +74,42 @@ namespace Core.Services
             return (totalNumber, songs);
         }
 
+
+        public List<SongDTO> GetRecommendedSongs(BasicPageFilter filter)
+        {
+            var user = _context.Users
+                    .Include(u => u.Library)
+                    .ThenInclude(l => l.LibrarySong)
+                    .ThenInclude(ls => ls.Song)
+                    .ThenInclude(s => s.Album)
+
+                .FirstOrDefault(u => u.Id == filter.UserId);
+
+            var userArtistsIds = user.Library.LibrarySong.Select(ls => ls.Song.Album.ArtistId).Distinct();
+
+            var allLibSongs = user.Library.LibrarySong.Select(ls => ls.SongId);
+
+
+            var recommendedSongs = _context.SimilarArtistsRelationships
+                .Where(r => userArtistsIds.Contains(r.SecondArtistId))
+                .Include(a => a.SecondArtist)
+                .ThenInclude(a => a.Albums)
+                .ThenInclude(alb => alb.Songs)
+                .ThenInclude(a => a.Album)
+                .ThenInclude(a => a.Artist)
+
+
+                .SelectMany(a=>a.SecondArtist.Albums.SelectMany(alb=>alb.Songs))
+                .Where(rs => !allLibSongs.Contains(rs.Id))
+                .Skip(filter.PageIndex * filter.PageSize)
+                .Take(filter.PageSize)
+                .Select(s=> SongCoreConverter.ToDTO(s))
+                .ToList() ;
+
+            return recommendedSongs;
+
+        }
+
         private bool IsYearInDecade(int year, DecadeEnum? decade)
         {
             if(decade == null)

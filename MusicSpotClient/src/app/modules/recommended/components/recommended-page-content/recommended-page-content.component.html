@@ -1,0 +1,20 @@
+<app-timer #timer [architectureType] ="architectureType"></app-timer>
+<app-page-title [title]="title"> </app-page-title>
+
+<div class="scroll-container">
+    <div  class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"  
+    [scrollWindow]="false" style="height: 800px; overflow-y: scroll;"> 
+    
+    <div *ngFor="let song of allRecommendedSongs">
+        
+        <div class="recommended-container">
+            <!-- <img src={{newsItem.urlPicture}}> -->
+            <span>{{song.name}}</span>
+        </div>
+
+    </div>
+
+    </div>
+</div>
+
+
