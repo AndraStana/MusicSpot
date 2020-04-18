@@ -25,6 +25,7 @@ namespace MonolithicWebApi.Controllers
         }
 
         public List<SongModel> GetRecommendedSongs(BasicPageFilter filter)
+
         {
             return _libraryService.GetRecommendedSongs(filter).Select(n => SongWebConverter.ToModel(n, false)).ToList();
         }

@@ -102,6 +102,8 @@ namespace Core.Services
 
                 .SelectMany(a=>a.SecondArtist.Albums.SelectMany(alb=>alb.Songs))
                 .Where(rs => !allLibSongs.Contains(rs.Id))
+                .Distinct()
+                .OrderBy(s=>s.Name)
                 .Skip(filter.PageIndex * filter.PageSize)
                 .Take(filter.PageSize)
                 .Select(s=> SongCoreConverter.ToDTO(s))
