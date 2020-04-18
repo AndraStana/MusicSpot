@@ -10,7 +10,7 @@ namespace MonolithicWebApi.Converters
     public static class SongWebConverter
     {
 
-        public static SongModel ToModel(SongDTO songDTO)
+        public static SongModel ToModel(SongDTO songDTO, bool isInLibrary)
         {
             if (songDTO == null)
             {
@@ -25,7 +25,8 @@ namespace MonolithicWebApi.Converters
                 Album = songDTO.Album.Name,
                 Year = songDTO.Year,
                 Url = songDTO.Url,
-                AlbumUrlPicture =songDTO.Album.UrlPicture
+                AlbumUrlPicture =songDTO.Album.UrlPicture,
+                IsInLibrary = isInLibrary
             };
         }
     }

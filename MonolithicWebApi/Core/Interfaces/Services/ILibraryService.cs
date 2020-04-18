@@ -13,5 +13,7 @@ namespace Common.Interfaces.Services
         (int, List<SongDTO>) GetLibrarySongs(LibraryPageFilter filter);
         List<PopularityRankingDTO> GetPopularityRankings();
         List<SongDTO> GetRecommendedSongs(BasicPageFilter filter);
+        void RemoveSongFromLibrary(Guid songId, Guid libraryId);
+        void AddSongToLibrary(Guid songId, Guid libraryId);
     }
 }

@@ -98,4 +98,17 @@ img{
     height:50px;
     width:50px;
     border-radius: 50px;
+    align-self: center;
+}
+
+.add-button{
+    background-color: $color-add-to-palylist-button;
+    color:white;
+    height:38px;
+}
+
+.remove-button{
+    background-color: $color-remove-from-playlist-button;
+    color:white;
+    height:38px;
 }

@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { ArchitectureTypeEnum } from 'src/app/shared/enums/enums';
 import { PopularityRanking } from '../models/popularity-ranking.model';
 import { LibraryPageModel } from '../models/library-page.model';
+import { AddRemoveSongModel } from 'src/app/shared/models/add-remove-song.model';
 
 @Injectable()
 export class LibraryService {
@@ -43,5 +44,33 @@ export class LibraryService {
                 break;
         }
         return this._httpClient.get<PopularityRanking[]>(url);
+    }
+
+    public removeSongFromLibrary(model: AddRemoveSongModel, architectureType: ArchitectureTypeEnum): Observable<void> {
+        var url = "";
+
+        switch (architectureType){
+            case ArchitectureTypeEnum.Monolith:
+                url = `${this.baseMonolithUrl}${ApplicationAPI.LIBRARY_REMOVE_SONG}` ;
+                break;
+            case ArchitectureTypeEnum.Microservices:
+                url = `${this.baseMicroservicesUrl}${ApplicationAPI.LIBRARY_REMOVE_SONG}` ;
+                break;
+        }
+        return this._httpClient.post<void>(url, model);
+    }
+
+    public addSongToLibrary(model: AddRemoveSongModel, architectureType: ArchitectureTypeEnum): Observable<void> {
+        var url = "";
+
+        switch (architectureType){
+            case ArchitectureTypeEnum.Monolith:
+                url = `${this.baseMonolithUrl}${ApplicationAPI.LIBRARY_ADD_SONG}` ;
+                break;
+            case ArchitectureTypeEnum.Microservices:
+                url = `${this.baseMicroservicesUrl}${ApplicationAPI.LIBRARY_ADD_SONG}` ;
+                break;
+        }
+        return this._httpClient.post<void>(url, model);
     }
 }

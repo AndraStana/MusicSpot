@@ -53,7 +53,7 @@ namespace MonolithicWebApi.Controllers
 
             var user = await _userManager.FindByEmailAsync(account.Email);
 
-            return new LoggedInUserModel { UserId = user.Id, Username = account.Username };
+            return new LoggedInUserModel { UserId = user.Id, Username = account.Username, LibraryId = libraryId };
         }
 
         [HttpPost]
@@ -68,7 +68,7 @@ namespace MonolithicWebApi.Controllers
             if (!signInResult.Succeeded)
                 return null;
 
-            return new LoggedInUserModel { UserId = user.Id, Username = user.UserName };
+            return new LoggedInUserModel { UserId = user.Id, Username = user.UserName, LibraryId = user.LibraryId };
         }
 
         [HttpPost]

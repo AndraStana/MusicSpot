@@ -1,17 +1,25 @@
+@import './../../../../../assets/css/shared/variables.scss';
+
 .scroll-container{
     margin:20px;
 }
+
+
 .recommended-container{
     border-radius: 30px;
     padding: 10px;
     margin: 10px;
+    display:flex;
+    flex-direction: row;
+    widows: 100%;
 }
 
 span{
-    font-size:28px;
+    font-size:18px;
     justify-self: center;
     margin-left: 40px;
     margin-top: 16px;
+    font-weight: 500;
 
 }
 
@@ -21,7 +29,46 @@ img{
     border-radius: 50px;
 }
 
-.recommended-container{
-    display:flex;
-    flex-direction: row;
+.add-button{
+    background-color: $color-add-to-palylist-button;
+    color:white;
+    height:38px;
+}
+
+.remove-button{
+    background-color: $color-remove-from-playlist-button;
+    color:white;
+    height:38px;
+}
+
+.album-container{
+
+    img{
+        height:50px;
+        width:50px;
+        border-radius: 50px;
+        align-self:center;
+    }
+
+    span{
+        font-size:18px;
+        margin-left:0px;
+    }
+
+}
+
+.song-container{
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+mat-card{
+    width: 100%;
+    border: 1px solid black;
+    background-color: #c5c9bf;
+}
+
+::ng-deep .mat-card{
+    padding:8px !important; 
 }

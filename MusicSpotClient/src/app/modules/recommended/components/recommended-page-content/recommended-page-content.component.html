@@ -9,7 +9,38 @@
         
         <div class="recommended-container">
             <!-- <img src={{newsItem.urlPicture}}> -->
-            <span>{{song.name}}</span>
+            
+            <mat-card>
+
+                <div class="song-container flex-row">
+
+                    <div>
+                        <span>{{song.name}}</span>
+                    </div>
+
+                    <div>
+                        <span>{{song.artist}}</span>
+                    </div>
+                
+                    <div class="album-container flex-column" >
+                        <img src={{song.albumUrlPicture}}>
+                            <span>{{song.album}}</span>
+                    </div>
+
+                    <button mat-flat-button class="button" (click)="onBtnClicked(song.id, song.isInLibrary)"
+                    [ngClass]="{'add-button': !song.isInLibrary, 'remove-button': song.isInLibrary}">
+                        {{song.isInLibrary ? 'Remove from Library' : 'Add to Library'}}
+                    </button>
+        
+        
+            </div>
+
+            
+         
+        </mat-card>
+
+
+
         </div>
 
     </div>

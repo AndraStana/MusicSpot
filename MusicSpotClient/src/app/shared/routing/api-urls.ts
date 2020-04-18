@@ -5,6 +5,8 @@ export enum ApplicationAPI {
 
     LIBRARY_GET_SONGS = "Library/GetLibrarySongs",
     LIBRARY_GET_POPULARITY_RANKINGS = "Library/GetPopularityRankings",
+    LIBRARY_ADD_SONG = "Library/AddSongToLibrary",
+    LIBRARY_REMOVE_SONG = "Library/RemoveSongFromLibrary",
 
     FRIENDS_GET_FRIENDS = "Friends/GetFriends",
     FRIENDS_GET_ALL_POSSIBLE_FRIENDS = "Friends/GetAllPossibleFriends",
@@ -13,7 +15,5 @@ export enum ApplicationAPI {
 
     NEWS_GET_NEWS = "News/GetNews",
     RECOMMENDED_GET_RECOMMENDED_SONGS = "Recommended/GetRecommendedSongs"
-
-
     
 }

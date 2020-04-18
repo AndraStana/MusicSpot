@@ -10,6 +10,7 @@ import { ArchitectureTypeEnum } from 'src/app/shared/enums/enums';
 import { DropdownItem } from 'src/app/shared/components/dropdown/dropdown.component';
 import { GenreFilterHelper } from 'src/app/shared/helpers/genre-filter-helper';
 import { DecadeFilterHelper } from 'src/app/shared/helpers/decade-filter-helper';
+import { AddRemoveSongModel } from 'src/app/shared/models/add-remove-song.model';
 
 
 @Component({
@@ -21,9 +22,9 @@ export class LibraryTableComponent implements OnInit, OnDestroy {
 
   @Input() public architectureType: ArchitectureTypeEnum;
   @Output() public onRequestFinish: EventEmitter<void> = new EventEmitter<void>();
-  @Output() public onRequestStart: EventEmitter<void> = new EventEmitter<void>();
+  @Output() public onRequestStart: EventEmitter<string> = new EventEmitter<string>();
 
-  public displayedColumns = ["name", "artist", "album", "year"];
+  public displayedColumns = ["name", "artist", "album", "year", "actions"];
   public songsNumber: number;
   public filter: LibraryPageFilter = null;
   public userId: string;
@@ -33,6 +34,8 @@ export class LibraryTableComponent implements OnInit, OnDestroy {
   public genreDropdownItems: DropdownItem[] = [];
   public decadeDropdownItems: DropdownItem[] = [];
   public popularityDropdownItems: DropdownItem[] = [];
+
+  private deletedSongIds:string[] = [];
 
   subscriber:Subscription;
 
@@ -66,7 +69,7 @@ export class LibraryTableComponent implements OnInit, OnDestroy {
     public ngAfterViewInit(): void {
     this.subscriber =  this.dataSource.loading$.subscribe(res=>{
         if(res === true){
-          this.onRequestStart.emit();
+          this.onRequestStart.emit("Get library's songs");
           this.displayTable = false;
 
         }
@@ -151,5 +154,35 @@ export class LibraryTableComponent implements OnInit, OnDestroy {
             }
           )
       }
-}
 
+      onBtnClicked(songId: string, isInLibrary: boolean){
+        var libraryId = this._localStorage.getItem<string>(LocalStorageKeys.USER_LIBRARY_ID);
+        if(isInLibrary == true){
+          this.removeSongFromLibrary(libraryId, songId);
+      }
+    }
+    
+      private removeSongFromLibrary(libraryId, songId): void{
+        this.onRequestStart.emit("Remove song from library");
+
+
+        this.deletedSongIds.push(songId);
+    
+        this._libraryService.removeSongFromLibrary(
+          <AddRemoveSongModel>{
+            libraryId: libraryId,
+            songId: songId
+            }, this.architectureType
+          ).subscribe(
+            res =>{
+              this.onRequestFinish.emit();
+            }
+          )
+      }
+
+      public hideButton(songId: string ): boolean{
+        return ! this.deletedSongIds.find(sid=> sid == songId);
+      }
+    
+   
+  }  

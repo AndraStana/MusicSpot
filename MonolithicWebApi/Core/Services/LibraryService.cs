@@ -6,6 +6,7 @@ using Core.CoreConverters;
 using Core.DTO;
 using Core.DTOs;
 using Microsoft.EntityFrameworkCore;
+using Persistence.DAL;
 using Persistence.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -178,6 +179,26 @@ namespace Core.Services
                     }
             }
             return false;
+        }
+
+        public void RemoveSongFromLibrary(Guid libraryId, Guid songId)
+        {
+            var libSong = _context.LibrarySong.FirstOrDefault(ls => ls.LibraryId == libraryId && ls.SongId == songId);
+            _context.LibrarySong.Remove(libSong);
+            _context.SaveChanges();
+        }
+
+        public void AddSongToLibrary(Guid libraryId, Guid songId)
+        {
+            var libSong = new LibrarySong()
+            {
+                Id = Guid.NewGuid(),
+                LibraryId = libraryId,
+                SongId = songId
+            };
+
+            _context.LibrarySong.Add(libSong);
+            _context.SaveChanges();
         }
     }
 }

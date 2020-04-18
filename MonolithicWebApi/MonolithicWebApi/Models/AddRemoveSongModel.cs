@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace MonolithicWebApi.Models
 {
-    public class LoggedInUserModel
+    public class AddRemoveSongModel
     {
-        public Guid UserId { get; set; }
-        public string Username { get; set; }
         public Guid LibraryId { get; set; }
+        public Guid SongId { get; set; }
     }
 }

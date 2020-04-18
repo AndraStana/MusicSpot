@@ -39,6 +39,7 @@ export class LoginPageComponent implements OnInit {
             this._localStorage.setItem<boolean>(LocalStorageKeys.IS_LOGGED_IN, true);
             this._localStorage.setItem<string>(LocalStorageKeys.LOGGED_IN_USER_NAME, user.username);
             this._localStorage.setItem<string>(LocalStorageKeys.LOGGED_IN_USER_ID, user.userId);
+            this._localStorage.setItem<string>(LocalStorageKeys.USER_LIBRARY_ID, user.libraryId);
 
             this._router.navigateByUrl('/library/' +user.userId);
           }

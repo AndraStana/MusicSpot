@@ -22,8 +22,8 @@ export class LibraryPageContentComponent implements OnInit {
   requestFinish(){
     this.timer.stopTimerAsync().then();
   }
-  requestStart(){
-    this.timer.startTimerAsync("Get library's songs").then();
+  requestStart(event: string){
+    this.timer.startTimerAsync(event).then();
   }
 
 }

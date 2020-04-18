@@ -29,40 +29,27 @@ namespace MonolithicWebApi.Controllers
 
 
         [HttpPost]
-
         public LibraryPageModel GetLibrarySongs([FromBody] LibraryPageFilter filter)
         {
             var (totaNumber, songs) = _libraryService.GetLibrarySongs(filter);
 
             return new LibraryPageModel()
             {
-                Songs = songs.Select(s => SongWebConverter.ToModel(s)).ToList(),
+                Songs = songs.Select(s => SongWebConverter.ToModel(s, true)).ToList(),
                 TotalNumber = totaNumber
             };
+        }
 
-            //var songss = new List<SongModel>();
+        [HttpPost]
+        public void RemoveSongFromLibrary(AddRemoveSongModel model)
+        {
+            _libraryService.RemoveSongFromLibrary(model.LibraryId, model.SongId);
+        }
 
-            //for (int i = 0; i < filter.PageSize; i++)
-            //{
-
-            //    var song = new SongModel()
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        Name = "song1",
-            //        Artist = "artist1",
-            //        Album = "Album1",
-            //        Year = 2008,
-            //        Url = "https://www.youtube.com/watch?v=BKc4I_cK0JU"
-            //    };
-            //    songss.Add(song);
-            //}
-
-
-            //return new LibraryPageModel()
-            //{
-            //    Songs = songss,
-            //    TotalNumber = 100
-            //};
+        [HttpPost]
+        public void AddSongToLibrary(AddRemoveSongModel model)
+        {
+            _libraryService.AddSongToLibrary(model.LibraryId, model.SongId);
         }
 
         public List<PopularityRankingModel> GetPopularityRankings()
