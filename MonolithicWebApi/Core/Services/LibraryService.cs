@@ -63,8 +63,8 @@ namespace Core.Services
                             Id = song.Id,
                             Name = song.Name,
                             Year = song.Year,
-                            Album = AlbumCoreConverter.ToDTO(album),
-                            Artist = ArtistCoreConverter.ToDTO(artist),
+                            Album = AlbumCoreConverter.ToShortDTO(album),
+                            Artist = ArtistCoreConverter.ToShortDTO(artist),
                         };
 
 
@@ -106,7 +106,7 @@ namespace Core.Services
                 .OrderBy(s=>s.Name)
                 .Skip(filter.PageIndex * filter.PageSize)
                 .Take(filter.PageSize)
-                .Select(s=> SongCoreConverter.ToDTO(s))
+                .Select(s=> SongCoreConverter.ToLongDTO(s))
                 .ToList() ;
 
             return recommendedSongs;
@@ -201,6 +201,11 @@ namespace Core.Services
 
             _context.LibrarySong.Add(libSong);
             _context.SaveChanges();
+        }
+
+        public List<Guid> GetSongsIds(Guid libraryId)
+        {
+            return _context.LibrarySong.Where(ls => ls.LibraryId == libraryId).Select(ls => ls.SongId).ToList();
         }
     }
 }

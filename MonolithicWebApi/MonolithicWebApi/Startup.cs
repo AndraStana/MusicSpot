@@ -34,6 +34,7 @@ namespace MonolithicWebApi
             services.AddTransient<ILibraryService, LibraryService>();
             services.AddTransient<IFriendsService, FriendsService>();
             services.AddTransient<INewsService, NewsService>();
+            services.AddTransient<IArtistsService, ArtistsService>();
 
 
             services.AddScoped<IAppSeeder, AppSeeder>();

@@ -45,6 +45,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     TimerComponent,
     LoaderComponent,
     DropdownComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -141,7 +143,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     PageDividerComponent,
     TimerComponent,
     LoaderComponent,
-    DropdownComponent
+    DropdownComponent,
+    SearchBarComponent
 ],
   providers: [LocalStorageService, DatePipe],
 })

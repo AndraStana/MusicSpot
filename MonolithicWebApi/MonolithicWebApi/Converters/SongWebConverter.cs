@@ -29,5 +29,19 @@ namespace MonolithicWebApi.Converters
                 IsInLibrary = isInLibrary
             };
         }
+        public static SongSimpleModel ToSimpleModel(SongDTO songDTO)
+        {
+            if (songDTO == null)
+            {
+                return null;
+            }
+
+            return new SongSimpleModel()
+            {
+                Id = songDTO.Id,
+                Name = songDTO.Name,
+                Url = songDTO.Url
+            };
+        }
     }
 }

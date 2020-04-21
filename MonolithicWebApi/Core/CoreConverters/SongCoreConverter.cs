@@ -8,7 +8,7 @@ namespace Core.CoreConverters
 {
     public class SongCoreConverter
     {
-        public static SongDTO ToDTO(Song song)
+        public static SongDTO ToLongDTO(Song song)
         {
             if (song == null)
             {
@@ -20,8 +20,24 @@ namespace Core.CoreConverters
                 Id = song.Id,
                 Name = song.Name,
                 Year = song.Year,
-                Album = AlbumCoreConverter.ToDTO(song.Album),
-                Artist = ArtistCoreConverter.ToDTO(song.Album.Artist),
+                Album = AlbumCoreConverter.ToShortDTO(song.Album),
+                Artist = ArtistCoreConverter.ToShortDTO(song.Album.Artist),
+                Url = song.Url
+            };
+        }
+
+        public static SongDTO ToShortDTO(Song song)
+        {
+            if (song == null)
+            {
+                return null;
+            }
+
+            return new SongDTO()
+            {
+                Id = song.Id,
+                Name = song.Name,
+                Year = song.Year,
                 Url = song.Url
             };
         }

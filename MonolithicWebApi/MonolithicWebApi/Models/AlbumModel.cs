@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Core.DTOs
+namespace MonolithicWebApi.Models
 {
-    public class AlbumDTO
+    public class AlbumModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string UrlPicture { get; set; }
-        public List<SongDTO> Songs { get; set; }
+        public List<SongSimpleModel> Songs { get; set; }
     }
 }

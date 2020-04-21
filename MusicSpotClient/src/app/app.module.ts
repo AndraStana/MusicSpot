@@ -25,7 +25,7 @@ import { LibraryPageComponent } from './modules/library/pages/library-page/libra
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
    
   ],
   imports: [

@@ -1,0 +1,6 @@
+<mat-form-field >
+    <div class="flex-row search-container">
+        <mat-icon>search</mat-icon>
+        <input  matInput type="text" [(ngModel)]="value" (ngModelChange)="searchChanged($event)">
+    </div>
+</mat-form-field>

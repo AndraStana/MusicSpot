@@ -12,7 +12,6 @@ import { GenreFilterHelper } from 'src/app/shared/helpers/genre-filter-helper';
 import { DecadeFilterHelper } from 'src/app/shared/helpers/decade-filter-helper';
 import { AddRemoveSongModel } from 'src/app/shared/models/add-remove-song.model';
 
-
 @Component({
   selector: 'app-library-table',
   templateUrl: './library-table.component.html',
