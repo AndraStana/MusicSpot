@@ -1,1 +1,34 @@
--- <h1>{{artist.name}}</h1> --
+<mat-card>
+    <div class="flex-row">
+
+        <div class="flex-column artist">
+            <img src={{artist.urlPicture}}>
+            <h1>{{artist.name}}</h1>
+        </div>
+
+        <div class="albums-container">
+            <mat-grid-list cols="3" rowHeight="70px" gutterSize="20px">
+                <div class="album" *ngFor="let album of artist.albums">
+                    <mat-grid-tile
+                
+                        [colspan]="1"
+                        [rowspan]="1"
+                        >
+                        <div class="flex-column" (click)="onAlbumClicked(album.id)" >
+                            <img src={{album.urlPicture}}>
+                            <span>{{album.name}}</span>
+                        </div>
+
+                    </mat-grid-tile>
+                </div>
+            </mat-grid-list>
+        </div>
+
+    <div >
+        
+    </div>
+    </div>
+
+    
+</mat-card>
+

@@ -11,7 +11,7 @@ namespace MonolithicWebApi.Seeder
     public class AppSeeder : IAppSeeder
     {
         public const int ARTISTS_NR = 100;
-        public const int ALBUMS_NR_PER_ARTIST = 10;
+        public const int ALBUMS_NR_PER_ARTIST = 9;
         public const int SONGS_NR_PER_ALBUM = 10;
         public const int SONGS_PER_LIBRARY_NR = 100;
         public const int POPULARITY_RANKINGS_NR = 16;

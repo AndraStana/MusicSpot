@@ -1,4 +1,4 @@
-export class SongsimpleModel{
+export class SongSimpleModel{
     id: string;
     name: string;
     url: string;

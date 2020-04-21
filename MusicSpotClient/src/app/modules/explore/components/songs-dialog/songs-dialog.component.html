@@ -1,0 +1,30 @@
+<div class="dialog">
+    
+    <div class="flex-row">
+        <img src={{data.album.urlPicture}}>
+
+        <app-page-title [title]="'Songs of ' + data.album.name"> </app-page-title>
+    </div>
+
+
+    <div *ngFor="let song of data.album.songs">
+        
+        <div class="album-songs-container">
+            <mat-card>
+                <div class="song-container flex-row">
+
+                    <div>
+                        <span>{{song.name}}</span>
+                    </div>
+
+                    <button mat-flat-button class="button" (click)="onBtnClicked(song.id, song.isInLibrary)"
+                    [ngClass]="{'add-button': !song.isInLibrary, 'remove-button': song.isInLibrary}">
+                        {{song.isInLibrary ? 'Remove from Library' : 'Add to Library'}}
+                    </button>
+            </div>
+        </mat-card>
+        </div>
+
+    </div>
+
+</div>

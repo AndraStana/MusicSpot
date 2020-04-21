@@ -1,0 +1,55 @@
+@import './../../../../../assets/css/shared/variables.scss';
+.album-songs-container{
+    border-radius: 30px;
+    padding: 10px;
+    margin: 10px;
+    display:flex;
+    flex-direction: row;
+    widows: 100%;
+}
+
+.song-container{
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    span{
+        font-weight: 500;
+        font-size:20px;
+    }
+}
+
+mat-card{
+    width: 100%;
+    border: 1px solid black;
+    background-color: #c5c9bf;
+}
+
+::ng-deep .mat-card{
+    padding:8px !important; 
+}
+
+
+.add-button{
+    background-color: $color-add-to-palylist-button;
+    color:white;
+    height:38px;
+}
+
+.remove-button{
+    background-color: $color-remove-from-playlist-button;
+    color:white;
+    height:38px;
+}
+
+img{
+    height:120px;
+    width:120px;
+    border-radius: 50px;
+    margin-left:50px;
+    margin-right:30px;
+}
+
+app-page-title{
+    align-self:center;
+}
