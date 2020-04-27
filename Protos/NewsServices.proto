@@ -1,0 +1,13 @@
+﻿
+
+syntax = "proto3";
+
+option csharp_namespace = "NewsMicroservice";
+
+import "NewsEntities.proto";
+
+
+service NewsGrpcService{
+	rpc GetNews (GetNewsRequest) returns (GetNewsResponse);
+}
+

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "NewsMicroservice";
+
+//-------------------Get News----------------
+
+message GetNewsRequest{
+	int32 pageIndex=1;
+	int32 pageSize=2;
+	
+}
+
+message GetNewsResponse{
+ repeated NewsMessage news = 1;
+}
+
+message NewsMessage{
+	string id = 1;
+ 	string description = 2;
+	string urlPicture = 3;
+}
+
+//-------------------Get Students Details----------------
