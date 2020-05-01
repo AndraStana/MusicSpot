@@ -26,12 +26,24 @@ namespace MusicMicroservice {
           string.Concat(
             "ChVMaWJyYXJ5RW50aXRpZXMucHJvdG8iLQoRQWRkTGlicmFyeVJlcXVlc3QS",
             "CgoCaWQYASABKAkSDAoEbmFtZRgCIAEoCSIUChJBZGRMaWJyYXJ5UmVzcG9u",
-            "c2VCFKoCEU11c2ljTWljcm9zZXJ2aWNlYgZwcm90bzM="));
+            "c2UiswEKFkdldExpYnJhcnlTb25nc1JlcXVlc3QSDwoFZ2VucmUYASABKAVI",
+            "ABIQCgZkZWNhZGUYAiABKAVIARIdChNwb3B1bGFyaXR5UmFua2luZ0lkGAMg",
+            "ASgJSAISEQoJcGFnZUluZGV4GAQgASgFEhAKCHBhZ2VTaXplGAUgASgFQhAK",
+            "Dm51bGxhYmxlX2dlbnJlQhEKD251bGxhYmxlX2RlY2FkZUINCgt2YWx1ZV9v",
+            "bmVvZiJEChdHZXRMaWJyYXJ5U29uZ3NSZXNwb25zZRITCgt0b3RhbE51bWJl",
+            "chgBIAEoBRIUCgVzb25ncxgCIAMoCzIFLlNvbmciegoEU29uZxIKCgJpZBgB",
+            "IAEoCRIOCgZhcnRpc3QYAiABKAkSDQoFYWxidW0YAyABKAkSDAoEeWVhchgE",
+            "IAEoBRILCgN1cmwYBSABKAkSFwoPYWxidW1VcmxQaWN0dXJlGAYgASgJEhMK",
+            "C2lzSW5MaWJyYXJ5GAcgASgIQhSqAhFNdXNpY01pY3Jvc2VydmljZWIGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.AddLibraryRequest), global::MusicMicroservice.AddLibraryRequest.Parser, new[]{ "Id", "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.AddLibraryResponse), global::MusicMicroservice.AddLibraryResponse.Parser, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.AddLibraryResponse), global::MusicMicroservice.AddLibraryResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.GetLibrarySongsRequest), global::MusicMicroservice.GetLibrarySongsRequest.Parser, new[]{ "Genre", "Decade", "PopularityRankingId", "PageIndex", "PageSize" }, new[]{ "NullableGenre", "NullableDecade", "ValueOneof" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.GetLibrarySongsResponse), global::MusicMicroservice.GetLibrarySongsResponse.Parser, new[]{ "TotalNumber", "Songs" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.Song), global::MusicMicroservice.Song.Parser, new[]{ "Id", "Artist", "Album", "Year", "Url", "AlbumUrlPicture", "IsInLibrary" }, null, null, null)
           }));
     }
     #endregion
@@ -290,6 +302,777 @@ namespace MusicMicroservice {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GetLibrarySongsRequest : pb::IMessage<GetLibrarySongsRequest> {
+    private static readonly pb::MessageParser<GetLibrarySongsRequest> _parser = new pb::MessageParser<GetLibrarySongsRequest>(() => new GetLibrarySongsRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GetLibrarySongsRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::MusicMicroservice.LibraryEntitiesReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetLibrarySongsRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetLibrarySongsRequest(GetLibrarySongsRequest other) : this() {
+      pageIndex_ = other.pageIndex_;
+      pageSize_ = other.pageSize_;
+      switch (other.NullableGenreCase) {
+        case NullableGenreOneofCase.Genre:
+          Genre = other.Genre;
+          break;
+      }
+
+      switch (other.NullableDecadeCase) {
+        case NullableDecadeOneofCase.Decade:
+          Decade = other.Decade;
+          break;
+      }
+
+      switch (other.ValueOneofCase) {
+        case ValueOneofOneofCase.PopularityRankingId:
+          PopularityRankingId = other.PopularityRankingId;
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetLibrarySongsRequest Clone() {
+      return new GetLibrarySongsRequest(this);
+    }
+
+    /// <summary>Field number for the "genre" field.</summary>
+    public const int GenreFieldNumber = 1;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Genre {
+      get { return nullableGenreCase_ == NullableGenreOneofCase.Genre ? (int) nullableGenre_ : 0; }
+      set {
+        nullableGenre_ = value;
+        nullableGenreCase_ = NullableGenreOneofCase.Genre;
+      }
+    }
+
+    /// <summary>Field number for the "decade" field.</summary>
+    public const int DecadeFieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Decade {
+      get { return nullableDecadeCase_ == NullableDecadeOneofCase.Decade ? (int) nullableDecade_ : 0; }
+      set {
+        nullableDecade_ = value;
+        nullableDecadeCase_ = NullableDecadeOneofCase.Decade;
+      }
+    }
+
+    /// <summary>Field number for the "popularityRankingId" field.</summary>
+    public const int PopularityRankingIdFieldNumber = 3;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string PopularityRankingId {
+      get { return valueOneofCase_ == ValueOneofOneofCase.PopularityRankingId ? (string) valueOneof_ : ""; }
+      set {
+        valueOneof_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        valueOneofCase_ = ValueOneofOneofCase.PopularityRankingId;
+      }
+    }
+
+    /// <summary>Field number for the "pageIndex" field.</summary>
+    public const int PageIndexFieldNumber = 4;
+    private int pageIndex_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int PageIndex {
+      get { return pageIndex_; }
+      set {
+        pageIndex_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "pageSize" field.</summary>
+    public const int PageSizeFieldNumber = 5;
+    private int pageSize_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int PageSize {
+      get { return pageSize_; }
+      set {
+        pageSize_ = value;
+      }
+    }
+
+    private object nullableGenre_;
+    /// <summary>Enum of possible cases for the "nullable_genre" oneof.</summary>
+    public enum NullableGenreOneofCase {
+      None = 0,
+      Genre = 1,
+    }
+    private NullableGenreOneofCase nullableGenreCase_ = NullableGenreOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public NullableGenreOneofCase NullableGenreCase {
+      get { return nullableGenreCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void ClearNullableGenre() {
+      nullableGenreCase_ = NullableGenreOneofCase.None;
+      nullableGenre_ = null;
+    }
+
+    private object nullableDecade_;
+    /// <summary>Enum of possible cases for the "nullable_decade" oneof.</summary>
+    public enum NullableDecadeOneofCase {
+      None = 0,
+      Decade = 2,
+    }
+    private NullableDecadeOneofCase nullableDecadeCase_ = NullableDecadeOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public NullableDecadeOneofCase NullableDecadeCase {
+      get { return nullableDecadeCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void ClearNullableDecade() {
+      nullableDecadeCase_ = NullableDecadeOneofCase.None;
+      nullableDecade_ = null;
+    }
+
+    private object valueOneof_;
+    /// <summary>Enum of possible cases for the "value_oneof" oneof.</summary>
+    public enum ValueOneofOneofCase {
+      None = 0,
+      PopularityRankingId = 3,
+    }
+    private ValueOneofOneofCase valueOneofCase_ = ValueOneofOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ValueOneofOneofCase ValueOneofCase {
+      get { return valueOneofCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void ClearValueOneof() {
+      valueOneofCase_ = ValueOneofOneofCase.None;
+      valueOneof_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GetLibrarySongsRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GetLibrarySongsRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Genre != other.Genre) return false;
+      if (Decade != other.Decade) return false;
+      if (PopularityRankingId != other.PopularityRankingId) return false;
+      if (PageIndex != other.PageIndex) return false;
+      if (PageSize != other.PageSize) return false;
+      if (NullableGenreCase != other.NullableGenreCase) return false;
+      if (NullableDecadeCase != other.NullableDecadeCase) return false;
+      if (ValueOneofCase != other.ValueOneofCase) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (nullableGenreCase_ == NullableGenreOneofCase.Genre) hash ^= Genre.GetHashCode();
+      if (nullableDecadeCase_ == NullableDecadeOneofCase.Decade) hash ^= Decade.GetHashCode();
+      if (valueOneofCase_ == ValueOneofOneofCase.PopularityRankingId) hash ^= PopularityRankingId.GetHashCode();
+      if (PageIndex != 0) hash ^= PageIndex.GetHashCode();
+      if (PageSize != 0) hash ^= PageSize.GetHashCode();
+      hash ^= (int) nullableGenreCase_;
+      hash ^= (int) nullableDecadeCase_;
+      hash ^= (int) valueOneofCase_;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (nullableGenreCase_ == NullableGenreOneofCase.Genre) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Genre);
+      }
+      if (nullableDecadeCase_ == NullableDecadeOneofCase.Decade) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Decade);
+      }
+      if (valueOneofCase_ == ValueOneofOneofCase.PopularityRankingId) {
+        output.WriteRawTag(26);
+        output.WriteString(PopularityRankingId);
+      }
+      if (PageIndex != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(PageIndex);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(PageSize);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (nullableGenreCase_ == NullableGenreOneofCase.Genre) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Genre);
+      }
+      if (nullableDecadeCase_ == NullableDecadeOneofCase.Decade) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Decade);
+      }
+      if (valueOneofCase_ == ValueOneofOneofCase.PopularityRankingId) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PopularityRankingId);
+      }
+      if (PageIndex != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PageIndex);
+      }
+      if (PageSize != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PageSize);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GetLibrarySongsRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.PageIndex != 0) {
+        PageIndex = other.PageIndex;
+      }
+      if (other.PageSize != 0) {
+        PageSize = other.PageSize;
+      }
+      switch (other.NullableGenreCase) {
+        case NullableGenreOneofCase.Genre:
+          Genre = other.Genre;
+          break;
+      }
+
+      switch (other.NullableDecadeCase) {
+        case NullableDecadeOneofCase.Decade:
+          Decade = other.Decade;
+          break;
+      }
+
+      switch (other.ValueOneofCase) {
+        case ValueOneofOneofCase.PopularityRankingId:
+          PopularityRankingId = other.PopularityRankingId;
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Genre = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Decade = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PopularityRankingId = input.ReadString();
+            break;
+          }
+          case 32: {
+            PageIndex = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GetLibrarySongsResponse : pb::IMessage<GetLibrarySongsResponse> {
+    private static readonly pb::MessageParser<GetLibrarySongsResponse> _parser = new pb::MessageParser<GetLibrarySongsResponse>(() => new GetLibrarySongsResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GetLibrarySongsResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::MusicMicroservice.LibraryEntitiesReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetLibrarySongsResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetLibrarySongsResponse(GetLibrarySongsResponse other) : this() {
+      totalNumber_ = other.totalNumber_;
+      songs_ = other.songs_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetLibrarySongsResponse Clone() {
+      return new GetLibrarySongsResponse(this);
+    }
+
+    /// <summary>Field number for the "totalNumber" field.</summary>
+    public const int TotalNumberFieldNumber = 1;
+    private int totalNumber_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int TotalNumber {
+      get { return totalNumber_; }
+      set {
+        totalNumber_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "songs" field.</summary>
+    public const int SongsFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::MusicMicroservice.Song> _repeated_songs_codec
+        = pb::FieldCodec.ForMessage(18, global::MusicMicroservice.Song.Parser);
+    private readonly pbc::RepeatedField<global::MusicMicroservice.Song> songs_ = new pbc::RepeatedField<global::MusicMicroservice.Song>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::MusicMicroservice.Song> Songs {
+      get { return songs_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GetLibrarySongsResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GetLibrarySongsResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (TotalNumber != other.TotalNumber) return false;
+      if(!songs_.Equals(other.songs_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (TotalNumber != 0) hash ^= TotalNumber.GetHashCode();
+      hash ^= songs_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (TotalNumber != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(TotalNumber);
+      }
+      songs_.WriteTo(output, _repeated_songs_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (TotalNumber != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TotalNumber);
+      }
+      size += songs_.CalculateSize(_repeated_songs_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GetLibrarySongsResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.TotalNumber != 0) {
+        TotalNumber = other.TotalNumber;
+      }
+      songs_.Add(other.songs_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            TotalNumber = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            songs_.AddEntriesFrom(input, _repeated_songs_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Song : pb::IMessage<Song> {
+    private static readonly pb::MessageParser<Song> _parser = new pb::MessageParser<Song>(() => new Song());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Song> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::MusicMicroservice.LibraryEntitiesReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Song() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Song(Song other) : this() {
+      id_ = other.id_;
+      artist_ = other.artist_;
+      album_ = other.album_;
+      year_ = other.year_;
+      url_ = other.url_;
+      albumUrlPicture_ = other.albumUrlPicture_;
+      isInLibrary_ = other.isInLibrary_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Song Clone() {
+      return new Song(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private string id_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "artist" field.</summary>
+    public const int ArtistFieldNumber = 2;
+    private string artist_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Artist {
+      get { return artist_; }
+      set {
+        artist_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "album" field.</summary>
+    public const int AlbumFieldNumber = 3;
+    private string album_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Album {
+      get { return album_; }
+      set {
+        album_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "year" field.</summary>
+    public const int YearFieldNumber = 4;
+    private int year_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Year {
+      get { return year_; }
+      set {
+        year_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "url" field.</summary>
+    public const int UrlFieldNumber = 5;
+    private string url_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Url {
+      get { return url_; }
+      set {
+        url_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "albumUrlPicture" field.</summary>
+    public const int AlbumUrlPictureFieldNumber = 6;
+    private string albumUrlPicture_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string AlbumUrlPicture {
+      get { return albumUrlPicture_; }
+      set {
+        albumUrlPicture_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "isInLibrary" field.</summary>
+    public const int IsInLibraryFieldNumber = 7;
+    private bool isInLibrary_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool IsInLibrary {
+      get { return isInLibrary_; }
+      set {
+        isInLibrary_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Song);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Song other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Artist != other.Artist) return false;
+      if (Album != other.Album) return false;
+      if (Year != other.Year) return false;
+      if (Url != other.Url) return false;
+      if (AlbumUrlPicture != other.AlbumUrlPicture) return false;
+      if (IsInLibrary != other.IsInLibrary) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (Artist.Length != 0) hash ^= Artist.GetHashCode();
+      if (Album.Length != 0) hash ^= Album.GetHashCode();
+      if (Year != 0) hash ^= Year.GetHashCode();
+      if (Url.Length != 0) hash ^= Url.GetHashCode();
+      if (AlbumUrlPicture.Length != 0) hash ^= AlbumUrlPicture.GetHashCode();
+      if (IsInLibrary != false) hash ^= IsInLibrary.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (Artist.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Artist);
+      }
+      if (Album.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Album);
+      }
+      if (Year != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(Year);
+      }
+      if (Url.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Url);
+      }
+      if (AlbumUrlPicture.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(AlbumUrlPicture);
+      }
+      if (IsInLibrary != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(IsInLibrary);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
+      if (Artist.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Artist);
+      }
+      if (Album.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Album);
+      }
+      if (Year != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Year);
+      }
+      if (Url.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Url);
+      }
+      if (AlbumUrlPicture.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(AlbumUrlPicture);
+      }
+      if (IsInLibrary != false) {
+        size += 1 + 1;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Song other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
+      if (other.Artist.Length != 0) {
+        Artist = other.Artist;
+      }
+      if (other.Album.Length != 0) {
+        Album = other.Album;
+      }
+      if (other.Year != 0) {
+        Year = other.Year;
+      }
+      if (other.Url.Length != 0) {
+        Url = other.Url;
+      }
+      if (other.AlbumUrlPicture.Length != 0) {
+        AlbumUrlPicture = other.AlbumUrlPicture;
+      }
+      if (other.IsInLibrary != false) {
+        IsInLibrary = other.IsInLibrary;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Id = input.ReadString();
+            break;
+          }
+          case 18: {
+            Artist = input.ReadString();
+            break;
+          }
+          case 26: {
+            Album = input.ReadString();
+            break;
+          }
+          case 32: {
+            Year = input.ReadInt32();
+            break;
+          }
+          case 42: {
+            Url = input.ReadString();
+            break;
+          }
+          case 50: {
+            AlbumUrlPicture = input.ReadString();
+            break;
+          }
+          case 56: {
+            IsInLibrary = input.ReadBool();
+            break;
+          }
         }
       }
     }

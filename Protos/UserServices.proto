@@ -8,3 +8,4 @@ import "UserEntities.proto";
 service UsersGrpcService {
     rpc AddUser (AddUserRequest) returns (AddUserResponse);
 }
+

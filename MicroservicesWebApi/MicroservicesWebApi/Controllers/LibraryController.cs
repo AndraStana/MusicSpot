@@ -1,4 +1,5 @@
 ﻿using Common.Models;
+using Common.Shared;
 using Grpc.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -24,5 +25,30 @@ namespace MicroservicesWebApi.Controllers
                 _libraryService.AddLibraryAsync(model);
                 return;
             }
+
+        [HttpPost]
+        public LibraryPageModel GetLibrarySongs([FromBody] LibraryPageFilter filter)
+        {
+
+            //return _libraryService.GetLibrarySongs(filter);
+
+
+
+            //var (totaNumber, songs) = _libraryService.GetLibrarySongs(filter);
+
+            //return new LibraryPageModel()
+            //{
+            //    Songs = songs.Select(s => SongWebConverter.ToModel(s, true)).ToList(),
+            //    TotalNumber = totaNumber
+            //};
+
+
+            return null;
         }
+
+        //public List<NewsModel> GetNews(BasicPageFilter filter)
+        //{
+        //    return _newsService.GetNewsAsync(filter).Result;
+        //}
+    }
     }

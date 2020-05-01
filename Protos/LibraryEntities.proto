@@ -1,7 +1,10 @@
 syntax = "proto3";
 
+
 option csharp_namespace = "MusicMicroservice";
 
+
+//----------------------Add Library---------------------------
 
 message AddLibraryRequest{
 	string id = 1;
@@ -9,4 +12,38 @@ message AddLibraryRequest{
 }
 
 message AddLibraryResponse{
+}
+
+//----------------------Get Library Songs---------------------------
+
+message GetLibrarySongsRequest{	
+	oneof nullable_genre {
+		int32 genre = 1;
+	  }
+		  
+	oneof nullable_decade {
+		int32 decade = 2;
+	}
+
+	oneof value_oneof {
+		string popularityRankingId = 3;
+	}
+
+	int32 pageIndex = 4;
+	int32 pageSize = 5;
+}
+
+message GetLibrarySongsResponse{	
+	int32 totalNumber = 1;
+	repeated Song songs = 2;
+}
+
+message Song {
+	string id = 1;
+	string artist = 2;
+	string album = 3;
+	int32 year = 4;
+	string url = 5;
+	string albumUrlPicture = 6;
+	bool isInLibrary = 7;
 }

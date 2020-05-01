@@ -7,5 +7,7 @@ import "LibraryEntities.proto";
 
 
 service LibraryGrpcService {
-rpc AddLibrary (AddLibraryRequest) returns (AddLibraryResponse);
+	rpc AddLibrary (AddLibraryRequest) returns (AddLibraryResponse);
+	rpc GetLibrarySongs (GetLibrarySongsRequest) returns (GetLibrarySongsResponse);
+
 }

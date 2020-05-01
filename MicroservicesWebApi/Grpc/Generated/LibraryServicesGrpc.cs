@@ -14,6 +14,8 @@ namespace MusicMicroservice {
 
     static readonly grpc::Marshaller<global::MusicMicroservice.AddLibraryRequest> __Marshaller_AddLibraryRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.AddLibraryRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::MusicMicroservice.AddLibraryResponse> __Marshaller_AddLibraryResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.AddLibraryResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::MusicMicroservice.GetLibrarySongsRequest> __Marshaller_GetLibrarySongsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.GetLibrarySongsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::MusicMicroservice.GetLibrarySongsResponse> __Marshaller_GetLibrarySongsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.GetLibrarySongsResponse.Parser.ParseFrom);
 
     static readonly grpc::Method<global::MusicMicroservice.AddLibraryRequest, global::MusicMicroservice.AddLibraryResponse> __Method_AddLibrary = new grpc::Method<global::MusicMicroservice.AddLibraryRequest, global::MusicMicroservice.AddLibraryResponse>(
         grpc::MethodType.Unary,
@@ -21,6 +23,13 @@ namespace MusicMicroservice {
         "AddLibrary",
         __Marshaller_AddLibraryRequest,
         __Marshaller_AddLibraryResponse);
+
+    static readonly grpc::Method<global::MusicMicroservice.GetLibrarySongsRequest, global::MusicMicroservice.GetLibrarySongsResponse> __Method_GetLibrarySongs = new grpc::Method<global::MusicMicroservice.GetLibrarySongsRequest, global::MusicMicroservice.GetLibrarySongsResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetLibrarySongs",
+        __Marshaller_GetLibrarySongsRequest,
+        __Marshaller_GetLibrarySongsResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -66,6 +75,22 @@ namespace MusicMicroservice {
       public virtual grpc::AsyncUnaryCall<global::MusicMicroservice.AddLibraryResponse> AddLibraryAsync(global::MusicMicroservice.AddLibraryRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_AddLibrary, null, options, request);
+      }
+      public virtual global::MusicMicroservice.GetLibrarySongsResponse GetLibrarySongs(global::MusicMicroservice.GetLibrarySongsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetLibrarySongs(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::MusicMicroservice.GetLibrarySongsResponse GetLibrarySongs(global::MusicMicroservice.GetLibrarySongsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetLibrarySongs, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::MusicMicroservice.GetLibrarySongsResponse> GetLibrarySongsAsync(global::MusicMicroservice.GetLibrarySongsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetLibrarySongsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::MusicMicroservice.GetLibrarySongsResponse> GetLibrarySongsAsync(global::MusicMicroservice.GetLibrarySongsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetLibrarySongs, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override LibraryGrpcServiceClient NewInstance(ClientBaseConfiguration configuration)

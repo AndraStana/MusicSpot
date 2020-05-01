@@ -25,9 +25,10 @@ namespace MusicMicroservice {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVMaWJyYXJ5U2VydmljZXMucHJvdG8aFUxpYnJhcnlFbnRpdGllcy5wcm90",
-            "bzJLChJMaWJyYXJ5R3JwY1NlcnZpY2USNQoKQWRkTGlicmFyeRISLkFkZExp",
-            "YnJhcnlSZXF1ZXN0GhMuQWRkTGlicmFyeVJlc3BvbnNlQhSqAhFNdXNpY01p",
-            "Y3Jvc2VydmljZWIGcHJvdG8z"));
+            "bzKRAQoSTGlicmFyeUdycGNTZXJ2aWNlEjUKCkFkZExpYnJhcnkSEi5BZGRM",
+            "aWJyYXJ5UmVxdWVzdBoTLkFkZExpYnJhcnlSZXNwb25zZRJECg9HZXRMaWJy",
+            "YXJ5U29uZ3MSFy5HZXRMaWJyYXJ5U29uZ3NSZXF1ZXN0GhguR2V0TGlicmFy",
+            "eVNvbmdzUmVzcG9uc2VCFKoCEU11c2ljTWljcm9zZXJ2aWNlYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::MusicMicroservice.LibraryEntitiesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null));
