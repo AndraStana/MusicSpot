@@ -20,4 +20,4 @@ message NewsMessage{
 	string urlPicture = 3;
 }
 
-//-------------------Get Students Details----------------
+

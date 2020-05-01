@@ -1,0 +1,11 @@
+
+syntax = "proto3";
+
+option csharp_namespace = "MusicMicroservice";
+
+import "LibraryEntities.proto";
+
+
+service LibraryGrpcService {
+rpc AddLibrary (AddLibraryRequest) returns (AddLibraryResponse);
+}

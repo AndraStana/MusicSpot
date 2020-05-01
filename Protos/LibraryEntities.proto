@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "MusicMicroservice";
+
+
+message AddLibraryRequest{
+	string id = 1;
+	string name = 2;
+}
+
+message AddLibraryResponse{
+}

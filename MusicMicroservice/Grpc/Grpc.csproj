@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Generated\" />
+    <Folder Include="GrpcConverters\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.11.2" />
+    <PackageReference Include="Grpc.Core" Version="2.26.0" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.26.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.26.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <ProjectReference Include="..\Core\Core.csproj" />
+
+    <Protobuf Include="./../../Protos\LibraryEntities.proto" GrpcServices="None" OutputDir="./Generated" />
+    <Protobuf Include="./../../Protos\LibraryServices.proto" GrpcServices="Server" OutputDir="./Generated" ProtoRoot="./../../Protos" />
+
+    <Protobuf Include="./../../Protos\UserEntities.proto" GrpcServices="None" OutputDir="./Generated" />
+    <Protobuf Include="./../../Protos\UserServices.proto" GrpcServices="Server" OutputDir="./Generated" ProtoRoot="./../../Protos" />
+
+  </ItemGroup>
+
+</Project>

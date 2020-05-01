@@ -4,6 +4,8 @@ import { AccountService } from '../../services/account.service';
 import { RegisterAccount } from '../../models/account.model';
 import { Router } from '@angular/router';
 import { LocalStorageService, LocalStorageKeys } from 'src/app/shared/services/local-storage.service';
+import { UserAddModel } from '../../models/user-add.model';
+import { LibraryAddModel } from '../../models/library-add.model';
 
 @Component({
   selector: 'app-register-page',
@@ -42,6 +44,24 @@ export class RegisterPageComponent implements OnInit {
 
       this._accountService.register(<RegisterAccount>{ email, password, username, yearOfBirth: Number(yearOfBirth) }).subscribe(user => {
         if (user) {
+
+          this._accountService.createMicroserviceLibrary(
+            <LibraryAddModel>{
+              id: user.userId,
+              name: email+'_Library'
+            }
+          ).subscribe();
+
+          this._accountService.createMicroserviceUser(<UserAddModel>{
+         
+            id: user.userId,
+            username: username,
+            email: email,
+            yearOfBirth: Number(yearOfBirth),
+            libraryId: user.libraryId
+
+          }).subscribe();
+
           this._localStorage.setItem<boolean>(LocalStorageKeys.IS_LOGGED_IN, true);
           this._localStorage.setItem<string>(LocalStorageKeys.LOGGED_IN_USER_NAME, user.username);
           this._localStorage.setItem<string>(LocalStorageKeys.LOGGED_IN_USER_ID, user.userId);

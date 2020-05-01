@@ -3,6 +3,9 @@ export enum ApplicationAPI {
     ACCOUNT_REGISTER = "Account/Register",
     ACCOUNT_LOGOUT = "Account/Logout",
 
+    MICROSERVICES_LIBRARY_ADD="Library/AddLibrary",
+    MICROSERVICES_USERS_ADD="Users/AddUser",
+
     LIBRARY_GET_SONGS = "Library/GetLibrarySongs",
     LIBRARY_GET_POPULARITY_RANKINGS = "Library/GetPopularityRankings",
     LIBRARY_ADD_SONG = "Library/AddSongToLibrary",
