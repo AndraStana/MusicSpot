@@ -4,7 +4,8 @@ using Core.Interfaces.Services;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using Persistence.DAL;
-
+using System;
+using System.Collections.Generic;
 
 namespace Core.Services
 {
@@ -24,6 +25,7 @@ namespace Core.Services
         public void AddLibrary(LibraryDTO libraryDTO)
         {
             var library = LibraryCoreConverter.ToDAL(libraryDTO);
+            library.SongsIds = new List<Guid>();
             libraryDbList.InsertOne(library);
         }
     }

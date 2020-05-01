@@ -15,6 +15,8 @@ namespace MusicMicroservice.Seeder
         private readonly IMongoCollection<Song> songsDbList;
         private readonly IMongoCollection<PopularityRanking> popularityRankingDbList;
         private readonly IMongoCollection<Artist> artistsDbList;
+        private readonly IMongoCollection<Library> libraryDbList;
+
 
         public const int ARTISTS_NR = 100;
         public const int ALBUMS_NR_PER_ARTIST = 9;
@@ -31,6 +33,8 @@ namespace MusicMicroservice.Seeder
             songsDbList = database.GetCollection<Song>("Songs");
             popularityRankingDbList = database.GetCollection<PopularityRanking>("PopularityRankings");
             artistsDbList = database.GetCollection<Artist>("Artists");
+            libraryDbList = database.GetCollection<Library>("Libraries");
+
         }
 
         public List<string> ARTISTS_PICTURES = new List<string>()
@@ -106,6 +110,7 @@ namespace MusicMicroservice.Seeder
         {
             SeedPopularityRankings();
             SeedArtistsAlbumsSongs();
+            SeedSongsForLibraries();
         }
 
 
@@ -187,6 +192,64 @@ namespace MusicMicroservice.Seeder
             return songs.Select(s => s.Id).ToList();
 
         }
+
+        public void SeedSongsForLibraries()
+        {
+           
+            var libraries = libraryDbList.Find(a => a.SongsIds == null || a.SongsIds.Count == 0).ToList();
+
+            foreach( var library in libraries)
+            {
+                var random = new Random();
+                var songs = songsDbList.Find(s=> true).ToList();
+                var addedSongIds = new List<Guid>();
+
+                for (var i = 0; i < SONGS_PER_LIBRARY_NR; i++)
+                {
+                    var songId = songs.Where(s => !addedSongIds.Contains(s.Id)).ElementAt(random.Next(0, songs.Count - addedSongIds.Count)).Id;
+                    addedSongIds.Add(songId);
+                }
+
+                library.SongsIds = addedSongIds;
+                libraryDbList.ReplaceOne(l=>l.Id == library.Id, library);
+            }
+
+
+            //    if (!_context.LibrarySong.Any())
+            //    {
+            //        var random = new Random();
+
+            //        var libraries = _context.Libraries.ToList();
+            //        var librarySongs = new List<LibrarySong>();
+
+            //        foreach (var library in libraries)
+            //        {
+            //            var songs = _context.Songs.ToList();
+            //            var addedSongIds = new List<Guid>();
+
+            //            for (var i = 0; i < SONGS_PER_LIBRARY_NR; i++)
+            //            {
+            //                var librarySong = new LibrarySong()
+            //                {
+            //                    Id = Guid.NewGuid(),
+            //                    LibraryId = library.Id,
+            //                    SongId = songs.Where(s => !addedSongIds.Contains(s.Id)).ElementAt(random.Next(0, songs.Count - addedSongIds.Count)).Id
+            //                };
+
+            //                addedSongIds.Add(librarySong.Id);
+
+            //                librarySongs.Add(librarySong);
+            //            }
+
+            //            _context.LibrarySong.AddRange(librarySongs);
+
+            //        }
+            //        _context.SaveChanges();
+            //    }
+
+
+        }
+
 
 
 

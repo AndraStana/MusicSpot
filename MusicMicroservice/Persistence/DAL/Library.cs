@@ -15,5 +15,7 @@ namespace Persistence.DAL
         [Required]
         public string Name { get; set; }
 
+        public List<Guid> SongsIds { get; set; }
+
     }
 }
