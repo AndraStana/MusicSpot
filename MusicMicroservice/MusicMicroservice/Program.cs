@@ -2,6 +2,7 @@
 using Grpc.Core;
 using Grpc.ServicesImplementations;
 using Microsoft.Extensions.DependencyInjection;
+using MusicMicroservice.Seeder;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,6 +22,10 @@ namespace MusicMicroservice
 
             var libraryService = serviceProvider.GetService<ILibraryService>();
             var usersService = serviceProvider.GetService<IUsersService>();
+
+
+            var appSeeder = serviceProvider.GetService<AppSeeder>();
+            appSeeder.SeedAll();
 
 
             //var appSeeder = new AppSeeder(service);

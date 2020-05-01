@@ -5,6 +5,7 @@ using Core.Interfaces.Services;
 using Core.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MusicMicroservice.Seeder;
 
 namespace MusicMicroservice
 {
@@ -24,7 +25,7 @@ namespace MusicMicroservice
             services.AddSingleton(Configuration);
             services.AddSingleton<IUsersService,UsersService>();
             services.AddSingleton<ILibraryService, LibraryService>();
-
+            services.AddSingleton<AppSeeder, AppSeeder>();
         }
     }
 }
