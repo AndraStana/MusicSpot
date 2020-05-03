@@ -9,28 +9,28 @@ using System.Threading.Tasks;
 
 namespace MicroservicesWebApi.Controllers
 {
-        [ApiController]
-        [Route("api/[controller]/[action]")]
-        public class LibraryController : ControllerBase
+    [ApiController]
+    [Route("api/[controller]/[action]")]
+    public class LibraryController : ControllerBase
+    {
+        private readonly ILibraryService _libraryService;
+
+        public LibraryController(ILibraryService libraryService)
         {
-            private readonly ILibraryService _libraryService;
+            _libraryService = libraryService;
+        }
 
-            public LibraryController(ILibraryService libraryService)
-            {
-                _libraryService = libraryService;
-            }
-
-            public void AddLibrary(LibraryAddModel model)
-            {
-                _libraryService.AddLibraryAsync(model);
-                return;
-            }
+        public void AddLibrary(LibraryAddModel model)
+        {
+            _libraryService.AddLibraryAsync(model);
+            return;
+        }
 
         [HttpPost]
         public LibraryPageModel GetLibrarySongs([FromBody] LibraryPageFilter filter)
         {
 
-            //return _libraryService.GetLibrarySongs(filter);
+            return _libraryService.GetLibrarySongsAsync(filter).Result;
 
 
 
@@ -46,9 +46,10 @@ namespace MicroservicesWebApi.Controllers
             return null;
         }
 
-        //public List<NewsModel> GetNews(BasicPageFilter filter)
-        //{
-        //    return _newsService.GetNewsAsync(filter).Result;
-        //}
+        public List<PopularityRankingModel> GetPopularityRankings()
+        {
+            return _libraryService.GetPopularityRankingsAsync().Result;
+
+        }
     }
-    }
+}

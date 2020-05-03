@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Generated\" />
-    <Folder Include="GrpcConverters\" />
   </ItemGroup>
 
   <ItemGroup>

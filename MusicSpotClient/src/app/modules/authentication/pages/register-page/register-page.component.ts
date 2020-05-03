@@ -47,7 +47,7 @@ export class RegisterPageComponent implements OnInit {
 
           this._accountService.createMicroserviceLibrary(
             <LibraryAddModel>{
-              id: user.userId,
+              id: user.libraryId,
               name: email+'_Library'
             }
           ).subscribe();

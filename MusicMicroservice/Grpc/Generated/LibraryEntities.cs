@@ -26,12 +26,31 @@ namespace MusicMicroservice {
           string.Concat(
             "ChVMaWJyYXJ5RW50aXRpZXMucHJvdG8iLQoRQWRkTGlicmFyeVJlcXVlc3QS",
             "CgoCaWQYASABKAkSDAoEbmFtZRgCIAEoCSIUChJBZGRMaWJyYXJ5UmVzcG9u",
-            "c2VCFKoCEU11c2ljTWljcm9zZXJ2aWNlYgZwcm90bzM="));
+            "c2UiwwEKFkdldExpYnJhcnlTb25nc1JlcXVlc3QSDgoGdXNlcklkGAEgASgJ",
+            "Eg8KBWdlbnJlGAIgASgFSAASEAoGZGVjYWRlGAMgASgFSAESHQoTcG9wdWxh",
+            "cml0eVJhbmtpbmdJZBgEIAEoCUgCEhEKCXBhZ2VJbmRleBgFIAEoBRIQCghw",
+            "YWdlU2l6ZRgGIAEoBUIQCg5udWxsYWJsZV9nZW5yZUIRCg9udWxsYWJsZV9k",
+            "ZWNhZGVCDQoLdmFsdWVfb25lb2YiSwoXR2V0TGlicmFyeVNvbmdzUmVzcG9u",
+            "c2USEwoLdG90YWxOdW1iZXIYASABKAUSGwoFc29uZ3MYAiADKAsyDC5Tb25n",
+            "TWVzc2FnZSKPAQoLU29uZ01lc3NhZ2USCgoCaWQYASABKAkSDAoEbmFtZRgC",
+            "IAEoCRIOCgZhcnRpc3QYAyABKAkSDQoFYWxidW0YBCABKAkSDAoEeWVhchgF",
+            "IAEoBRILCgN1cmwYBiABKAkSFwoPYWxidW1VcmxQaWN0dXJlGAcgASgJEhMK",
+            "C2lzSW5MaWJyYXJ5GAggASgIIh0KG0dldFBvcHVsYXJpdHlSYW5raW5nUmVx",
+            "dWVzdCJVChxHZXRQb3B1bGFyaXR5UmFua2luZ1Jlc3BvbnNlEjUKEnBvcHVs",
+            "YXJpdHlSYW5raW5ncxgBIAMoCzIZLlBvcHVsYXJpdHlSYW5raW5nTWVzc2Fn",
+            "ZSI0ChhQb3B1bGFyaXR5UmFua2luZ01lc3NhZ2USCgoCaWQYASABKAkSDAoE",
+            "bmFtZRgCIAEoCUIUqgIRTXVzaWNNaWNyb3NlcnZpY2ViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.AddLibraryRequest), global::MusicMicroservice.AddLibraryRequest.Parser, new[]{ "Id", "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.AddLibraryResponse), global::MusicMicroservice.AddLibraryResponse.Parser, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.AddLibraryResponse), global::MusicMicroservice.AddLibraryResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.GetLibrarySongsRequest), global::MusicMicroservice.GetLibrarySongsRequest.Parser, new[]{ "UserId", "Genre", "Decade", "PopularityRankingId", "PageIndex", "PageSize" }, new[]{ "NullableGenre", "NullableDecade", "ValueOneof" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.GetLibrarySongsResponse), global::MusicMicroservice.GetLibrarySongsResponse.Parser, new[]{ "TotalNumber", "Songs" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.SongMessage), global::MusicMicroservice.SongMessage.Parser, new[]{ "Id", "Name", "Artist", "Album", "Year", "Url", "AlbumUrlPicture", "IsInLibrary" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.GetPopularityRankingRequest), global::MusicMicroservice.GetPopularityRankingRequest.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.GetPopularityRankingResponse), global::MusicMicroservice.GetPopularityRankingResponse.Parser, new[]{ "PopularityRankings" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.PopularityRankingMessage), global::MusicMicroservice.PopularityRankingMessage.Parser, new[]{ "Id", "Name" }, null, null, null)
           }));
     }
     #endregion
@@ -290,6 +309,1212 @@ namespace MusicMicroservice {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GetLibrarySongsRequest : pb::IMessage<GetLibrarySongsRequest> {
+    private static readonly pb::MessageParser<GetLibrarySongsRequest> _parser = new pb::MessageParser<GetLibrarySongsRequest>(() => new GetLibrarySongsRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GetLibrarySongsRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::MusicMicroservice.LibraryEntitiesReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetLibrarySongsRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetLibrarySongsRequest(GetLibrarySongsRequest other) : this() {
+      userId_ = other.userId_;
+      pageIndex_ = other.pageIndex_;
+      pageSize_ = other.pageSize_;
+      switch (other.NullableGenreCase) {
+        case NullableGenreOneofCase.Genre:
+          Genre = other.Genre;
+          break;
+      }
+
+      switch (other.NullableDecadeCase) {
+        case NullableDecadeOneofCase.Decade:
+          Decade = other.Decade;
+          break;
+      }
+
+      switch (other.ValueOneofCase) {
+        case ValueOneofOneofCase.PopularityRankingId:
+          PopularityRankingId = other.PopularityRankingId;
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetLibrarySongsRequest Clone() {
+      return new GetLibrarySongsRequest(this);
+    }
+
+    /// <summary>Field number for the "userId" field.</summary>
+    public const int UserIdFieldNumber = 1;
+    private string userId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string UserId {
+      get { return userId_; }
+      set {
+        userId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "genre" field.</summary>
+    public const int GenreFieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Genre {
+      get { return nullableGenreCase_ == NullableGenreOneofCase.Genre ? (int) nullableGenre_ : 0; }
+      set {
+        nullableGenre_ = value;
+        nullableGenreCase_ = NullableGenreOneofCase.Genre;
+      }
+    }
+
+    /// <summary>Field number for the "decade" field.</summary>
+    public const int DecadeFieldNumber = 3;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Decade {
+      get { return nullableDecadeCase_ == NullableDecadeOneofCase.Decade ? (int) nullableDecade_ : 0; }
+      set {
+        nullableDecade_ = value;
+        nullableDecadeCase_ = NullableDecadeOneofCase.Decade;
+      }
+    }
+
+    /// <summary>Field number for the "popularityRankingId" field.</summary>
+    public const int PopularityRankingIdFieldNumber = 4;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string PopularityRankingId {
+      get { return valueOneofCase_ == ValueOneofOneofCase.PopularityRankingId ? (string) valueOneof_ : ""; }
+      set {
+        valueOneof_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        valueOneofCase_ = ValueOneofOneofCase.PopularityRankingId;
+      }
+    }
+
+    /// <summary>Field number for the "pageIndex" field.</summary>
+    public const int PageIndexFieldNumber = 5;
+    private int pageIndex_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int PageIndex {
+      get { return pageIndex_; }
+      set {
+        pageIndex_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "pageSize" field.</summary>
+    public const int PageSizeFieldNumber = 6;
+    private int pageSize_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int PageSize {
+      get { return pageSize_; }
+      set {
+        pageSize_ = value;
+      }
+    }
+
+    private object nullableGenre_;
+    /// <summary>Enum of possible cases for the "nullable_genre" oneof.</summary>
+    public enum NullableGenreOneofCase {
+      None = 0,
+      Genre = 2,
+    }
+    private NullableGenreOneofCase nullableGenreCase_ = NullableGenreOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public NullableGenreOneofCase NullableGenreCase {
+      get { return nullableGenreCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void ClearNullableGenre() {
+      nullableGenreCase_ = NullableGenreOneofCase.None;
+      nullableGenre_ = null;
+    }
+
+    private object nullableDecade_;
+    /// <summary>Enum of possible cases for the "nullable_decade" oneof.</summary>
+    public enum NullableDecadeOneofCase {
+      None = 0,
+      Decade = 3,
+    }
+    private NullableDecadeOneofCase nullableDecadeCase_ = NullableDecadeOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public NullableDecadeOneofCase NullableDecadeCase {
+      get { return nullableDecadeCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void ClearNullableDecade() {
+      nullableDecadeCase_ = NullableDecadeOneofCase.None;
+      nullableDecade_ = null;
+    }
+
+    private object valueOneof_;
+    /// <summary>Enum of possible cases for the "value_oneof" oneof.</summary>
+    public enum ValueOneofOneofCase {
+      None = 0,
+      PopularityRankingId = 4,
+    }
+    private ValueOneofOneofCase valueOneofCase_ = ValueOneofOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ValueOneofOneofCase ValueOneofCase {
+      get { return valueOneofCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void ClearValueOneof() {
+      valueOneofCase_ = ValueOneofOneofCase.None;
+      valueOneof_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GetLibrarySongsRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GetLibrarySongsRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (UserId != other.UserId) return false;
+      if (Genre != other.Genre) return false;
+      if (Decade != other.Decade) return false;
+      if (PopularityRankingId != other.PopularityRankingId) return false;
+      if (PageIndex != other.PageIndex) return false;
+      if (PageSize != other.PageSize) return false;
+      if (NullableGenreCase != other.NullableGenreCase) return false;
+      if (NullableDecadeCase != other.NullableDecadeCase) return false;
+      if (ValueOneofCase != other.ValueOneofCase) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (UserId.Length != 0) hash ^= UserId.GetHashCode();
+      if (nullableGenreCase_ == NullableGenreOneofCase.Genre) hash ^= Genre.GetHashCode();
+      if (nullableDecadeCase_ == NullableDecadeOneofCase.Decade) hash ^= Decade.GetHashCode();
+      if (valueOneofCase_ == ValueOneofOneofCase.PopularityRankingId) hash ^= PopularityRankingId.GetHashCode();
+      if (PageIndex != 0) hash ^= PageIndex.GetHashCode();
+      if (PageSize != 0) hash ^= PageSize.GetHashCode();
+      hash ^= (int) nullableGenreCase_;
+      hash ^= (int) nullableDecadeCase_;
+      hash ^= (int) valueOneofCase_;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (UserId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(UserId);
+      }
+      if (nullableGenreCase_ == NullableGenreOneofCase.Genre) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Genre);
+      }
+      if (nullableDecadeCase_ == NullableDecadeOneofCase.Decade) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Decade);
+      }
+      if (valueOneofCase_ == ValueOneofOneofCase.PopularityRankingId) {
+        output.WriteRawTag(34);
+        output.WriteString(PopularityRankingId);
+      }
+      if (PageIndex != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(PageIndex);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(PageSize);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (UserId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(UserId);
+      }
+      if (nullableGenreCase_ == NullableGenreOneofCase.Genre) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Genre);
+      }
+      if (nullableDecadeCase_ == NullableDecadeOneofCase.Decade) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Decade);
+      }
+      if (valueOneofCase_ == ValueOneofOneofCase.PopularityRankingId) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PopularityRankingId);
+      }
+      if (PageIndex != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PageIndex);
+      }
+      if (PageSize != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PageSize);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GetLibrarySongsRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.UserId.Length != 0) {
+        UserId = other.UserId;
+      }
+      if (other.PageIndex != 0) {
+        PageIndex = other.PageIndex;
+      }
+      if (other.PageSize != 0) {
+        PageSize = other.PageSize;
+      }
+      switch (other.NullableGenreCase) {
+        case NullableGenreOneofCase.Genre:
+          Genre = other.Genre;
+          break;
+      }
+
+      switch (other.NullableDecadeCase) {
+        case NullableDecadeOneofCase.Decade:
+          Decade = other.Decade;
+          break;
+      }
+
+      switch (other.ValueOneofCase) {
+        case ValueOneofOneofCase.PopularityRankingId:
+          PopularityRankingId = other.PopularityRankingId;
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            UserId = input.ReadString();
+            break;
+          }
+          case 16: {
+            Genre = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Decade = input.ReadInt32();
+            break;
+          }
+          case 34: {
+            PopularityRankingId = input.ReadString();
+            break;
+          }
+          case 40: {
+            PageIndex = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GetLibrarySongsResponse : pb::IMessage<GetLibrarySongsResponse> {
+    private static readonly pb::MessageParser<GetLibrarySongsResponse> _parser = new pb::MessageParser<GetLibrarySongsResponse>(() => new GetLibrarySongsResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GetLibrarySongsResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::MusicMicroservice.LibraryEntitiesReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetLibrarySongsResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetLibrarySongsResponse(GetLibrarySongsResponse other) : this() {
+      totalNumber_ = other.totalNumber_;
+      songs_ = other.songs_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetLibrarySongsResponse Clone() {
+      return new GetLibrarySongsResponse(this);
+    }
+
+    /// <summary>Field number for the "totalNumber" field.</summary>
+    public const int TotalNumberFieldNumber = 1;
+    private int totalNumber_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int TotalNumber {
+      get { return totalNumber_; }
+      set {
+        totalNumber_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "songs" field.</summary>
+    public const int SongsFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::MusicMicroservice.SongMessage> _repeated_songs_codec
+        = pb::FieldCodec.ForMessage(18, global::MusicMicroservice.SongMessage.Parser);
+    private readonly pbc::RepeatedField<global::MusicMicroservice.SongMessage> songs_ = new pbc::RepeatedField<global::MusicMicroservice.SongMessage>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::MusicMicroservice.SongMessage> Songs {
+      get { return songs_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GetLibrarySongsResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GetLibrarySongsResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (TotalNumber != other.TotalNumber) return false;
+      if(!songs_.Equals(other.songs_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (TotalNumber != 0) hash ^= TotalNumber.GetHashCode();
+      hash ^= songs_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (TotalNumber != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(TotalNumber);
+      }
+      songs_.WriteTo(output, _repeated_songs_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (TotalNumber != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TotalNumber);
+      }
+      size += songs_.CalculateSize(_repeated_songs_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GetLibrarySongsResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.TotalNumber != 0) {
+        TotalNumber = other.TotalNumber;
+      }
+      songs_.Add(other.songs_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            TotalNumber = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            songs_.AddEntriesFrom(input, _repeated_songs_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class SongMessage : pb::IMessage<SongMessage> {
+    private static readonly pb::MessageParser<SongMessage> _parser = new pb::MessageParser<SongMessage>(() => new SongMessage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<SongMessage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::MusicMicroservice.LibraryEntitiesReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SongMessage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SongMessage(SongMessage other) : this() {
+      id_ = other.id_;
+      name_ = other.name_;
+      artist_ = other.artist_;
+      album_ = other.album_;
+      year_ = other.year_;
+      url_ = other.url_;
+      albumUrlPicture_ = other.albumUrlPicture_;
+      isInLibrary_ = other.isInLibrary_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SongMessage Clone() {
+      return new SongMessage(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private string id_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 2;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "artist" field.</summary>
+    public const int ArtistFieldNumber = 3;
+    private string artist_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Artist {
+      get { return artist_; }
+      set {
+        artist_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "album" field.</summary>
+    public const int AlbumFieldNumber = 4;
+    private string album_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Album {
+      get { return album_; }
+      set {
+        album_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "year" field.</summary>
+    public const int YearFieldNumber = 5;
+    private int year_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Year {
+      get { return year_; }
+      set {
+        year_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "url" field.</summary>
+    public const int UrlFieldNumber = 6;
+    private string url_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Url {
+      get { return url_; }
+      set {
+        url_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "albumUrlPicture" field.</summary>
+    public const int AlbumUrlPictureFieldNumber = 7;
+    private string albumUrlPicture_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string AlbumUrlPicture {
+      get { return albumUrlPicture_; }
+      set {
+        albumUrlPicture_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "isInLibrary" field.</summary>
+    public const int IsInLibraryFieldNumber = 8;
+    private bool isInLibrary_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool IsInLibrary {
+      get { return isInLibrary_; }
+      set {
+        isInLibrary_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as SongMessage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(SongMessage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Name != other.Name) return false;
+      if (Artist != other.Artist) return false;
+      if (Album != other.Album) return false;
+      if (Year != other.Year) return false;
+      if (Url != other.Url) return false;
+      if (AlbumUrlPicture != other.AlbumUrlPicture) return false;
+      if (IsInLibrary != other.IsInLibrary) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Artist.Length != 0) hash ^= Artist.GetHashCode();
+      if (Album.Length != 0) hash ^= Album.GetHashCode();
+      if (Year != 0) hash ^= Year.GetHashCode();
+      if (Url.Length != 0) hash ^= Url.GetHashCode();
+      if (AlbumUrlPicture.Length != 0) hash ^= AlbumUrlPicture.GetHashCode();
+      if (IsInLibrary != false) hash ^= IsInLibrary.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Name);
+      }
+      if (Artist.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Artist);
+      }
+      if (Album.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Album);
+      }
+      if (Year != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(Year);
+      }
+      if (Url.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Url);
+      }
+      if (AlbumUrlPicture.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(AlbumUrlPicture);
+      }
+      if (IsInLibrary != false) {
+        output.WriteRawTag(64);
+        output.WriteBool(IsInLibrary);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Artist.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Artist);
+      }
+      if (Album.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Album);
+      }
+      if (Year != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Year);
+      }
+      if (Url.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Url);
+      }
+      if (AlbumUrlPicture.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(AlbumUrlPicture);
+      }
+      if (IsInLibrary != false) {
+        size += 1 + 1;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SongMessage other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.Artist.Length != 0) {
+        Artist = other.Artist;
+      }
+      if (other.Album.Length != 0) {
+        Album = other.Album;
+      }
+      if (other.Year != 0) {
+        Year = other.Year;
+      }
+      if (other.Url.Length != 0) {
+        Url = other.Url;
+      }
+      if (other.AlbumUrlPicture.Length != 0) {
+        AlbumUrlPicture = other.AlbumUrlPicture;
+      }
+      if (other.IsInLibrary != false) {
+        IsInLibrary = other.IsInLibrary;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Id = input.ReadString();
+            break;
+          }
+          case 18: {
+            Name = input.ReadString();
+            break;
+          }
+          case 26: {
+            Artist = input.ReadString();
+            break;
+          }
+          case 34: {
+            Album = input.ReadString();
+            break;
+          }
+          case 40: {
+            Year = input.ReadInt32();
+            break;
+          }
+          case 50: {
+            Url = input.ReadString();
+            break;
+          }
+          case 58: {
+            AlbumUrlPicture = input.ReadString();
+            break;
+          }
+          case 64: {
+            IsInLibrary = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GetPopularityRankingRequest : pb::IMessage<GetPopularityRankingRequest> {
+    private static readonly pb::MessageParser<GetPopularityRankingRequest> _parser = new pb::MessageParser<GetPopularityRankingRequest>(() => new GetPopularityRankingRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GetPopularityRankingRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::MusicMicroservice.LibraryEntitiesReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetPopularityRankingRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetPopularityRankingRequest(GetPopularityRankingRequest other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetPopularityRankingRequest Clone() {
+      return new GetPopularityRankingRequest(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GetPopularityRankingRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GetPopularityRankingRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GetPopularityRankingRequest other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GetPopularityRankingResponse : pb::IMessage<GetPopularityRankingResponse> {
+    private static readonly pb::MessageParser<GetPopularityRankingResponse> _parser = new pb::MessageParser<GetPopularityRankingResponse>(() => new GetPopularityRankingResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GetPopularityRankingResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::MusicMicroservice.LibraryEntitiesReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetPopularityRankingResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetPopularityRankingResponse(GetPopularityRankingResponse other) : this() {
+      popularityRankings_ = other.popularityRankings_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetPopularityRankingResponse Clone() {
+      return new GetPopularityRankingResponse(this);
+    }
+
+    /// <summary>Field number for the "popularityRankings" field.</summary>
+    public const int PopularityRankingsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::MusicMicroservice.PopularityRankingMessage> _repeated_popularityRankings_codec
+        = pb::FieldCodec.ForMessage(10, global::MusicMicroservice.PopularityRankingMessage.Parser);
+    private readonly pbc::RepeatedField<global::MusicMicroservice.PopularityRankingMessage> popularityRankings_ = new pbc::RepeatedField<global::MusicMicroservice.PopularityRankingMessage>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::MusicMicroservice.PopularityRankingMessage> PopularityRankings {
+      get { return popularityRankings_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GetPopularityRankingResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GetPopularityRankingResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!popularityRankings_.Equals(other.popularityRankings_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= popularityRankings_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      popularityRankings_.WriteTo(output, _repeated_popularityRankings_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += popularityRankings_.CalculateSize(_repeated_popularityRankings_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GetPopularityRankingResponse other) {
+      if (other == null) {
+        return;
+      }
+      popularityRankings_.Add(other.popularityRankings_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            popularityRankings_.AddEntriesFrom(input, _repeated_popularityRankings_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class PopularityRankingMessage : pb::IMessage<PopularityRankingMessage> {
+    private static readonly pb::MessageParser<PopularityRankingMessage> _parser = new pb::MessageParser<PopularityRankingMessage>(() => new PopularityRankingMessage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<PopularityRankingMessage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::MusicMicroservice.LibraryEntitiesReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PopularityRankingMessage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PopularityRankingMessage(PopularityRankingMessage other) : this() {
+      id_ = other.id_;
+      name_ = other.name_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PopularityRankingMessage Clone() {
+      return new PopularityRankingMessage(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private string id_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 2;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as PopularityRankingMessage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(PopularityRankingMessage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Name != other.Name) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(PopularityRankingMessage other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Id = input.ReadString();
+            break;
+          }
+          case 18: {
+            Name = input.ReadString();
+            break;
+          }
         }
       }
     }

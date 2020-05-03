@@ -194,8 +194,8 @@ namespace MonolithicWebApi.Seeder
     public void SeedLibrarySongs()
     {
 
-        if (!_context.LibrarySong.Any())
-        {
+        //if (!_context.LibrarySong.Any())
+        //{
             var random = new Random();
 
             var libraries = _context.Libraries.ToList();
@@ -203,28 +203,32 @@ namespace MonolithicWebApi.Seeder
 
             foreach (var library in libraries)
             {
-                var songs = _context.Songs.ToList();
-                var addedSongIds = new List<Guid>();
-
-                for (var i = 0; i < SONGS_PER_LIBRARY_NR; i++)
+                if (_context.LibrarySong.Where(l => l.Id == library.Id).Count() == 0)
                 {
-                    var librarySong = new LibrarySong()
+
+                    var songs = _context.Songs.ToList();
+                    var addedSongIds = new List<Guid>();
+
+                    for (var i = 0; i < SONGS_PER_LIBRARY_NR; i++)
                     {
-                        Id = Guid.NewGuid(),
-                        LibraryId = library.Id,
-                        SongId = songs.Where(s => !addedSongIds.Contains(s.Id)).ElementAt(random.Next(0, songs.Count - addedSongIds.Count)).Id
-                    };
+                        var librarySong = new LibrarySong()
+                        {
+                            Id = Guid.NewGuid(),
+                            LibraryId = library.Id,
+                            SongId = songs.Where(s => !addedSongIds.Contains(s.Id)).ElementAt(random.Next(0, songs.Count - addedSongIds.Count)).Id
+                        };
 
-                    addedSongIds.Add(librarySong.Id);
+                        addedSongIds.Add(librarySong.Id);
 
-                    librarySongs.Add(librarySong);
+                        librarySongs.Add(librarySong);
+                    }
+
+                    _context.LibrarySong.AddRange(librarySongs);
                 }
-
-                _context.LibrarySong.AddRange(librarySongs);
 
             }
             _context.SaveChanges();
-        }
+        
 
 
     }

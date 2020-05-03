@@ -16,6 +16,8 @@ namespace MusicMicroservice {
     static readonly grpc::Marshaller<global::MusicMicroservice.AddLibraryResponse> __Marshaller_AddLibraryResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.AddLibraryResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::MusicMicroservice.GetLibrarySongsRequest> __Marshaller_GetLibrarySongsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.GetLibrarySongsRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::MusicMicroservice.GetLibrarySongsResponse> __Marshaller_GetLibrarySongsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.GetLibrarySongsResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::MusicMicroservice.GetPopularityRankingRequest> __Marshaller_GetPopularityRankingRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.GetPopularityRankingRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::MusicMicroservice.GetPopularityRankingResponse> __Marshaller_GetPopularityRankingResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.GetPopularityRankingResponse.Parser.ParseFrom);
 
     static readonly grpc::Method<global::MusicMicroservice.AddLibraryRequest, global::MusicMicroservice.AddLibraryResponse> __Method_AddLibrary = new grpc::Method<global::MusicMicroservice.AddLibraryRequest, global::MusicMicroservice.AddLibraryResponse>(
         grpc::MethodType.Unary,
@@ -30,6 +32,13 @@ namespace MusicMicroservice {
         "GetLibrarySongs",
         __Marshaller_GetLibrarySongsRequest,
         __Marshaller_GetLibrarySongsResponse);
+
+    static readonly grpc::Method<global::MusicMicroservice.GetPopularityRankingRequest, global::MusicMicroservice.GetPopularityRankingResponse> __Method_GetPopularityRankings = new grpc::Method<global::MusicMicroservice.GetPopularityRankingRequest, global::MusicMicroservice.GetPopularityRankingResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetPopularityRankings",
+        __Marshaller_GetPopularityRankingRequest,
+        __Marshaller_GetPopularityRankingResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -91,6 +100,22 @@ namespace MusicMicroservice {
       public virtual grpc::AsyncUnaryCall<global::MusicMicroservice.GetLibrarySongsResponse> GetLibrarySongsAsync(global::MusicMicroservice.GetLibrarySongsRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_GetLibrarySongs, null, options, request);
+      }
+      public virtual global::MusicMicroservice.GetPopularityRankingResponse GetPopularityRankings(global::MusicMicroservice.GetPopularityRankingRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetPopularityRankings(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::MusicMicroservice.GetPopularityRankingResponse GetPopularityRankings(global::MusicMicroservice.GetPopularityRankingRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetPopularityRankings, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::MusicMicroservice.GetPopularityRankingResponse> GetPopularityRankingsAsync(global::MusicMicroservice.GetPopularityRankingRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetPopularityRankingsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::MusicMicroservice.GetPopularityRankingResponse> GetPopularityRankingsAsync(global::MusicMicroservice.GetPopularityRankingRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetPopularityRankings, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override LibraryGrpcServiceClient NewInstance(ClientBaseConfiguration configuration)

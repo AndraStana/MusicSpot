@@ -17,33 +17,60 @@ message AddLibraryResponse{
 //----------------------Get Library Songs---------------------------
 
 message GetLibrarySongsRequest{	
+	
+	string userId = 1;
+
 	oneof nullable_genre {
-		int32 genre = 1;
+		int32 genre = 2;
 	  }
 		  
 	oneof nullable_decade {
-		int32 decade = 2;
+		int32 decade = 3;
 	}
 
 	oneof value_oneof {
-		string popularityRankingId = 3;
+		string popularityRankingId = 4;
 	}
 
-	int32 pageIndex = 4;
-	int32 pageSize = 5;
+	int32 pageIndex = 5;
+	int32 pageSize = 6;
 }
 
 message GetLibrarySongsResponse{	
 	int32 totalNumber = 1;
-	repeated Song songs = 2;
+	repeated SongMessage songs = 2;
 }
 
-message Song {
+message SongMessage {
 	string id = 1;
-	string artist = 2;
-	string album = 3;
-	int32 year = 4;
-	string url = 5;
-	string albumUrlPicture = 6;
-	bool isInLibrary = 7;
+	string name = 2;
+	string artist = 3;
+	string album = 4;
+	int32 year = 5;
+	string url = 6;
+	string albumUrlPicture = 7;
+	bool isInLibrary = 8;
 }
+
+
+//---------------------Get Popularity Rankings--------------------
+
+message GetPopularityRankingRequest{
+}
+
+message GetPopularityRankingResponse{
+	repeated PopularityRankingMessage popularityRankings = 1;
+}
+
+message PopularityRankingMessage{
+	string id = 1;
+	string name = 2;
+	
+}
+
+
+
+
+
+
+
