@@ -6,21 +6,21 @@ namespace Common.Enums
 {
     public enum GenreEnum
     {
-        Rock = 0,
-        Pop = 1,
-        Indie = 2,
-        Metal = 3,
-        Classical = 4,
-        House = 5,
-        HipHop = 6,
-        Jazz = 7,
-        Rap = 8,
-        Raggae = 9,
-        Punk = 10,
-        Disco = 11,
-        Electronica = 12,
-        Dance = 13,
-        Techno = 14,
-        Folk = 15
+        Rock = 1,
+        Pop = 2,
+        Indie = 3,
+        Metal = 4,
+        Classical = 5,
+        House = 6,
+        HipHop = 7,
+        Jazz = 8,
+        Rap = 9,
+        Raggae = 10,
+        Punk = 11,
+        Disco = 12,
+        Electronica = 13,
+        Dance = 14,
+        Techno = 15,
+        Folk = 16,
     }
 }

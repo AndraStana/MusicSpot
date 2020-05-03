@@ -203,7 +203,7 @@ namespace MonolithicWebApi.Seeder
 
             foreach (var library in libraries)
             {
-                if (_context.LibrarySong.Where(l => l.Id == library.Id).Count() == 0)
+                if (! _context.LibrarySong.Where(l => l.Id == library.Id).Any())
                 {
 
                     var songs = _context.Songs.ToList();
