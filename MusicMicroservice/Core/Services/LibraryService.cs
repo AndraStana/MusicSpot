@@ -22,13 +22,6 @@ namespace Core.Services
         private readonly IMongoCollection<Song> songsDbList;
         private readonly IMongoCollection<User> usersDbList;
 
-        private readonly IMongoCollection<Object> artists2DbList;
-
-
-
-
-
-
         public LibraryService(IConfiguration config)
         {
             MongoClient client = new MongoClient(config["ConnectionStrings:DefaultConnection"]);
@@ -39,13 +32,7 @@ namespace Core.Services
             songsDbList = database.GetCollection<Song>("Songs");
             usersDbList = database.GetCollection<User>("Users");
 
-
             popularityRankingsDbList = database.GetCollection<PopularityRanking>("PopularityRankings");
-
-
-
-            IMongoDatabase database222 = client.GetDatabase("testdb");
-            artists2DbList = database222.GetCollection<Object>("Artists2");
 
         }
 
@@ -100,7 +87,6 @@ namespace Core.Services
                         songDTO.AlbumUrlPicture = album.UrlPicture;
                         songDTO.Artist = artist.Name;
                     }
-
                 }
             }
 

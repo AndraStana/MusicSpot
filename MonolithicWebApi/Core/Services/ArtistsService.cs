@@ -24,7 +24,7 @@ namespace Core.Services
         {
             return _context.Artists.Include(a => a.Albums)
                  .ThenInclude(alb => alb.Songs)
-                 .Where(a => a.Name.StartsWith(filter.SearchText))
+                 .Where(a => a.Name.Contains(filter.SearchText))
                  .OrderBy(a => a.Name)
                  .Skip(filter.PageIndex * filter.PageSize)
                  .Take(filter.PageSize)

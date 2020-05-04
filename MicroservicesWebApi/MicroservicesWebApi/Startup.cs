@@ -33,7 +33,7 @@ namespace MicroservicesWebApi
             services.AddTransient<ILibraryService, LibraryService>();
             //services.AddTransient<IFriendsService, FriendsService>();
             services.AddTransient<INewsService, NewsService>();
-            //services.AddTransient<IArtistsService, ArtistsService>();
+            services.AddTransient<IArtistsService, ArtistsService>();
 
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {

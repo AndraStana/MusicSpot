@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option csharp_namespace = "MusicMicroservice";
+
+
+//---------------Get Atists ---------
+
+message GetArtistsRequest{
+
+	string libraryId = 1;
+	int32 pageIndex = 2;
+	int32 pageSize = 3;
+	string searchText = 4;
+	
+}
+
+message GetArtistsResponse{
+	repeated ArtistMessage artists = 1;
+}
+
+message ArtistMessage{
+	string id = 1;
+	string name = 2;
+	string urlPicture = 3;
+	repeated AlbumMessage albums = 4;
+
+}
+
+message AlbumMessage{
+	string id = 1;
+	string name = 2;
+	string urlPicture = 3;
+	repeated SongSimpleMessage songs = 4;
+}
+
+message SongSimpleMessage{
+	string id = 1;
+	string name = 2;
+	string url = 3;
+	bool isInLibrary = 4;
+
+}

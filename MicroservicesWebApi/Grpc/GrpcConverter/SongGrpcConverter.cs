@@ -25,8 +25,25 @@ namespace Grpc.GrpcConverter
                 Url = song.Url,
                 AlbumUrlPicture = song.AlbumUrlPicture,
                 IsInLibrary = song.IsInLibrary,
-        };
+            };
         }
-    }
 
+
+        public static SongSimpleModel ToSimpleModel(SongSimpleMessage song)
+        {
+            if (song == null)
+            {
+                return null;
+            }
+
+            return new SongSimpleModel()
+            {
+                Id = new Guid(song.Id),
+                Name = song.Name,
+                Url = song.Url,
+                IsInLibrary = song.IsInLibrary,
+            };
+        }
+
+    }
 }

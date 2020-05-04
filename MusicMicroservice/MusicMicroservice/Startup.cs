@@ -25,6 +25,8 @@ namespace MusicMicroservice
             services.AddSingleton(Configuration);
             services.AddSingleton<IUsersService,UsersService>();
             services.AddSingleton<ILibraryService, LibraryService>();
+            services.AddSingleton<IArtistsService, ArtistsService>();
+
             services.AddSingleton<AppSeeder, AppSeeder>();
         }
     }

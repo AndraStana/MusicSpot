@@ -22,15 +22,14 @@ namespace MusicMicroservice
 
             var libraryService = serviceProvider.GetService<ILibraryService>();
             var usersService = serviceProvider.GetService<IUsersService>();
+            var artistsService = serviceProvider.GetService<IArtistsService>();
 
 
             var appSeeder = serviceProvider.GetService<AppSeeder>();
             appSeeder.SeedAll();
 
-
             //var appSeeder = new AppSeeder(service);
             //appSeeder.SeedNews();
-
 
 
             const string DefaultHost = "localhost";
@@ -39,7 +38,10 @@ namespace MusicMicroservice
             var server = new Server
             {
                 Services = { LibraryGrpcService.BindService(new LibraryGrpcServiceImpl(libraryService)),
-                            UsersGrpcService.BindService(new UsersGrpcServiceImpl(usersService))},
+                            UsersGrpcService.BindService(new UsersGrpcServiceImpl(usersService)),
+                            ArtistsGrpcService.BindService(new ArtistsGrpcServiceImpl(artistsService)),
+
+                },
                 Ports = { new ServerPort(DefaultHost, Port, ServerCredentials.Insecure) }
             };
 

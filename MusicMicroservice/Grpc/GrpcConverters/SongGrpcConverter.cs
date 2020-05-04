@@ -25,13 +25,24 @@ namespace Grpc.GrpcConverters
                 Url = song.Url,
                 AlbumUrlPicture = song.AlbumUrlPicture,
                 IsInLibrary = song.IsInLibrary,
-
-
-
             };
+        }
 
 
-    
-    }
+        public static SongSimpleMessage ToSimpleMessage(SongSimpleDTO song)
+        {
+            if (song == null)
+            {
+                return null;
+            }
+
+            return new SongSimpleMessage()
+            {
+                Id = song.Id.ToString(),
+                Name = song.Name,
+                Url = song.Url,
+                IsInLibrary = song.IsInLibrary,
+            };
+        }
     }
 }

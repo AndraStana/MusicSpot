@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "MusicMicroservice";
+
+import "ArtistEntities.proto";
+
+
+
+service ArtistsGrpcService {
+	rpc GetArtists (GetArtistsRequest) returns (GetArtistsResponse);
+}

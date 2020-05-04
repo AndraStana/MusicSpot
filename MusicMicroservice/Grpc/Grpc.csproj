@@ -24,6 +24,11 @@
     <Protobuf Include="./../../Protos\UserEntities.proto" GrpcServices="None" OutputDir="./Generated" />
     <Protobuf Include="./../../Protos\UserServices.proto" GrpcServices="Server" OutputDir="./Generated" ProtoRoot="./../../Protos" />
 
+
+    <Protobuf Include="./../../Protos\ArtistEntities.proto" GrpcServices="None" OutputDir="./Generated" />
+    <Protobuf Include="./../../Protos\ArtistServices.proto" GrpcServices="Server" OutputDir="./Generated" ProtoRoot="./../../Protos" />
+
+
   </ItemGroup>
 
 </Project>
