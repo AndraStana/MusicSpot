@@ -39,6 +39,7 @@ message GetLibrarySongsRequest{
 message GetLibrarySongsResponse{	
 	int32 totalNumber = 1;
 	repeated SongMessage songs = 2;
+	
 }
 
 message SongMessage {
@@ -67,6 +68,27 @@ message PopularityRankingMessage{
 	string name = 2;
 	
 }
+
+//-----------------Add and Remove Songs from library-----------
+
+
+message AddSongToLibraryRequest{
+	string libraryId =1 ;
+	string songId = 2;
+}
+
+message RemoveSongFromLibraryRequest{
+	string libraryId =1 ;
+	string songId = 2;
+}
+
+message AddSongToLibraryResponse{
+}
+
+message RemoveSongFromLibraryResponse{
+}
+
+
 
 
 

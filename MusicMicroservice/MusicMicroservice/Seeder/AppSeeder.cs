@@ -18,8 +18,12 @@ namespace MusicMicroservice.Seeder
         private readonly IMongoCollection<Library> libraryDbList;
 
 
-        public const int ARTISTS_NR = 100;
-        public const int ALBUMS_NR_PER_ARTIST = 9;
+        public const int ARTISTS_NR = 2;
+
+        //public const int ARTISTS_NR = 100;
+        //public const int ALBUMS_NR_PER_ARTIST = 9;
+        public const int ALBUMS_NR_PER_ARTIST = 1;
+
         public const int SONGS_NR_PER_ALBUM = 10;
         public const int SONGS_PER_LIBRARY_NR = 100;
         public const int POPULARITY_RANKINGS_NR = 16;

@@ -10,4 +10,6 @@ service LibraryGrpcService {
 	rpc AddLibrary (AddLibraryRequest) returns (AddLibraryResponse);
 	rpc GetLibrarySongs (GetLibrarySongsRequest) returns (GetLibrarySongsResponse);
 	rpc GetPopularityRankings(GetPopularityRankingRequest) returns (GetPopularityRankingResponse);
+	rpc AddSongToLibrary(AddSongToLibraryRequest) returns (AddSongToLibraryResponse);
+	rpc RemoveSongFromLibrary (RemoveSongFromLibraryRequest) returns (RemoveSongFromLibraryResponse);
 }

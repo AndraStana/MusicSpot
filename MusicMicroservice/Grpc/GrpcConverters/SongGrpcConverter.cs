@@ -15,6 +15,11 @@ namespace Grpc.GrpcConverters
                 return null;
             }
 
+            if(song.Artist == null)
+            {
+                var off = 3;
+            }
+
             return new SongMessage()
             {
                 Id = song.Id.ToString(),

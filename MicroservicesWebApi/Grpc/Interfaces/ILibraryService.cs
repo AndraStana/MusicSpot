@@ -12,5 +12,7 @@ namespace Grpc.Interfaces
         Task AddLibraryAsync(LibraryAddModel library);
         Task<LibraryPageModel> GetLibrarySongsAsync(LibraryPageFilter filter);
         Task<List<PopularityRankingModel>> GetPopularityRankingsAsync();
+        Task AddSongToLibraryAsync(Guid libraryId, Guid songId);
+        Task RemoveSongFromLibraryAsync(Guid libraryId, Guid songId);
     }
 }

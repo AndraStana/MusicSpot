@@ -11,5 +11,7 @@ namespace Core.Interfaces.Services
         void AddLibrary(LibraryDTO libraryDTO);
         (int, List<SongDTO>) GetLibrarySongs(LibraryPageFilter filter);
         List<PopularityRankingDTO> GetPopularityRankings();
+        void RemoveSongFromLibrary(Guid libraryId, Guid songId);
+        void AddSongToLibrary(Guid libraryId, Guid songId);
     }
 }

@@ -36,7 +36,6 @@ namespace Core.Services
 
         }
 
-
         public void AddLibrary(LibraryDTO libraryDTO)
         {
             var library = LibraryCoreConverter.ToDAL(libraryDTO);
@@ -44,15 +43,49 @@ namespace Core.Services
             libraryDbList.InsertOne(library);
         }
 
+        public void RemoveSongFromLibrary(Guid libraryId, Guid songId)
+        {
+            //var library = libraryDbList.Find(l => l.Id == libraryId).First();
+            //library.SongsIds.Add(songId);
+
+            var filterLib = Builders<Library>.Filter.Eq(x => x.Id, libraryId);
+
+
+            var update = Builders<Library>.Update.Pull("SongsIds", songId);
+
+            libraryDbList.UpdateOne(filterLib, update);
+        }
+
+        public void AddSongToLibrary(Guid libraryId, Guid songId)
+        {
+            var filterLib = Builders<Library>.Filter.Eq(x => x.Id, libraryId);
+
+            var update = Builders<Library>.Update.AddToSet("SongsIds", songId);
+
+            libraryDbList.UpdateOne(filterLib, update);
+        }
+
         public (int, List<SongDTO>) GetLibrarySongs(LibraryPageFilter filter)
         {
             var queryableUsers = usersDbList.AsQueryable();
+
+            var library222 = from lib in libraryDbList.AsQueryable()
+                          join u in queryableUsers on lib.Id equals u.LibraryId
+                          select lib.Id;
+
+            var ee = library222.FirstOrDefault();
 
             var library = from lib in libraryDbList.AsQueryable()
                           join u in queryableUsers on lib.Id equals u.LibraryId
                           select lib.SongsIds;
 
             var allSongsIds = library.FirstOrDefault();
+
+            if( allSongsIds == null)
+            {
+                return (0, new List<SongDTO>());
+
+            }
 
             var query = from song in songsDbList.AsQueryable()
                         where allSongsIds.Contains(song.Id)
@@ -62,8 +95,7 @@ namespace Core.Services
                         select new SongDTO { Id = song.Id,
                             Name = song.Name,
                             Year = song.Year,
-                            Url = song.Url,
-                            IsInLibrary = true
+                            Url = song.Url
                         };
 
             int totalNumber = query.ToList().Where(song => IsYearInDecade(song.Year, filter.Decade)).ToList().Count;
@@ -79,18 +111,21 @@ namespace Core.Services
             {
                 foreach (var album in artist.Albums)
                 {
-                    var songDTO = songsDTOList.Find(s => album.SongsIds.Contains(s.Id));
-                    if (songDTO != null)
+                    var songsDTO = songsDTOList.Where(s => album.SongsIds.Contains(s.Id));
+
+                    if (songsDTO != null)
                     {
-                        songDTO.Artist = artist.Name;
-                        songDTO.Album = album.Name;
-                        songDTO.AlbumUrlPicture = album.UrlPicture;
-                        songDTO.Artist = artist.Name;
+                        foreach(var songDTO in songsDTO)
+                        {
+                            songDTO.Artist = artist.Name;
+                            songDTO.Album = album.Name;
+                            songDTO.AlbumUrlPicture = album.UrlPicture;
+                            songDTO.Artist = artist.Name;
+                            songDTO.IsInLibrary = true;
+                        }
                     }
                 }
             }
-
-
             return (totalNumber, songsDTOList);
         }
 

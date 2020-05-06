@@ -22,6 +22,24 @@ namespace Grpc.ServicesImplementations
             _libraryService = libraryService;
         }
 
+        public override Task<AddSongToLibraryResponse> AddSongToLibrary(AddSongToLibraryRequest request, ServerCallContext context)
+        {
+
+            _libraryService.AddSongToLibrary(Guid.Parse(request.LibraryId), Guid.Parse(request.SongId));
+
+            var response = new AddSongToLibraryResponse();
+            return Task.FromResult(response);
+        }
+
+        public override Task<RemoveSongFromLibraryResponse> RemoveSongFromLibrary(RemoveSongFromLibraryRequest request, ServerCallContext context)
+        {
+            _libraryService.RemoveSongFromLibrary(Guid.Parse(request.LibraryId), Guid.Parse(request.SongId));
+
+            var response = new RemoveSongFromLibraryResponse();
+            return Task.FromResult(response);
+        }
+
+
         public override Task<AddLibraryResponse> AddLibrary(AddLibraryRequest request, ServerCallContext context)
         {
 
@@ -75,11 +93,14 @@ namespace Grpc.ServicesImplementations
             var (totalNumber, songs ) = _libraryService.GetLibrarySongs(filter);
             var response = new GetLibrarySongsResponse()
             {
-                TotalNumber = totalNumber,
-
+                TotalNumber = totalNumber
             };
 
-            response.Songs.AddRange(songs.Select(s => SongGrpcConverter.ToMessage(s)).ToList());
+            //if(songs != null && songs.Count != 0)
+            //{
+                response.Songs.AddRange(songs.Select(s => SongGrpcConverter.ToMessage(s)).ToList());
+
+            //}
             return Task.FromResult(response);
         }
     }

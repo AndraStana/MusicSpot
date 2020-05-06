@@ -51,5 +51,17 @@ namespace MicroservicesWebApi.Controllers
             return _libraryService.GetPopularityRankingsAsync().Result;
 
         }
+
+        [HttpPost]
+        public void RemoveSongFromLibrary(AddRemoveSongModel model)
+        {
+            _libraryService.RemoveSongFromLibraryAsync(model.LibraryId, model.SongId);
+        }
+
+        [HttpPost]
+        public void AddSongToLibrary(AddRemoveSongModel model)
+        {
+            _libraryService.AddSongToLibraryAsync(model.LibraryId, model.SongId);
+        }
     }
 }
