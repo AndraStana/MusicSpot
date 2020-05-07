@@ -10,6 +10,7 @@ namespace Persistence.DAL
         public string Name { get; set; }
         public string UrlPicture { get; set; }
         public List<Album> Albums { get; set; }
+        public List<Guid> SimilarArtistsIds { get; set; }
 
     }
 }

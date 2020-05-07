@@ -39,8 +39,10 @@ namespace MonolithicWebApi
 
             services.AddScoped<IAppSeeder, AppSeeder>();
 
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]
 
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            , sqlServerOptions => sqlServerOptions.CommandTimeout(5000))
+            );
 
             services.AddIdentity<User, IdentityRole<Guid>>(options => {
                 options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";

@@ -14,5 +14,7 @@ namespace Grpc.Interfaces
         Task<List<PopularityRankingModel>> GetPopularityRankingsAsync();
         Task AddSongToLibraryAsync(Guid libraryId, Guid songId);
         Task RemoveSongFromLibraryAsync(Guid libraryId, Guid songId);
+
+        Task<List<SongModel>> GetRecommendedSongsAsync(BasicPageFilter filter);
     }
 }

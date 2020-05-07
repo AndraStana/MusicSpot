@@ -305,9 +305,6 @@ namespace MonolithicWebApi.Seeder
                 relationships.Add(relationship3);
             }
 
-
-
-
             _context.SimilarArtistsRelationships.AddRange(relationships);
         }
         _context.SaveChanges();

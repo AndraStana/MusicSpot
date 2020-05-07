@@ -25,6 +25,7 @@ namespace Core.Services
         public void AddUser(UserDTO userDTO)
         {
             var user = UserCoreConverter.ToDAL(userDTO);
+            user.FriendsIds = new List<Guid>();
             userDbList.InsertOne(user);
         }
     }

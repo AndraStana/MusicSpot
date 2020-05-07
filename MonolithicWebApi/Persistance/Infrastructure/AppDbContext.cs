@@ -42,7 +42,8 @@ namespace Persistence.Infrastructure
         {
         }
 
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

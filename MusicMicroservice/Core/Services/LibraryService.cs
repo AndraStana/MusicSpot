@@ -65,18 +65,73 @@ namespace Core.Services
             libraryDbList.UpdateOne(filterLib, update);
         }
 
+
+
+        public List<SongDTO> GetRecommendedSongs(BasicPageFilter filter)
+        {
+            var queryableUsers = usersDbList.AsQueryable();
+
+
+            var library = from lib in libraryDbList.AsQueryable()
+                          join u in queryableUsers on lib.Id equals u.LibraryId
+                          where u.Id == filter.UserId
+                          select lib.SongsIds;
+
+
+            var allSongsIds = library.FirstOrDefault();
+            if (allSongsIds == null)
+            {
+                new List<SongDTO>();
+            }
+
+            var filterArtists = Builders<Artist>.Filter.ElemMatch(x => x.Albums, Builders<Album>.Filter.AnyIn(x => x.SongsIds, allSongsIds));
+            var userLibArtistsIds = artistsDbList.Find(filterArtists).ToList().Select(a=>a.Id);
+
+
+            var recommendedArtistsFilter = Builders<Artist>.Filter.In(a => a.Id, userLibArtistsIds);
+            var recommendedArtists = artistsDbList.Find(filterArtists).ToList();
+
+            var recommendedSongs = recommendedArtists.SelectMany(
+                artist => artist.Albums.SelectMany(album => album.SongsIds.Select
+                 (s => new SongDTO()
+                 {
+                     Id = s,
+                     Artist = artist.Name,
+                     Album = album.Name,
+                     AlbumUrlPicture = album.UrlPicture,
+                     IsInLibrary = false
+                 })
+                 .OrderBy(s => s.Name)))
+                .Skip(filter.PageIndex * filter.PageSize)
+                 .Take(filter.PageSize).ToList();
+
+            var recSongIds = recommendedSongs.Select(s => s.Id).ToList();
+
+            var recSongsFilter = Builders<Song>.Filter.In(a => a.Id, recSongIds);
+            var recSongsFromDb = songsDbList.Find(recSongsFilter).ToList();
+
+
+            foreach(var recSong in recommendedSongs)
+            {
+                recSong.Name = recSongsFromDb.Find(s => s.Id == recSong.Id).Name;
+                recSong.Url = recSongsFromDb.Find(s => s.Id == recSong.Id).Url;
+                recSong.Year = recSongsFromDb.Find(s => s.Id == recSong.Id).Year;
+
+
+            }
+
+            return recommendedSongs.ToList();
+        }
+
+
         public (int, List<SongDTO>) GetLibrarySongs(LibraryPageFilter filter)
         {
             var queryableUsers = usersDbList.AsQueryable();
 
-            var library222 = from lib in libraryDbList.AsQueryable()
-                          join u in queryableUsers on lib.Id equals u.LibraryId
-                          select lib.Id;
-
-            var ee = library222.FirstOrDefault();
 
             var library = from lib in libraryDbList.AsQueryable()
                           join u in queryableUsers on lib.Id equals u.LibraryId
+                          where u.Id == filter.UserId
                           select lib.SongsIds;
 
             var allSongsIds = library.FirstOrDefault();

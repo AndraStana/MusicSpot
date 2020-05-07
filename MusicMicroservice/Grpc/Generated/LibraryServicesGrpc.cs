@@ -22,6 +22,8 @@ namespace MusicMicroservice {
     static readonly grpc::Marshaller<global::MusicMicroservice.AddSongToLibraryResponse> __Marshaller_AddSongToLibraryResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.AddSongToLibraryResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::MusicMicroservice.RemoveSongFromLibraryRequest> __Marshaller_RemoveSongFromLibraryRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.RemoveSongFromLibraryRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::MusicMicroservice.RemoveSongFromLibraryResponse> __Marshaller_RemoveSongFromLibraryResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.RemoveSongFromLibraryResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::MusicMicroservice.GetRecommendedSongsRequest> __Marshaller_GetRecommendedSongsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.GetRecommendedSongsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::MusicMicroservice.GetRecommendedSongsResponse> __Marshaller_GetRecommendedSongsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.GetRecommendedSongsResponse.Parser.ParseFrom);
 
     static readonly grpc::Method<global::MusicMicroservice.AddLibraryRequest, global::MusicMicroservice.AddLibraryResponse> __Method_AddLibrary = new grpc::Method<global::MusicMicroservice.AddLibraryRequest, global::MusicMicroservice.AddLibraryResponse>(
         grpc::MethodType.Unary,
@@ -58,6 +60,13 @@ namespace MusicMicroservice {
         __Marshaller_RemoveSongFromLibraryRequest,
         __Marshaller_RemoveSongFromLibraryResponse);
 
+    static readonly grpc::Method<global::MusicMicroservice.GetRecommendedSongsRequest, global::MusicMicroservice.GetRecommendedSongsResponse> __Method_GetRecommendedSongs = new grpc::Method<global::MusicMicroservice.GetRecommendedSongsRequest, global::MusicMicroservice.GetRecommendedSongsResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetRecommendedSongs",
+        __Marshaller_GetRecommendedSongsRequest,
+        __Marshaller_GetRecommendedSongsResponse);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -93,6 +102,11 @@ namespace MusicMicroservice {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      public virtual global::System.Threading.Tasks.Task<global::MusicMicroservice.GetRecommendedSongsResponse> GetRecommendedSongs(global::MusicMicroservice.GetRecommendedSongsRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -104,7 +118,8 @@ namespace MusicMicroservice {
           .AddMethod(__Method_GetLibrarySongs, serviceImpl.GetLibrarySongs)
           .AddMethod(__Method_GetPopularityRankings, serviceImpl.GetPopularityRankings)
           .AddMethod(__Method_AddSongToLibrary, serviceImpl.AddSongToLibrary)
-          .AddMethod(__Method_RemoveSongFromLibrary, serviceImpl.RemoveSongFromLibrary).Build();
+          .AddMethod(__Method_RemoveSongFromLibrary, serviceImpl.RemoveSongFromLibrary)
+          .AddMethod(__Method_GetRecommendedSongs, serviceImpl.GetRecommendedSongs).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -118,6 +133,7 @@ namespace MusicMicroservice {
       serviceBinder.AddMethod(__Method_GetPopularityRankings, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MusicMicroservice.GetPopularityRankingRequest, global::MusicMicroservice.GetPopularityRankingResponse>(serviceImpl.GetPopularityRankings));
       serviceBinder.AddMethod(__Method_AddSongToLibrary, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MusicMicroservice.AddSongToLibraryRequest, global::MusicMicroservice.AddSongToLibraryResponse>(serviceImpl.AddSongToLibrary));
       serviceBinder.AddMethod(__Method_RemoveSongFromLibrary, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MusicMicroservice.RemoveSongFromLibraryRequest, global::MusicMicroservice.RemoveSongFromLibraryResponse>(serviceImpl.RemoveSongFromLibrary));
+      serviceBinder.AddMethod(__Method_GetRecommendedSongs, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MusicMicroservice.GetRecommendedSongsRequest, global::MusicMicroservice.GetRecommendedSongsResponse>(serviceImpl.GetRecommendedSongs));
     }
 
   }

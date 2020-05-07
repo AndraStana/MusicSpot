@@ -22,6 +22,8 @@ namespace MusicMicroservice {
     static readonly grpc::Marshaller<global::MusicMicroservice.AddSongToLibraryResponse> __Marshaller_AddSongToLibraryResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.AddSongToLibraryResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::MusicMicroservice.RemoveSongFromLibraryRequest> __Marshaller_RemoveSongFromLibraryRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.RemoveSongFromLibraryRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::MusicMicroservice.RemoveSongFromLibraryResponse> __Marshaller_RemoveSongFromLibraryResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.RemoveSongFromLibraryResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::MusicMicroservice.GetRecommendedSongsRequest> __Marshaller_GetRecommendedSongsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.GetRecommendedSongsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::MusicMicroservice.GetRecommendedSongsResponse> __Marshaller_GetRecommendedSongsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.GetRecommendedSongsResponse.Parser.ParseFrom);
 
     static readonly grpc::Method<global::MusicMicroservice.AddLibraryRequest, global::MusicMicroservice.AddLibraryResponse> __Method_AddLibrary = new grpc::Method<global::MusicMicroservice.AddLibraryRequest, global::MusicMicroservice.AddLibraryResponse>(
         grpc::MethodType.Unary,
@@ -57,6 +59,13 @@ namespace MusicMicroservice {
         "RemoveSongFromLibrary",
         __Marshaller_RemoveSongFromLibraryRequest,
         __Marshaller_RemoveSongFromLibraryResponse);
+
+    static readonly grpc::Method<global::MusicMicroservice.GetRecommendedSongsRequest, global::MusicMicroservice.GetRecommendedSongsResponse> __Method_GetRecommendedSongs = new grpc::Method<global::MusicMicroservice.GetRecommendedSongsRequest, global::MusicMicroservice.GetRecommendedSongsResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetRecommendedSongs",
+        __Marshaller_GetRecommendedSongsRequest,
+        __Marshaller_GetRecommendedSongsResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -166,6 +175,22 @@ namespace MusicMicroservice {
       public virtual grpc::AsyncUnaryCall<global::MusicMicroservice.RemoveSongFromLibraryResponse> RemoveSongFromLibraryAsync(global::MusicMicroservice.RemoveSongFromLibraryRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_RemoveSongFromLibrary, null, options, request);
+      }
+      public virtual global::MusicMicroservice.GetRecommendedSongsResponse GetRecommendedSongs(global::MusicMicroservice.GetRecommendedSongsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetRecommendedSongs(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::MusicMicroservice.GetRecommendedSongsResponse GetRecommendedSongs(global::MusicMicroservice.GetRecommendedSongsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetRecommendedSongs, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::MusicMicroservice.GetRecommendedSongsResponse> GetRecommendedSongsAsync(global::MusicMicroservice.GetRecommendedSongsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetRecommendedSongsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::MusicMicroservice.GetRecommendedSongsResponse> GetRecommendedSongsAsync(global::MusicMicroservice.GetRecommendedSongsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetRecommendedSongs, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override LibraryGrpcServiceClient NewInstance(ClientBaseConfiguration configuration)

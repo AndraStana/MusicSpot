@@ -95,7 +95,7 @@ namespace Grpc.Services
 
                 };
 
-                var response =  client.GetPopularityRankings(request);
+                var response = client.GetPopularityRankings(request);
                 var popularityRankings = response.PopularityRankings.Select(s => PopularityRankingGrpcConverter.ToMessage(s)).ToList();
                 return popularityRankings;
             }
@@ -103,6 +103,34 @@ namespace Grpc.Services
             {
                 await channel.ShutdownAsync();
             }
+        }
+
+
+        public async Task<List<SongModel>> GetRecommendedSongsAsync(BasicPageFilter filter)
+        {
+            var channel = new Channel(channelTarget, ChannelCredentials.Insecure);
+            try
+            {
+
+                var client = new LibraryGrpcService.LibraryGrpcServiceClient(channel);
+                var request = new GetRecommendedSongsRequest()
+                {
+                    UserId = filter.UserId.ToString(),
+                    PageIndex = filter.PageIndex,
+                    PageSize = filter.PageSize
+                };
+
+                var response = await client.GetRecommendedSongsAsync(request);
+
+                return response.Songs.Select(s => SongGrpcConverter.ToMessage(s)).ToList();
+                
+            }
+            finally
+            {
+                await channel.ShutdownAsync();
+            }
+
+
         }
 
         public async Task<LibraryPageModel> GetLibrarySongsAsync(LibraryPageFilter filter)
@@ -116,10 +144,10 @@ namespace Grpc.Services
                 {
                     UserId = filter.UserId.ToString(),
                     PageIndex = filter.PageIndex,
-                    PageSize= filter.PageSize
+                    PageSize = filter.PageSize
                 };
 
-                if( filter.Genre != null)
+                if (filter.Genre != null)
                 {
                     request.Genre = (int)filter.Genre;
                 }
@@ -140,7 +168,7 @@ namespace Grpc.Services
                 return new LibraryPageModel()
                 {
                     TotalNumber = response.TotalNumber,
-                    Songs = response.Songs.Select(s=> SongGrpcConverter.ToMessage(s)).ToList()
+                    Songs = response.Songs.Select(s => SongGrpcConverter.ToMessage(s)).ToList()
                 };
             }
             finally

@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+
+option csharp_namespace = "MusicMicroservice";
+
+
+//----------------------Add Friend---------------------------
+
+message AddFriendRequest{
+	string userId = 1;
+	string friendId = 2;
+}
+
+message AddFriendResponse{
+}
+
+//----------------------Remove Friend---------------------------
+
+message RemoveFriendRequest{
+	string userId = 1;
+	string friendId = 2;
+}
+
+message RemoveFriendResponse{
+}
+
+//-----------------------Get All Possible Friends---------------------
+
+
+message GetAllPossibleFriendsRequest{
+	string userId = 1;
+
+}
+
+message GetAllPossibleFriendsResponse{
+	repeated FriendMessage friends = 1;
+}
+
+
+message FriendMessage{
+	string id = 1;
+	string name = 2;
+	int32 age = 3;
+	string libraryName = 4;
+	bool isFriend = 5;
+}
+
+//------------------------Get Friends----------
+
+
+message GetFriendsRequest{
+	string userId = 1;
+	int32 pageIndex = 2;
+	int32 pageSize = 3;
+	
+}
+
+message GetFriendsResponse{
+	repeated FriendMessage friends = 1;
+	int32 totalNumber = 2;
+}
+
+
+
+
+

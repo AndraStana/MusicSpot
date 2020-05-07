@@ -26,5 +26,8 @@ namespace Persistence.DAL
         [BsonElement("LibraryId")]
         public Guid LibraryId { get; set; }
 
+        [BsonElement("FriendsIds")]
+        public List<Guid> FriendsIds { get; set; }
+
     }
 }

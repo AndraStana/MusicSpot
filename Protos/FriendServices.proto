@@ -1,0 +1,15 @@
+
+syntax = "proto3";
+
+option csharp_namespace = "MusicMicroservice";
+
+import "FriendEntities.proto";
+
+
+service FriendsGrpcService {
+	rpc AddFriend (AddFriendRequest) returns (AddFriendResponse);
+	rpc RemoveFriend (RemoveFriendRequest) returns (RemoveFriendResponse);
+	rpc GetAllPossibleFriends (GetAllPossibleFriendsRequest) returns (GetAllPossibleFriendsResponse);
+	rpc GetFriends (GetFriendsRequest) returns (GetFriendsResponse);
+	
+}

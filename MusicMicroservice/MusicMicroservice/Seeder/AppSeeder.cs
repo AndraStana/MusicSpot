@@ -16,15 +16,18 @@ namespace MusicMicroservice.Seeder
         private readonly IMongoCollection<PopularityRanking> popularityRankingDbList;
         private readonly IMongoCollection<Artist> artistsDbList;
         private readonly IMongoCollection<Library> libraryDbList;
+        private readonly IMongoCollection<User> usersDbList;
 
 
-        public const int ARTISTS_NR = 2;
 
-        //public const int ARTISTS_NR = 100;
-        //public const int ALBUMS_NR_PER_ARTIST = 9;
-        public const int ALBUMS_NR_PER_ARTIST = 1;
-
+        //100, 9, 10
+        public const int ARTISTS_NR = 100;
+        public const int ALBUMS_NR_PER_ARTIST = 9;
         public const int SONGS_NR_PER_ALBUM = 10;
+
+
+        //100, 16
+
         public const int SONGS_PER_LIBRARY_NR = 100;
         public const int POPULARITY_RANKINGS_NR = 16;
 
@@ -38,6 +41,8 @@ namespace MusicMicroservice.Seeder
             popularityRankingDbList = database.GetCollection<PopularityRanking>("PopularityRankings");
             artistsDbList = database.GetCollection<Artist>("Artists");
             libraryDbList = database.GetCollection<Library>("Libraries");
+            usersDbList = database.GetCollection<User>("Users");
+
 
         }
 
@@ -115,6 +120,71 @@ namespace MusicMicroservice.Seeder
             SeedPopularityRankings();
             SeedArtistsAlbumsSongs();
             SeedSongsForLibraries();
+            SeedSimilarArtistsRelationships();
+            SeedUserFriends();
+        }
+
+
+
+        public void SeedUserFriends()
+        {
+            var users = usersDbList.Find(a => true).ToList();
+
+            foreach (var user in users)
+            {
+                if (user.FriendsIds.Count != 0)
+                {
+                    continue;
+                }
+
+                var restOfUsers = users.Where(a => a.Id != user.Id).ToList();
+
+                if(restOfUsers != null)
+                {
+
+                    var listIds = restOfUsers.Select(u=> u.Id).ToList();
+
+                    var filter = Builders<User>.Filter.Eq(x => x.Id, user.Id);
+                    var update = Builders<User>.Update.Set("FriendsIds", listIds);
+                    usersDbList.UpdateOne(filter, update);
+                }
+            }
+        }
+
+        private void SeedSimilarArtistsRelationships()
+        {
+            var random = new Random();
+
+            var artists = artistsDbList.Find(a => true).ToList();
+
+            foreach( var artist in artists)
+            {
+                if(artist.SimilarArtistsIds.Count!=0)
+                {
+                    continue;
+                }
+
+                var restOfArtists = artists.Where(a => a.Id != artist.Id).ToList();
+
+                var length = restOfArtists.Count;
+
+                var listIds = new List<Guid>();
+
+                var artistSecond = restOfArtists[random.Next(0, length / 3)];
+                var artistSecond2 = restOfArtists[random.Next(length / 3 + 1, length / 2)];
+                var artistSecond3 = restOfArtists[random.Next(length / 2 + 1, length - 1)];
+
+                listIds.Add(artistSecond.Id);
+                listIds.Add(artistSecond2.Id);
+                listIds.Add(artistSecond3.Id);
+
+                var filter = Builders<Artist>.Filter.Eq(x => x.Id, artist.Id);
+
+                var update = Builders<Artist>.Update.Set("SimilarArtistsIds", listIds);
+
+                artistsDbList.UpdateOne(filter, update);
+
+            }
         }
 
 
@@ -134,7 +204,8 @@ namespace MusicMicroservice.Seeder
                         Id = artistId,
                         Name = "Artist " + i,
                         UrlPicture = ARTISTS_PICTURES[random.Next(0, ARTISTS_PICTURES.Count)],
-                        Albums = CreateAlbumsForArtist(artistId, i)
+                        Albums = CreateAlbumsForArtist(artistId, i),
+                        SimilarArtistsIds = new List<Guid>()
                 };
                     artists.Add(artist);
 

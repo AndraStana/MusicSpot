@@ -88,7 +88,17 @@ message AddSongToLibraryResponse{
 message RemoveSongFromLibraryResponse{
 }
 
+//------------------------GET Recommended---------------
 
+message GetRecommendedSongsRequest{
+	int32 pageIndex = 1;
+	int32 pageSize = 2;
+	string userId = 3;
+}
+
+message GetRecommendedSongsResponse{
+	repeated SongMessage songs = 1;
+}
 
 
 

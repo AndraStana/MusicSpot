@@ -31,7 +31,7 @@ namespace MicroservicesWebApi
 
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<ILibraryService, LibraryService>();
-            //services.AddTransient<IFriendsService, FriendsService>();
+            services.AddTransient<IFriendsService, FriendsService>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<IArtistsService, ArtistsService>();
 

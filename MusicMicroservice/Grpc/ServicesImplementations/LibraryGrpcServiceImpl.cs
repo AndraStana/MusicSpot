@@ -67,23 +67,14 @@ namespace Grpc.ServicesImplementations
 
         public override Task<GetLibrarySongsResponse> GetLibrarySongs(GetLibrarySongsRequest request, ServerCallContext context)
         {
-
             var filter = new LibraryPageFilter()
             {
                 UserId = Guid.Parse(request.UserId),
                 Genre = (GenreEnum)request.Genre,
                 Decade = (DecadeEnum)request.Decade,
-                //PopularityRankingId = PopularityRankingId == null ? null : Guid.Parse(PopularityRankingId),
                 PageIndex = request.PageIndex,
                 PageSize = request.PageSize
 
-
-                //          public Guid UserId { get; set; }
-                //public GenreEnum? Genre { get; set; }
-                //public DecadeEnum? Decade { get; set; }
-                //public Guid? PopularityRankingId { get; set; }
-                //public int PageIndex { get; set; }
-                //public int PageSize { get; set; }
             };
             if(request.PopularityRankingId != null && request.PopularityRankingId != "")
             {
@@ -95,12 +86,26 @@ namespace Grpc.ServicesImplementations
             {
                 TotalNumber = totalNumber
             };
-
-            //if(songs != null && songs.Count != 0)
-            //{
                 response.Songs.AddRange(songs.Select(s => SongGrpcConverter.ToMessage(s)).ToList());
+            return Task.FromResult(response);
+        }
 
-            //}
+
+        public override Task<GetRecommendedSongsResponse> GetRecommendedSongs(GetRecommendedSongsRequest request, ServerCallContext context)
+        {
+            var filter = new BasicPageFilter()
+            {
+                UserId = Guid.Parse(request.UserId),
+                PageIndex = request.PageIndex,
+                PageSize = request.PageSize
+
+            };
+
+            var songs = _libraryService.GetRecommendedSongs(filter);
+            var response = new GetRecommendedSongsResponse();
+
+
+            response.Songs.AddRange(songs.Select(s => SongGrpcConverter.ToMessage(s)).ToList());
             return Task.FromResult(response);
         }
     }

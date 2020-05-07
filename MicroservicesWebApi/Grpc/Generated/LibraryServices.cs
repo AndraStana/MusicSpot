@@ -25,7 +25,7 @@ namespace MusicMicroservice {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVMaWJyYXJ5U2VydmljZXMucHJvdG8aFUxpYnJhcnlFbnRpdGllcy5wcm90",
-            "bzKIAwoSTGlicmFyeUdycGNTZXJ2aWNlEjUKCkFkZExpYnJhcnkSEi5BZGRM",
+            "bzLaAwoSTGlicmFyeUdycGNTZXJ2aWNlEjUKCkFkZExpYnJhcnkSEi5BZGRM",
             "aWJyYXJ5UmVxdWVzdBoTLkFkZExpYnJhcnlSZXNwb25zZRJECg9HZXRMaWJy",
             "YXJ5U29uZ3MSFy5HZXRMaWJyYXJ5U29uZ3NSZXF1ZXN0GhguR2V0TGlicmFy",
             "eVNvbmdzUmVzcG9uc2USVAoVR2V0UG9wdWxhcml0eVJhbmtpbmdzEhwuR2V0",
@@ -33,8 +33,10 @@ namespace MusicMicroservice {
             "bmdSZXNwb25zZRJHChBBZGRTb25nVG9MaWJyYXJ5EhguQWRkU29uZ1RvTGli",
             "cmFyeVJlcXVlc3QaGS5BZGRTb25nVG9MaWJyYXJ5UmVzcG9uc2USVgoVUmVt",
             "b3ZlU29uZ0Zyb21MaWJyYXJ5Eh0uUmVtb3ZlU29uZ0Zyb21MaWJyYXJ5UmVx",
-            "dWVzdBoeLlJlbW92ZVNvbmdGcm9tTGlicmFyeVJlc3BvbnNlQhSqAhFNdXNp",
-            "Y01pY3Jvc2VydmljZWIGcHJvdG8z"));
+            "dWVzdBoeLlJlbW92ZVNvbmdGcm9tTGlicmFyeVJlc3BvbnNlElAKE0dldFJl",
+            "Y29tbWVuZGVkU29uZ3MSGy5HZXRSZWNvbW1lbmRlZFNvbmdzUmVxdWVzdBoc",
+            "LkdldFJlY29tbWVuZGVkU29uZ3NSZXNwb25zZUIUqgIRTXVzaWNNaWNyb3Nl",
+            "cnZpY2ViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::MusicMicroservice.LibraryEntitiesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null));

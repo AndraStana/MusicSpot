@@ -32,18 +32,6 @@ namespace MicroservicesWebApi.Controllers
 
             return _libraryService.GetLibrarySongsAsync(filter).Result;
 
-
-
-            //var (totaNumber, songs) = _libraryService.GetLibrarySongs(filter);
-
-            //return new LibraryPageModel()
-            //{
-            //    Songs = songs.Select(s => SongWebConverter.ToModel(s, true)).ToList(),
-            //    TotalNumber = totaNumber
-            //};
-
-
-            return null;
         }
 
         public List<PopularityRankingModel> GetPopularityRankings()
@@ -63,5 +51,6 @@ namespace MicroservicesWebApi.Controllers
         {
             _libraryService.AddSongToLibraryAsync(model.LibraryId, model.SongId);
         }
+
     }
 }

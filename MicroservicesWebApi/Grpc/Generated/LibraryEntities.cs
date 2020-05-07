@@ -43,8 +43,11 @@ namespace MusicMicroservice {
             "YXJ5SWQYASABKAkSDgoGc29uZ0lkGAIgASgJIkEKHFJlbW92ZVNvbmdGcm9t",
             "TGlicmFyeVJlcXVlc3QSEQoJbGlicmFyeUlkGAEgASgJEg4KBnNvbmdJZBgC",
             "IAEoCSIaChhBZGRTb25nVG9MaWJyYXJ5UmVzcG9uc2UiHwodUmVtb3ZlU29u",
-            "Z0Zyb21MaWJyYXJ5UmVzcG9uc2VCFKoCEU11c2ljTWljcm9zZXJ2aWNlYgZw",
-            "cm90bzM="));
+            "Z0Zyb21MaWJyYXJ5UmVzcG9uc2UiUQoaR2V0UmVjb21tZW5kZWRTb25nc1Jl",
+            "cXVlc3QSEQoJcGFnZUluZGV4GAEgASgFEhAKCHBhZ2VTaXplGAIgASgFEg4K",
+            "BnVzZXJJZBgDIAEoCSI6ChtHZXRSZWNvbW1lbmRlZFNvbmdzUmVzcG9uc2US",
+            "GwoFc29uZ3MYASADKAsyDC5Tb25nTWVzc2FnZUIUqgIRTXVzaWNNaWNyb3Nl",
+            "cnZpY2ViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -59,7 +62,9 @@ namespace MusicMicroservice {
             new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.AddSongToLibraryRequest), global::MusicMicroservice.AddSongToLibraryRequest.Parser, new[]{ "LibraryId", "SongId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.RemoveSongFromLibraryRequest), global::MusicMicroservice.RemoveSongFromLibraryRequest.Parser, new[]{ "LibraryId", "SongId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.AddSongToLibraryResponse), global::MusicMicroservice.AddSongToLibraryResponse.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.RemoveSongFromLibraryResponse), global::MusicMicroservice.RemoveSongFromLibraryResponse.Parser, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.RemoveSongFromLibraryResponse), global::MusicMicroservice.RemoveSongFromLibraryResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.GetRecommendedSongsRequest), global::MusicMicroservice.GetRecommendedSongsRequest.Parser, new[]{ "PageIndex", "PageSize", "UserId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.GetRecommendedSongsResponse), global::MusicMicroservice.GetRecommendedSongsResponse.Parser, new[]{ "Songs" }, null, null, null)
           }));
     }
     #endregion
@@ -2040,6 +2045,312 @@ namespace MusicMicroservice {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GetRecommendedSongsRequest : pb::IMessage<GetRecommendedSongsRequest> {
+    private static readonly pb::MessageParser<GetRecommendedSongsRequest> _parser = new pb::MessageParser<GetRecommendedSongsRequest>(() => new GetRecommendedSongsRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GetRecommendedSongsRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::MusicMicroservice.LibraryEntitiesReflection.Descriptor.MessageTypes[12]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetRecommendedSongsRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetRecommendedSongsRequest(GetRecommendedSongsRequest other) : this() {
+      pageIndex_ = other.pageIndex_;
+      pageSize_ = other.pageSize_;
+      userId_ = other.userId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetRecommendedSongsRequest Clone() {
+      return new GetRecommendedSongsRequest(this);
+    }
+
+    /// <summary>Field number for the "pageIndex" field.</summary>
+    public const int PageIndexFieldNumber = 1;
+    private int pageIndex_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int PageIndex {
+      get { return pageIndex_; }
+      set {
+        pageIndex_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "pageSize" field.</summary>
+    public const int PageSizeFieldNumber = 2;
+    private int pageSize_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int PageSize {
+      get { return pageSize_; }
+      set {
+        pageSize_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "userId" field.</summary>
+    public const int UserIdFieldNumber = 3;
+    private string userId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string UserId {
+      get { return userId_; }
+      set {
+        userId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GetRecommendedSongsRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GetRecommendedSongsRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (PageIndex != other.PageIndex) return false;
+      if (PageSize != other.PageSize) return false;
+      if (UserId != other.UserId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (PageIndex != 0) hash ^= PageIndex.GetHashCode();
+      if (PageSize != 0) hash ^= PageSize.GetHashCode();
+      if (UserId.Length != 0) hash ^= UserId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (PageIndex != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(PageIndex);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (UserId.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(UserId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (PageIndex != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PageIndex);
+      }
+      if (PageSize != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PageSize);
+      }
+      if (UserId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(UserId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GetRecommendedSongsRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.PageIndex != 0) {
+        PageIndex = other.PageIndex;
+      }
+      if (other.PageSize != 0) {
+        PageSize = other.PageSize;
+      }
+      if (other.UserId.Length != 0) {
+        UserId = other.UserId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            PageIndex = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            UserId = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GetRecommendedSongsResponse : pb::IMessage<GetRecommendedSongsResponse> {
+    private static readonly pb::MessageParser<GetRecommendedSongsResponse> _parser = new pb::MessageParser<GetRecommendedSongsResponse>(() => new GetRecommendedSongsResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GetRecommendedSongsResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::MusicMicroservice.LibraryEntitiesReflection.Descriptor.MessageTypes[13]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetRecommendedSongsResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetRecommendedSongsResponse(GetRecommendedSongsResponse other) : this() {
+      songs_ = other.songs_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetRecommendedSongsResponse Clone() {
+      return new GetRecommendedSongsResponse(this);
+    }
+
+    /// <summary>Field number for the "songs" field.</summary>
+    public const int SongsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::MusicMicroservice.SongMessage> _repeated_songs_codec
+        = pb::FieldCodec.ForMessage(10, global::MusicMicroservice.SongMessage.Parser);
+    private readonly pbc::RepeatedField<global::MusicMicroservice.SongMessage> songs_ = new pbc::RepeatedField<global::MusicMicroservice.SongMessage>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::MusicMicroservice.SongMessage> Songs {
+      get { return songs_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GetRecommendedSongsResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GetRecommendedSongsResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!songs_.Equals(other.songs_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= songs_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      songs_.WriteTo(output, _repeated_songs_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += songs_.CalculateSize(_repeated_songs_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GetRecommendedSongsResponse other) {
+      if (other == null) {
+        return;
+      }
+      songs_.Add(other.songs_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            songs_.AddEntriesFrom(input, _repeated_songs_codec);
+            break;
+          }
         }
       }
     }

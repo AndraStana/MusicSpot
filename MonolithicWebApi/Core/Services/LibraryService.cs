@@ -21,6 +21,7 @@ namespace Core.Services
         public LibraryService(AppDbContext context)
         {
             _context = context;
+
         }
 
         public Guid Add(LibraryDTO libraryDTO)
@@ -103,7 +104,7 @@ namespace Core.Services
                 .SelectMany(a=>a.SecondArtist.Albums.SelectMany(alb=>alb.Songs))
                 .Where(rs => !allLibSongs.Contains(rs.Id))
                 .Distinct()
-                .OrderBy(s=>s.Name)
+                .OrderBy(a=>a.Name)
                 .Skip(filter.PageIndex * filter.PageSize)
                 .Take(filter.PageSize)
                 .Select(s=> SongCoreConverter.ToLongDTO(s))
