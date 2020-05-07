@@ -27,7 +27,8 @@ namespace Core.Services
             //TODO  correct filter and check if data is correct
 
             var query = _context.Friendships.Where(f => f.FirstFriendId == filter.UserId).Include(f => f.SecondFriend)
-                .ThenInclude(fr => fr.Library);
+                .ThenInclude(fr => fr.Library)
+                .OrderBy(f=>f.SecondFriend.Name);
 
             int totalNumber = query.Count();
 

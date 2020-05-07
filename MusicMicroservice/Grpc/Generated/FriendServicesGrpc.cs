@@ -17,6 +17,7 @@ namespace MusicMicroservice {
     static readonly grpc::Marshaller<global::MusicMicroservice.RemoveFriendRequest> __Marshaller_RemoveFriendRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.RemoveFriendRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::MusicMicroservice.RemoveFriendResponse> __Marshaller_RemoveFriendResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.RemoveFriendResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::MusicMicroservice.GetAllPossibleFriendsRequest> __Marshaller_GetAllPossibleFriendsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.GetAllPossibleFriendsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::MusicMicroservice.GetAllPossibleFriendsResponse> __Marshaller_GetAllPossibleFriendsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.GetAllPossibleFriendsResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::MusicMicroservice.GetFriendsRequest> __Marshaller_GetFriendsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.GetFriendsRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::MusicMicroservice.GetFriendsResponse> __Marshaller_GetFriendsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::MusicMicroservice.GetFriendsResponse.Parser.ParseFrom);
 
@@ -34,12 +35,12 @@ namespace MusicMicroservice {
         __Marshaller_RemoveFriendRequest,
         __Marshaller_RemoveFriendResponse);
 
-    static readonly grpc::Method<global::MusicMicroservice.GetAllPossibleFriendsRequest, global::MusicMicroservice.GetAllPossibleFriendsRequest> __Method_GetAllPossibleFriends = new grpc::Method<global::MusicMicroservice.GetAllPossibleFriendsRequest, global::MusicMicroservice.GetAllPossibleFriendsRequest>(
+    static readonly grpc::Method<global::MusicMicroservice.GetAllPossibleFriendsRequest, global::MusicMicroservice.GetAllPossibleFriendsResponse> __Method_GetAllPossibleFriends = new grpc::Method<global::MusicMicroservice.GetAllPossibleFriendsRequest, global::MusicMicroservice.GetAllPossibleFriendsResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetAllPossibleFriends",
         __Marshaller_GetAllPossibleFriendsRequest,
-        __Marshaller_GetAllPossibleFriendsRequest);
+        __Marshaller_GetAllPossibleFriendsResponse);
 
     static readonly grpc::Method<global::MusicMicroservice.GetFriendsRequest, global::MusicMicroservice.GetFriendsResponse> __Method_GetFriends = new grpc::Method<global::MusicMicroservice.GetFriendsRequest, global::MusicMicroservice.GetFriendsResponse>(
         grpc::MethodType.Unary,
@@ -68,7 +69,7 @@ namespace MusicMicroservice {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::MusicMicroservice.GetAllPossibleFriendsRequest> GetAllPossibleFriends(global::MusicMicroservice.GetAllPossibleFriendsRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::MusicMicroservice.GetAllPossibleFriendsResponse> GetAllPossibleFriends(global::MusicMicroservice.GetAllPossibleFriendsRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -99,7 +100,7 @@ namespace MusicMicroservice {
     {
       serviceBinder.AddMethod(__Method_AddFriend, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MusicMicroservice.AddFriendRequest, global::MusicMicroservice.AddFriendResponse>(serviceImpl.AddFriend));
       serviceBinder.AddMethod(__Method_RemoveFriend, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MusicMicroservice.RemoveFriendRequest, global::MusicMicroservice.RemoveFriendResponse>(serviceImpl.RemoveFriend));
-      serviceBinder.AddMethod(__Method_GetAllPossibleFriends, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MusicMicroservice.GetAllPossibleFriendsRequest, global::MusicMicroservice.GetAllPossibleFriendsRequest>(serviceImpl.GetAllPossibleFriends));
+      serviceBinder.AddMethod(__Method_GetAllPossibleFriends, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MusicMicroservice.GetAllPossibleFriendsRequest, global::MusicMicroservice.GetAllPossibleFriendsResponse>(serviceImpl.GetAllPossibleFriends));
       serviceBinder.AddMethod(__Method_GetFriends, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MusicMicroservice.GetFriendsRequest, global::MusicMicroservice.GetFriendsResponse>(serviceImpl.GetFriends));
     }
 

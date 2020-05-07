@@ -34,7 +34,7 @@ namespace Grpc.Services
                 return new FriendsPageModel()
                 {
                     TotalNumber = response.TotalNumber,
-                    Friends = response.Friends.Select(f => FriendGrpcConverter.ToMessage(f)).ToList()
+                    Friends = response.Friends.Select(f => FriendGrpcConverter.ToModel(f)).ToList()
                 };
             }
             finally
@@ -58,7 +58,7 @@ namespace Grpc.Services
 
                 var response = await client.GetAllPossibleFriendsAsync(request);
 
-                return response.Friends.Select(f => FriendGrpcConverter.ToMessage(f)).ToList();
+                return response.Friends.Select(f => FriendGrpcConverter.ToModel(f)).ToList();
             }
             finally
             {

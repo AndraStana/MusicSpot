@@ -30,13 +30,13 @@ namespace MusicMicroservice {
             "CRIQCghmcmllbmRJZBgCIAEoCSIWChRSZW1vdmVGcmllbmRSZXNwb25zZSIu",
             "ChxHZXRBbGxQb3NzaWJsZUZyaWVuZHNSZXF1ZXN0Eg4KBnVzZXJJZBgBIAEo",
             "CSJACh1HZXRBbGxQb3NzaWJsZUZyaWVuZHNSZXNwb25zZRIfCgdmcmllbmRz",
-            "GAEgAygLMg4uRnJpZW5kTWVzc2FnZSJhCg1GcmllbmRNZXNzYWdlEg4KBnVz",
-            "ZXJJZBgBIAEoCRIMCgRuYW1lGAIgASgJEgsKA2FnZRgDIAEoBRITCgtsaWJy",
-            "YXJ5TmFtZRgEIAEoCRIQCghpc0ZyaWVuZBgFIAEoCCJIChFHZXRGcmllbmRz",
-            "UmVxdWVzdBIOCgZ1c2VySWQYASABKAkSEQoJcGFnZUluZGV4GAIgASgFEhAK",
-            "CHBhZ2VTaXplGAMgASgFIkoKEkdldEZyaWVuZHNSZXNwb25zZRIfCgdmcmll",
-            "bmRzGAEgAygLMg4uRnJpZW5kTWVzc2FnZRITCgt0b3RhbE51bWJlchgCIAEo",
-            "BUIUqgIRTXVzaWNNaWNyb3NlcnZpY2ViBnByb3RvMw=="));
+            "GAEgAygLMg4uRnJpZW5kTWVzc2FnZSJdCg1GcmllbmRNZXNzYWdlEgoKAmlk",
+            "GAEgASgJEgwKBG5hbWUYAiABKAkSCwoDYWdlGAMgASgFEhMKC2xpYnJhcnlO",
+            "YW1lGAQgASgJEhAKCGlzRnJpZW5kGAUgASgIIkgKEUdldEZyaWVuZHNSZXF1",
+            "ZXN0Eg4KBnVzZXJJZBgBIAEoCRIRCglwYWdlSW5kZXgYAiABKAUSEAoIcGFn",
+            "ZVNpemUYAyABKAUiSgoSR2V0RnJpZW5kc1Jlc3BvbnNlEh8KB2ZyaWVuZHMY",
+            "ASADKAsyDi5GcmllbmRNZXNzYWdlEhMKC3RvdGFsTnVtYmVyGAIgASgFQhSq",
+            "AhFNdXNpY01pY3Jvc2VydmljZWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -46,7 +46,7 @@ namespace MusicMicroservice {
             new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.RemoveFriendResponse), global::MusicMicroservice.RemoveFriendResponse.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.GetAllPossibleFriendsRequest), global::MusicMicroservice.GetAllPossibleFriendsRequest.Parser, new[]{ "UserId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.GetAllPossibleFriendsResponse), global::MusicMicroservice.GetAllPossibleFriendsResponse.Parser, new[]{ "Friends" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.FriendMessage), global::MusicMicroservice.FriendMessage.Parser, new[]{ "UserId", "Name", "Age", "LibraryName", "IsFriend" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.FriendMessage), global::MusicMicroservice.FriendMessage.Parser, new[]{ "Id", "Name", "Age", "LibraryName", "IsFriend" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.GetFriendsRequest), global::MusicMicroservice.GetFriendsRequest.Parser, new[]{ "UserId", "PageIndex", "PageSize" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MusicMicroservice.GetFriendsResponse), global::MusicMicroservice.GetFriendsResponse.Parser, new[]{ "Friends", "TotalNumber" }, null, null, null)
           }));
@@ -846,7 +846,7 @@ namespace MusicMicroservice {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public FriendMessage(FriendMessage other) : this() {
-      userId_ = other.userId_;
+      id_ = other.id_;
       name_ = other.name_;
       age_ = other.age_;
       libraryName_ = other.libraryName_;
@@ -859,14 +859,14 @@ namespace MusicMicroservice {
       return new FriendMessage(this);
     }
 
-    /// <summary>Field number for the "userId" field.</summary>
-    public const int UserIdFieldNumber = 1;
-    private string userId_ = "";
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private string id_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string UserId {
-      get { return userId_; }
+    public string Id {
+      get { return id_; }
       set {
-        userId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -927,7 +927,7 @@ namespace MusicMicroservice {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (UserId != other.UserId) return false;
+      if (Id != other.Id) return false;
       if (Name != other.Name) return false;
       if (Age != other.Age) return false;
       if (LibraryName != other.LibraryName) return false;
@@ -938,7 +938,7 @@ namespace MusicMicroservice {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (UserId.Length != 0) hash ^= UserId.GetHashCode();
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Age != 0) hash ^= Age.GetHashCode();
       if (LibraryName.Length != 0) hash ^= LibraryName.GetHashCode();
@@ -956,9 +956,9 @@ namespace MusicMicroservice {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (UserId.Length != 0) {
+      if (Id.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(UserId);
+        output.WriteString(Id);
       }
       if (Name.Length != 0) {
         output.WriteRawTag(18);
@@ -984,8 +984,8 @@ namespace MusicMicroservice {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (UserId.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(UserId);
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
       }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
@@ -1010,8 +1010,8 @@ namespace MusicMicroservice {
       if (other == null) {
         return;
       }
-      if (other.UserId.Length != 0) {
-        UserId = other.UserId;
+      if (other.Id.Length != 0) {
+        Id = other.Id;
       }
       if (other.Name.Length != 0) {
         Name = other.Name;
@@ -1037,7 +1037,7 @@ namespace MusicMicroservice {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            UserId = input.ReadString();
+            Id = input.ReadString();
             break;
           }
           case 18: {

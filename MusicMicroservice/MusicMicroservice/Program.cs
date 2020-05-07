@@ -23,7 +23,7 @@ namespace MusicMicroservice
             var libraryService = serviceProvider.GetService<ILibraryService>();
             var usersService = serviceProvider.GetService<IUsersService>();
             var artistsService = serviceProvider.GetService<IArtistsService>();
-
+            var friendsService = serviceProvider.GetService<IFriendsService>();
 
             var appSeeder = serviceProvider.GetService<AppSeeder>();
             appSeeder.SeedAll();
@@ -40,6 +40,8 @@ namespace MusicMicroservice
                 Services = { LibraryGrpcService.BindService(new LibraryGrpcServiceImpl(libraryService)),
                             UsersGrpcService.BindService(new UsersGrpcServiceImpl(usersService)),
                             ArtistsGrpcService.BindService(new ArtistsGrpcServiceImpl(artistsService)),
+                            FriendsGrpcService.BindService(new FriendsGrpcServiceImpl(friendsService))
+
 
                 },
                 Ports = { new ServerPort(DefaultHost, Port, ServerCredentials.Insecure) }

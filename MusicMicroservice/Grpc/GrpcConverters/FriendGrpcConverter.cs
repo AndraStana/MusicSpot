@@ -1,23 +1,23 @@
-﻿using Common.Models;
+﻿using Core.DTO;
 using MusicMicroservice;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Grpc.GrpcConverter
+namespace Grpc.GrpcConverters
 {
     public class FriendGrpcConverter
     {
-        public static FriendModel ToModel(FriendMessage friend)
+        public static FriendMessage ToMessage(FriendDTO friend)
         {
             if (friend == null)
             {
                 return null;
             }
 
-            return new FriendModel()
+            return new FriendMessage()
             {
-                Id = new Guid(friend.Id),
+                Id = friend.Id.ToString(),
                 Name = friend.Name,
                 Age = friend.Age,
                 LibraryName = friend.LibraryName,
