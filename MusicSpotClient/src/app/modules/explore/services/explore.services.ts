@@ -12,7 +12,7 @@ import { ArtistPageFilter } from '../models/artist-page-filter';
 @Injectable()
 export class ExploreService {
     private baseMonolithUrl = `${environment.baseMonolithUrl}`;
-    private baseMicroservicesUrl = `${environment.baseMicroservicesUrl}`;
+    private baseMicroservicesUrl = `${environment.baseMicroservicesMusicUrl}`;
 
     constructor(private _httpClient: HttpClient) { }
 

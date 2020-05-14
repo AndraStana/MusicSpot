@@ -6,7 +6,8 @@ using MongoDB.Driver;
 using Persistence.DAL;
 using System;
 using System.Collections.Generic;
-using System.Text;
+
+using System.Linq;
 
 namespace Core.Services
 {
@@ -29,21 +30,83 @@ namespace Core.Services
 
         public void AddFriend(Guid userId, Guid friendId)
         {
+            var filter = Builders<User>.Filter.Eq(x => x.Id, userId);
+            var update = Builders<User>.Update.AddToSet("FriendsIds", friendId);
+
+            usersDbList.UpdateOne(filter, update);
         }
 
         public List<FriendDTO> GetAllPossibleFriends(Guid userId)
         {
+
+            //var allUsers = _context.Users.Include(u => u.FirstFriends).ToList();
+
+            //var user = allUsers.FirstOrDefault(u => u.Id == filter.UserId);
+
+            //var friendsIds = user.FirstFriends.Select(f => f.SecondFriendId).ToList();
+
+            //var allPossibleFriends = allUsers.Where(u => u.Id != filter.UserId)
+            //    .Select(u => FriendCoreConverter.ToDTO(u, friendsIds.Contains(u.Id))).ToList();
+
+            //return allPossibleFriends;
+
+
+
+            var user = usersDbList.Find(u => u.Id == userId).FirstOrDefault();
+
+            var friendsIds = user.FriendsIds;
+
+            var queryableUsers = usersDbList.AsQueryable();
+            var queryableLibraries = libraryDbList.AsQueryable();
+
+
+            var queryResult = from u in usersDbList.AsQueryable()
+                              join l in queryableLibraries on u.LibraryId equals l.Id
+                              where u.Id != userId
+                              orderby (u.Username)
+                              select new FriendDTO()
+                              {
+                                  Id = u.Id,
+                                  Name = u.Username,
+                                  Age = DateTime.Now.Year - u.YearOfBirth,
+                                  LibraryName = l.Name,
+                                  IsFriend = friendsIds.Contains(u.Id)
+                              };
+
+            var friends =  queryResult.ToList();
+            return friends;
+
+
+            //var user = usersDbList.Find(u => u.Id == userId).FirstOrDefault();
+
+            //var friendsIds = user.FriendsIds;
+
+
+            //var queryableUsers = usersDbList.AsQueryable();
+            //var queryableLibraries = libraryDbList.AsQueryable();
+
+
+            //var queryResult = from u in usersDbList.AsQueryable()
+            //                  join l in queryableLibraries on u.LibraryId equals l.Id
+            //                  where friendsIds.Contains(u.Id)
+            //                  orderby (u.Username)
+            //                  select new FriendDTO()
+            //                  {
+            //                      Id = u.Id,
+            //                      Name = u.Username,
+            //                      Age = DateTime.Now.Year - u.YearOfBirth,
+            //                      LibraryName = l.Name,
+            //                      IsFriend = false
+            //                  };
+
+
+            //var friends =  queryResult.ToList();
+            //return friends;
         }
 
         public (int, List<FriendDTO>) GetFriends(FriendsPageFilter filter)
         {
-            //var query = _context.Friendships.Where(f => f.FirstFriendId == filter.UserId).Include(f => f.SecondFriend)
-            //   .ThenInclude(fr => fr.Library);
-
-            //int totalNumber = query.Count();
-
-            //var friends = query.Skip(filter.PageIndex * filter.PageSize).Take(filter.PageSize).Select(f => FriendCoreConverter.ToDTO(f.SecondFriend, true)).ToList();
-            //return (totalNumber, friends);
+         
             var user = usersDbList.Find(u => u.Id == filter.UserId).FirstOrDefault();
 
             var friendsIds = user.FriendsIds;
@@ -54,37 +117,32 @@ namespace Core.Services
             var queryableLibraries = libraryDbList.AsQueryable();
 
 
-
-            //var library = from lib in libraryDbList.AsQueryable()
-            //              join u in queryableUsers on lib.Id equals u.LibraryId
-            //              where u.Id == filter.UserId
-            //              select lib.SongsIds;
-
-
-
             var queryResult = from u in usersDbList.AsQueryable()
-                              join l in queryableLibraries on u.LibraryId equals libraryDbList.Id
+                              join l in queryableLibraries on u.LibraryId equals l.Id
                         where friendsIds.Contains(u.Id)
-                        orderby (u.Name)
+                        orderby (u.Username)
                         select new FriendDTO()
                         {
                             Id = u.Id,
-                            Name = u.Name,
-                            Age = u.Name,
-                            LibraryName = l.LibraryNamem,
+                            Name = u.Username,
+                            Age = DateTime.Now.Year - u.YearOfBirth,
+                            LibraryName = l.Name,
                             IsFriend = true
-                        }.ToList();
+                        };
 
 
-
-            var friends = (totalNumber,queryResult);
-
-
+            var friends = (totalNumber,queryResult.Skip(filter.PageIndex*filter.PageSize)
+                .Take(filter.PageSize).ToList());
+            return friends;
 
         }
 
         public void RemoveFriend(Guid userId, Guid friendId)
         {
+            var filter = Builders<User>.Filter.Eq(x => x.Id, userId);
+            var update = Builders<User>.Update.Pull("FriendsIds", friendId);
+
+            usersDbList.UpdateOne(filter, update);
         }
     }
 }

@@ -45,8 +45,6 @@ namespace Core.Services
 
         public void RemoveSongFromLibrary(Guid libraryId, Guid songId)
         {
-            //var library = libraryDbList.Find(l => l.Id == libraryId).First();
-            //library.SongsIds.Add(songId);
 
             var filterLib = Builders<Library>.Filter.Eq(x => x.Id, libraryId);
 

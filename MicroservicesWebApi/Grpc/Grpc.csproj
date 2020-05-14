@@ -14,10 +14,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
 
-
-    <Protobuf Include="./../../Protos\NewsEntities.proto" GrpcServices="None" OutputDir="./Generated" />
-    <Protobuf Include="./../../Protos\NewsServices.proto" GrpcServices="Client" OutputDir="./Generated" ProtoRoot="./../../Protos" />
-
+    
      <Protobuf Include="./../../Protos\LibraryEntities.proto" GrpcServices="None" OutputDir="./Generated" />
      <Protobuf Include="./../../Protos\LibraryServices.proto" GrpcServices="Client" OutputDir="./Generated" ProtoRoot="./../../Protos" />
 

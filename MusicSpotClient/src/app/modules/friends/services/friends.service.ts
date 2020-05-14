@@ -15,7 +15,7 @@ import {  AddRemoveFriendModel } from '../models/add-remove-friend.model';
 @Injectable()
 export class FriendsService {
     private baseMonolithUrl = `${environment.baseMonolithUrl}`;
-    private baseMicroservicesUrl = `${environment.baseMicroservicesUrl}`;
+    private baseMicroservicesUrl = `${environment.baseMicroservicesMusicUrl}`;
 
     constructor(private _httpClient: HttpClient) { }
 

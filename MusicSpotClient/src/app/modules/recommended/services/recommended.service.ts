@@ -10,7 +10,7 @@ import { Song } from 'src/app/shared/models/song.model';
 @Injectable()
 export class RecommendedService {
     private baseMonolithUrl = `${environment.baseMonolithUrl}`;
-    private baseMicroservicesUrl = `${environment.baseMicroservicesUrl}`;
+    private baseMicroservicesUrl = `${environment.baseMicroservicesMusicUrl}`;
 
     constructor(private _httpClient: HttpClient) { }
 

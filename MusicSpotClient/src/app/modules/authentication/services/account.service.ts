@@ -10,7 +10,7 @@ import { UserAddModel } from '../models/user-add.model';
 @Injectable()
 export class AccountService{
     private baseMonolithUrl = `${environment.baseMonolithUrl}`;
-    private baseMicroservicesUrl = `${environment.baseMicroservicesUrl}`;
+    private baseMicroservicesUrl = `${environment.baseMicroservicesMusicUrl}`;
 
 
     constructor(private httpClient: HttpClient) {

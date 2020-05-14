@@ -10,7 +10,7 @@ import { BasicPageFilter } from 'src/app/shared/models/basic-page.filter';
 @Injectable()
 export class NewsService {
     private baseMonolithUrl = `${environment.baseMonolithUrl}`;
-    private baseMicroservicesUrl = `${environment.baseMicroservicesUrl}`;
+    private baseMicroservicesUrl = `${environment.baseMicroservicesNewsUrl}`;
 
     constructor(private _httpClient: HttpClient) { }
 

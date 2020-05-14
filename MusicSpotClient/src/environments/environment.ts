@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   baseMonolithUrl: "https://localhost:44349/api/",
-  baseMicroservicesUrl: "https://localhost:44341/api/",
+  baseMicroservicesMusicUrl: "https://localhost:44341/api/",
+  baseMicroservicesNewsUrl:"https://localhost:44315/api/"
 
   // baseMicroservicesUrl: "https://localhost:44341/api/"
 };

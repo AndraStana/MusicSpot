@@ -29,10 +29,7 @@ namespace MicroservicesWebApi
         {
             services.AddControllers();
 
-            services.AddTransient<IUsersService, UsersService>();
-            services.AddTransient<ILibraryService, LibraryService>();
-            services.AddTransient<IFriendsService, FriendsService>();
-            services.AddTransient<IArtistsService, ArtistsService>();
+            services.AddTransient<INewsService, NewsService>();
 
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {

@@ -13,7 +13,7 @@ import { AddRemoveSongModel } from 'src/app/shared/models/add-remove-song.model'
 @Injectable()
 export class LibraryService {
     private baseMonolithUrl = `${environment.baseMonolithUrl}`;
-    private baseMicroservicesUrl = `${environment.baseMicroservicesUrl}`;
+    private baseMicroservicesUrl = `${environment.baseMicroservicesMusicUrl}`;
 
     constructor(private _httpClient: HttpClient) { }
 
