@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonolithicWebApi", "MonolithicWebApi\MonolithicWebApi.csproj", "{F06CFF3B-C56E-43CD-8F79-8617F55F0AAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonolithicWebAPI", "MonolithicWebAPI\MonolithicWebAPI.csproj", "{F06CFF3B-C56E-43CD-8F79-8617F55F0AAC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{40B768A0-D70F-4017-AB02-921349A118E0}"
 EndProject

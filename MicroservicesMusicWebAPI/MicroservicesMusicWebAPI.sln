@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroservicesWebApi", "MicroservicesWebApi\MicroservicesWebApi.csproj", "{AEF70E4B-4E27-4C52-897A-ACDBB60F47B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroservicesMusicWebAPI", "MicroservicesMusicWebAPI\MicroservicesMusicWebAPI.csproj", "{AEF70E4B-4E27-4C52-897A-ACDBB60F47B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grpc", "Grpc\Grpc.csproj", "{48650EA4-406D-4C3B-9F6D-1E74DD9EAA00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grpc", "Grpc\Grpc.csproj", "{48650EA4-406D-4C3B-9F6D-1E74DD9EAA00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{F92E51EB-FC78-40CE-8AF3-9D9A4AC85B6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{F92E51EB-FC78-40CE-8AF3-9D9A4AC85B6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

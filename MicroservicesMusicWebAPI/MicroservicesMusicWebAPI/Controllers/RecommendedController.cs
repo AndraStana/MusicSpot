@@ -7,7 +7,7 @@ using Common.Shared;
 using Grpc.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MicroservicesWebApi.Controllers
+namespace MicroservicesMusicWebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]

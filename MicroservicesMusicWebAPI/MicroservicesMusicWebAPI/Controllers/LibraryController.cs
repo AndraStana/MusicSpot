@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MicroservicesWebApi.Controllers
+namespace MicroservicesMusicWebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]

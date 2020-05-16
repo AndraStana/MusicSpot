@@ -7,10 +7,10 @@ using Core.DTO;
 using Core.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MonolithicWebApi.Models;
+using MonolithicWebAPI.Models;
 using Persistence.DAL;
 
-namespace MonolithicWebApi.Controllers
+namespace MonolithicWebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]

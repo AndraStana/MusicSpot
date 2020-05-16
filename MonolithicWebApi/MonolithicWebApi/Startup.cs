@@ -10,13 +10,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MonolithicWebApi.Seeder;
+using MonolithicWebAPI.Seeder;
 using Persistence.DAL;
 using Persistence.Infrastructure;
 using System;
 using System.Threading.Tasks;
 
-namespace MonolithicWebApi
+namespace MonolithicWebAPI
 {
     public class Startup
     {

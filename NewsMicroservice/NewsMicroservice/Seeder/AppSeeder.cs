@@ -12,7 +12,7 @@ namespace NewsMicroservice.Seeder
 {
     public class AppSeeder
     {
-        public const int NEWS_NR = 20;
+        public const int NEWS_NR = 5000;
 
         private INewsService newsService;
 

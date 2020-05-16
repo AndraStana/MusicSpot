@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace MonolithicWebApi
+namespace MonolithicWebAPI
 {
     public class Program
     {

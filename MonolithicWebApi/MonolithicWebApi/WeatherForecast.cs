@@ -1,6 +1,6 @@
 using System;
 
-namespace MonolithicWebApi
+namespace MonolithicWebAPI
 {
     public class WeatherForecast
     {

@@ -1,11 +1,11 @@
 ﻿using Core.DTOs;
-using MonolithicWebApi.Models;
+using MonolithicWebAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MonolithicWebApi.Converters
+namespace MonolithicWebAPI.Converters
 {
     public static class SongWebConverter
     {

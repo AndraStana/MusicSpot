@@ -6,10 +6,10 @@ using Common.Interfaces.Services;
 using Common.Shared;
 using Core.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
-using MonolithicWebApi.Converters;
-using MonolithicWebApi.Models;
+using MonolithicWebAPI.Converters;
+using MonolithicWebAPI.Models;
 
-namespace MonolithicWebApi.Controllers
+namespace MonolithicWebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]

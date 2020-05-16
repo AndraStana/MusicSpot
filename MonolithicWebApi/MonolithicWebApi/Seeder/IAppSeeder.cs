@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MonolithicWebApi.Seeder
+namespace MonolithicWebAPI.Seeder
 {
     public interface IAppSeeder
     {

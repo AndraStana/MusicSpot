@@ -6,16 +6,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MonolithicWebApi.Seeder
+namespace MonolithicWebAPI.Seeder
 {
     public class AppSeeder : IAppSeeder
     {
-        public const int ARTISTS_NR = 100;
+        public const int ARTISTS_NR = 1000;
         public const int ALBUMS_NR_PER_ARTIST = 9;
         public const int SONGS_NR_PER_ALBUM = 10;
-        public const int SONGS_PER_LIBRARY_NR = 100;
+        public const int SONGS_PER_LIBRARY_NR = 5000;
         public const int POPULARITY_RANKINGS_NR = 16;
-        public const int NEWS_NR = 20;
+        public const int NEWS_NR = 5000;
 
 
         public List<string> ARTISTS_PICTURES = new List<string>()

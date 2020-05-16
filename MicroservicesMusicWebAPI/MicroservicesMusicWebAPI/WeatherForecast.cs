@@ -1,6 +1,6 @@
 using System;
 
-namespace MicroservicesWebApi
+namespace MicroservicesMusicWebAPI
 {
     public class WeatherForecast
     {

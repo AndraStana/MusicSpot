@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using Common.Interfaces.Services;
 using Common.Shared;
 using Microsoft.AspNetCore.Mvc;
-using MonolithicWebApi.Converters;
-using MonolithicWebApi.Models;
+using MonolithicWebAPI.Converters;
+using MonolithicWebAPI.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace MonolithicWebApi.Controllers
+namespace MonolithicWebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]

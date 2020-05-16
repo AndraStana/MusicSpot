@@ -8,11 +8,11 @@ using Common.Shared;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MonolithicWebApi.Converters;
-using MonolithicWebApi.Models;
+using MonolithicWebAPI.Converters;
+using MonolithicWebAPI.Models;
 using Persistence.DAL;
 
-namespace MonolithicWebApi.Controllers
+namespace MonolithicWebAPI.Controllers
 {
  
     [ApiController]
