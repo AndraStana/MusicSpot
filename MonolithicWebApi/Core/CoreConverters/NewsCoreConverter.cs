@@ -8,7 +8,6 @@ namespace Core.CoreConverters
 {
     public class NewsCoreConverter
     {
-
         public static NewsDTO ToDTO(News news)
         {
             if (news == null)
@@ -20,9 +19,9 @@ namespace Core.CoreConverters
             {
                 Id = news.Id,
                 Description = news.Description,
-                UrlPicture = news.UrlPicture
-
-    };
+                UrlPicture = news.UrlPicture,
+                Source =  SourceCoreConverter.ToDTO(news.Source)
+            };
         }
     }
 }

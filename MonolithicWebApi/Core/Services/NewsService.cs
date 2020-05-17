@@ -2,6 +2,7 @@
 using Core.CoreConverters;
 using Core.DTOs;
 using Core.Interfaces.Services;
+using Microsoft.EntityFrameworkCore;
 using Persistence.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace Core.Services
         {
             return _context.News.OrderByDescending(n => n.CreationDate)
                 .Skip(filter.PageIndex*filter.PageSize).Take(filter.PageSize)
+                .Include(n => n.Source)
                 .Select(n=> NewsCoreConverter.ToDTO(n)).ToList();
         }
     }

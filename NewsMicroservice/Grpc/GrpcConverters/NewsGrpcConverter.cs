@@ -19,7 +19,8 @@ namespace Grpc.GrpcConverters
             {
                 Id = news.Id.ToString(),
                 Description = news.Description,
-                UrlPicture = news.UrlPicture
+                UrlPicture = news.UrlPicture,
+                Source = news.Source
             };
         }
     }

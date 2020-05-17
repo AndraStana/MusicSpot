@@ -15,16 +15,6 @@ namespace Persistence.Infrastructure
 {
     public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
-
-        //public class ApplicationUser : IdentityUser
-        //{
-        //    public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
-        //    {
-        //        var userIdentity = await manager.CreateAsync(this);
-        //        return userIdentity;
-        //    }
-        //}
-
         public DbSet<User> Users { get; set; }
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Song> Songs { get; set; }
@@ -33,6 +23,7 @@ namespace Persistence.Infrastructure
         public DbSet<Album> Albums { get; set; }
         public DbSet<PopularityRanking> PopularityRankings { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<Source> Sources { get; set; }
         public DbSet<Friendship> Friendships { get; set; }
         public DbSet<SimilarArtistsRelationship> SimilarArtistsRelationships { get; set; }
 

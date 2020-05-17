@@ -20,8 +20,8 @@ namespace Core.CoreConverters
             {
                 Id = news.Id,
                 Description = news.Description,
-                UrlPicture = news.UrlPicture
-
+                UrlPicture = news.UrlPicture,
+                Source = news.Source.Name
             };
         }
 
@@ -38,8 +38,13 @@ namespace Core.CoreConverters
                 Id = news.Id,
                 Description = news.Description,
                 CreationDate = news.CreationDate,
-                UrlPicture = news.UrlPicture
-            };
+                UrlPicture = news.UrlPicture,
+                Source = new Source()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = news.Source,
+                }
+        };
         }
     }
 }

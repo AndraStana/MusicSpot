@@ -26,15 +26,16 @@ namespace NewsMicroservice {
           string.Concat(
             "ChJOZXdzRW50aXRpZXMucHJvdG8iNQoOR2V0TmV3c1JlcXVlc3QSEQoJcGFn",
             "ZUluZGV4GAEgASgFEhAKCHBhZ2VTaXplGAIgASgFIi0KD0dldE5ld3NSZXNw",
-            "b25zZRIaCgRuZXdzGAEgAygLMgwuTmV3c01lc3NhZ2UiQgoLTmV3c01lc3Nh",
+            "b25zZRIaCgRuZXdzGAEgAygLMgwuTmV3c01lc3NhZ2UiUgoLTmV3c01lc3Nh",
             "Z2USCgoCaWQYASABKAkSEwoLZGVzY3JpcHRpb24YAiABKAkSEgoKdXJsUGlj",
-            "dHVyZRgDIAEoCUITqgIQTmV3c01pY3Jvc2VydmljZWIGcHJvdG8z"));
+            "dHVyZRgDIAEoCRIOCgZzb3VyY2UYBCABKAlCE6oCEE5ld3NNaWNyb3NlcnZp",
+            "Y2ViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::NewsMicroservice.GetNewsRequest), global::NewsMicroservice.GetNewsRequest.Parser, new[]{ "PageIndex", "PageSize" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NewsMicroservice.GetNewsResponse), global::NewsMicroservice.GetNewsResponse.Parser, new[]{ "News" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NewsMicroservice.NewsMessage), global::NewsMicroservice.NewsMessage.Parser, new[]{ "Id", "Description", "UrlPicture" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NewsMicroservice.NewsMessage), global::NewsMicroservice.NewsMessage.Parser, new[]{ "Id", "Description", "UrlPicture", "Source" }, null, null, null)
           }));
     }
     #endregion
@@ -347,6 +348,7 @@ namespace NewsMicroservice {
       id_ = other.id_;
       description_ = other.description_;
       urlPicture_ = other.urlPicture_;
+      source_ = other.source_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -388,6 +390,17 @@ namespace NewsMicroservice {
       }
     }
 
+    /// <summary>Field number for the "source" field.</summary>
+    public const int SourceFieldNumber = 4;
+    private string source_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Source {
+      get { return source_; }
+      set {
+        source_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as NewsMessage);
@@ -404,6 +417,7 @@ namespace NewsMicroservice {
       if (Id != other.Id) return false;
       if (Description != other.Description) return false;
       if (UrlPicture != other.UrlPicture) return false;
+      if (Source != other.Source) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -413,6 +427,7 @@ namespace NewsMicroservice {
       if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (Description.Length != 0) hash ^= Description.GetHashCode();
       if (UrlPicture.Length != 0) hash ^= UrlPicture.GetHashCode();
+      if (Source.Length != 0) hash ^= Source.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -438,6 +453,10 @@ namespace NewsMicroservice {
         output.WriteRawTag(26);
         output.WriteString(UrlPicture);
       }
+      if (Source.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Source);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -454,6 +473,9 @@ namespace NewsMicroservice {
       }
       if (UrlPicture.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(UrlPicture);
+      }
+      if (Source.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Source);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -474,6 +496,9 @@ namespace NewsMicroservice {
       }
       if (other.UrlPicture.Length != 0) {
         UrlPicture = other.UrlPicture;
+      }
+      if (other.Source.Length != 0) {
+        Source = other.Source;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -496,6 +521,10 @@ namespace NewsMicroservice {
           }
           case 26: {
             UrlPicture = input.ReadString();
+            break;
+          }
+          case 34: {
+            Source = input.ReadString();
             break;
           }
         }

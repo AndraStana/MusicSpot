@@ -10,5 +10,7 @@ namespace Persistence.DAL
         public string Description { get; set; }
         public DateTime CreationDate { get; set; }
         public string UrlPicture { get; set; }
+        public Guid SourceId { get; set; }
+        public Source Source { get; set; }
     }
 }

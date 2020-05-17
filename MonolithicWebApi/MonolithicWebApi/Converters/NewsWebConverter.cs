@@ -20,7 +20,8 @@ namespace MonolithicWebAPI.Converters
             {
                 Id = news.Id,
                 Description = news.Description,
-                UrlPicture = news.UrlPicture
+                UrlPicture = news.UrlPicture,
+                Source = news.Source.Name
 
             };
         }

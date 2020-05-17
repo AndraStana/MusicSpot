@@ -24,28 +24,12 @@ namespace Core.Services
             newsDbList = database.GetCollection<News>("News");
         }
 
-        //public List<News> GetAll()
-        //{
-        //    return newsDbList.Find(news => true).ToList();
-        //}
-
-        //public News Get(Guid id)
-        //{
-        //    return newsDbList.Find(car => car.Id == id).FirstOrDefault();
-        //}
-
-        //public News Add(News news)
-        //{
-        //    news.Id = Guid.NewGuid();
-        //    newsDbList.InsertOne(news);
-        //    return news;
-        //}
-
         public void AddNewsList(List<NewsDTO> newsList)
         {
             var newsDal = newsList.Select(n =>
             {
                 n.Id = Guid.NewGuid();
+
                 return NewsCoreConverter.ToDAL(n);
             }) ;
 
@@ -65,19 +49,5 @@ namespace Core.Services
             return newsDbList.Find(bsn => true).Count();
         }
 
-        //public void Update(string id, Car carIn)
-        //{
-        //    cars.ReplaceOne(car => car.Id == id, carIn);
-        //}
-
-        //public void Remove(Car carIn)
-        //{
-        //    cars.DeleteOne(car => car.Id == carIn.Id);
-        //}
-
-        //public void Remove(string id)
-        //{
-        //    cars.DeleteOne(car => car.Id == id);
-        //}
     }
 }

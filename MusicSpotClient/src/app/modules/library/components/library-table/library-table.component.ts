@@ -138,7 +138,7 @@ export class LibraryTableComponent implements OnInit, OnDestroy {
         decade: null,
         popularityRankingId: null,
         pageIndex: 0,
-        pageSize: 7
+        pageSize: 5
      }
     }
 

@@ -9,5 +9,7 @@ namespace Core.DTOs
         public Guid Id { get; set; }
         public string Description { get; set; }
         public string UrlPicture { get; set; }
+        public SourceDTO Source { get; set; }
     }
+
 }
