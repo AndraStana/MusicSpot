@@ -1,7 +1,15 @@
 <app-timer #timer [architectureType] ="architectureType"></app-timer>
 <app-page-title [title]="title"> </app-page-title>
 
-<div class="scroll-container">
+
+<div class="spinner-container" *ngIf="!allRecommendedSongs" >
+    <app-loader></app-loader>
+</div>
+
+
+
+
+<div *ngIf="allRecommendedSongs || allRecommendedSongs.length ===0" class="scroll-container">
     <div  class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"  
     [scrollWindow]="false" style="height: 800px; overflow-y: scroll;"> 
     
@@ -11,11 +19,11 @@
             <mat-card>
                 <div class="song-container flex-row">
 
-                    <div>
+                    <div class="song-name">
                         <span>{{song.name}}</span>
                     </div>
 
-                    <div>
+                    <div class="song-artist">
                         <span>{{song.artist}}</span>
                     </div>
                 

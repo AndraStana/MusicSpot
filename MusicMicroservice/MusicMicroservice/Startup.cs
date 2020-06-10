@@ -29,7 +29,7 @@ namespace MusicMicroservice
             services.AddSingleton<IFriendsService, FriendsService>();
 
 
-            services.AddSingleton<AppSeeder, AppSeeder>();
+            services.AddSingleton<AppSeederRealistic, AppSeederRealistic>();
         }
     }
 }

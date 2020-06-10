@@ -41,13 +41,18 @@ img{
     height:38px;
 }
 
+
+.button{
+    flex:2;
+}
 .album-container{
+
+   flex:2;
 
     img{
         height:50px;
         width:50px;
         border-radius: 50px;
-        align-self:center;
     }
 
     span{
@@ -56,6 +61,18 @@ img{
     }
 
 }
+
+
+.song-name{
+   flex:3;
+}
+
+
+.song-artist{
+    flex:5;
+
+}
+
 
 .song-container{
     align-items: center;

@@ -98,7 +98,6 @@ img{
     height:50px;
     width:50px;
     border-radius: 50px;
-    align-self: center;
 }
 
 .add-button{
@@ -111,4 +110,12 @@ img{
     background-color: $color-remove-from-playlist-button;
     color:white;
     height:38px;
+}
+
+.album-container{
+    margin-left:20px;
+}
+
+.album-title{
+    margin-left:20px;
 }

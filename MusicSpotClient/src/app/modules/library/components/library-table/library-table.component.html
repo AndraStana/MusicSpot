@@ -30,7 +30,8 @@
         </ng-container>
     
         <ng-container matColumnDef="album">
-            <mat-header-cell *matHeaderCellDef>Album</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>
+                <span class="album-title"> Album</span></mat-header-cell>
             <mat-cell *matCellDef="let song">
                 <div class="album-container flex-column" >
                     <img src={{song.albumUrlPicture}}>

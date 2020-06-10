@@ -74,6 +74,10 @@ export class FriendsTableComponent implements OnInit {
         this.dataSource.getFriends(this.filter, this.architectureType);
     }
 
+    public onViewClick(friendName: string){
+        this._localStorage.setItem(LocalStorageKeys.LIBRARY_PAGE_TITLE, `${friendName}'s LIBRARY`);
+    }
+
     public refreshTable(): void{
       this.loadFriendsSongs();
     }

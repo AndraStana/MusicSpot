@@ -25,7 +25,7 @@ namespace MusicMicroservice
             var artistsService = serviceProvider.GetService<IArtistsService>();
             var friendsService = serviceProvider.GetService<IFriendsService>();
 
-            var appSeeder = serviceProvider.GetService<AppSeeder>();
+            var appSeeder = serviceProvider.GetService<AppSeederRealistic>();
             appSeeder.SeedAll();
 
             //var appSeeder = new AppSeeder(service);

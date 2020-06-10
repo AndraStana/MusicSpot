@@ -37,7 +37,7 @@ namespace MonolithicWebAPI
             services.AddTransient<IArtistsService, ArtistsService>();
 
 
-            services.AddScoped<IAppSeeder, AppSeeder>();
+            services.AddScoped<IAppSeeder, AppSeederRealistic>();
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]
 

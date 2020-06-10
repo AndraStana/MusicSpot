@@ -1,9 +1,14 @@
 <app-timer #timer [architectureType] ="architectureType"></app-timer>
 <app-page-title [title]="title"> </app-page-title>
 
-
 <app-search-bar (onSearch)="search($event)"></app-search-bar>
-<div class="scroll-container">
+
+
+<div class="spinner-container" *ngIf="!allArtists || allArtists.length ===0" >
+    <app-loader></app-loader>
+</div>
+
+<div *ngIf="allArtists" class="scroll-container">
     <div  class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"  
     [scrollWindow]="false" style="height: 800px; overflow-y: scroll;"> 
     

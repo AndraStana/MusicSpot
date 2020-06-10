@@ -67,6 +67,7 @@ export class RegisterPageComponent implements OnInit {
           this._localStorage.setItem<string>(LocalStorageKeys.LOGGED_IN_USER_ID, user.userId);
           this._localStorage.setItem<string>(LocalStorageKeys.USER_LIBRARY_ID, user.libraryId);
 
+          this._localStorage.setItem(LocalStorageKeys.LIBRARY_PAGE_TITLE, "MY LIBRARY");
 
           this._router.navigateByUrl('/library/'+user.userId);
         }

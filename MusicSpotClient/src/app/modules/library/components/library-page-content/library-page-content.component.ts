@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { ArchitectureTypeEnum } from 'src/app/shared/enums/enums';
 import { TimerComponent } from 'src/app/shared/components/timer/timer.component';
+import { LocalStorageService, LocalStorageKeys } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-library-page-content',
@@ -14,9 +15,10 @@ export class LibraryPageContentComponent implements OnInit {
   @Input() architectureType: ArchitectureTypeEnum;
   public title = "MY LIBRARY";
 
-  constructor() { }
+  constructor(private _localStorage: LocalStorageService) { }
 
   ngOnInit() {
+    this.title = this._localStorage.getItem(LocalStorageKeys.LIBRARY_PAGE_TITLE);
   }
 
   requestFinish(){

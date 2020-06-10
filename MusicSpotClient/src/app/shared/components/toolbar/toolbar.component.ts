@@ -24,6 +24,11 @@ export class ToolbarComponent implements OnInit {
 
   }
 
+
+  onLibraryClick(){
+    this._localStorage.setItem(LocalStorageKeys.LIBRARY_PAGE_TITLE, "MY LIBRARY");
+  }
+
   logout(): void{
     this._accountService.logout().subscribe(res=>
       {

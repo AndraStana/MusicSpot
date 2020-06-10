@@ -29,7 +29,7 @@
         <ng-container matColumnDef="actions">
             <mat-header-cell class="actions-column flex-content-center" *matHeaderCellDef>View Library</mat-header-cell>
             <mat-cell class="actions-column flex-content-center" *matCellDef="let friend">
-                <mat-icon class="view-icon" aria-hidden="false" [routerLink]="['../library/' + friend.id]">remove_red_eye</mat-icon>
+                <mat-icon class="view-icon" (click)="onViewClick(friend.name)" aria-hidden="false" [routerLink]="['../library/' + friend.id]">remove_red_eye</mat-icon>
             </mat-cell>
         </ng-container>
         

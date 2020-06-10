@@ -83,7 +83,7 @@ namespace Core.Services
             }
 
             var filterArtists = Builders<Artist>.Filter.ElemMatch(x => x.Albums, Builders<Album>.Filter.AnyIn(x => x.SongsIds, allSongsIds));
-            var userLibArtistsIds = artistsDbList.Find(filterArtists).ToList().Select(a=>a.Id);
+            var userLibArtistsIds = artistsDbList.Find(filterArtists).ToList().SelectMany(a=>a.SimilarArtistsIds);
 
 
             var recommendedArtistsFilter = Builders<Artist>.Filter.In(a => a.Id, userLibArtistsIds);
@@ -98,8 +98,7 @@ namespace Core.Services
                      Album = album.Name,
                      AlbumUrlPicture = album.UrlPicture,
                      IsInLibrary = false
-                 })
-                 .OrderBy(s => s.Name)))
+                 })))
                 .Skip(filter.PageIndex * filter.PageSize)
                  .Take(filter.PageSize).ToList();
 
@@ -114,7 +113,6 @@ namespace Core.Services
                 recSong.Name = recSongsFromDb.Find(s => s.Id == recSong.Id).Name;
                 recSong.Url = recSongsFromDb.Find(s => s.Id == recSong.Id).Url;
                 recSong.Year = recSongsFromDb.Find(s => s.Id == recSong.Id).Year;
-
 
             }
 
@@ -144,7 +142,6 @@ namespace Core.Services
                         where allSongsIds.Contains(song.Id)
                                        && (song.Genre == filter.Genre || filter.Genre == null || filter.Genre == 0)
                                        && (song.PopularityRankingId == filter.PopularityRankingId || filter.PopularityRankingId == null)
-                        orderby (song.Name)
                         select new SongDTO { Id = song.Id,
                             Name = song.Name,
                             Year = song.Year,

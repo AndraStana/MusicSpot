@@ -1,7 +1,12 @@
 <app-timer #timer [architectureType] ="architectureType"></app-timer>
 <app-page-title [title]="title"> </app-page-title>
 
-<div class="scroll-container">
+
+<div class="spinner-container" *ngIf="!allNews || allNews.length ===0" >
+    <app-loader></app-loader>
+</div>
+
+<div *ngIf="allNews" class="scroll-container">
     <div  class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"  
     [scrollWindow]="false" style="height: 800px; overflow-y: scroll;"> 
     

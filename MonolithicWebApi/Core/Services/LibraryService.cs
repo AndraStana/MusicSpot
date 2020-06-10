@@ -58,7 +58,6 @@ namespace Core.Services
                         && (song.PopularityRankingId == filter.PopularityRankingId || filter.PopularityRankingId == null)
                         && (song.Genre == filter.Genre || filter.Genre == null)
 
-                        orderby (song.Name)
                         select new SongDTO
                         {
                             Id = song.Id,
@@ -92,23 +91,42 @@ namespace Core.Services
             var allLibSongs = user.Library.LibrarySong.Select(ls => ls.SongId);
 
 
-            var recommendedSongs = _context.SimilarArtistsRelationships
-                .Where(r => userArtistsIds.Contains(r.SecondArtistId))
-                .Include(a => a.SecondArtist)
-                .ThenInclude(a => a.Albums)
-                .ThenInclude(alb => alb.Songs)
-                .ThenInclude(a => a.Album)
-                .ThenInclude(a => a.Artist)
+            //var recommendedSongs = _context.SimilarArtistsRelationships
+            //    .Where(r => userArtistsIds.Contains(r.SecondArtistId))
+            //    .Include(a => a.SecondArtist)
+            //    .ThenInclude(a => a.Albums)
+            //    .ThenInclude(alb => alb.Songs)
+            //    .ThenInclude(a => a.Album)
+            //    .ThenInclude(a => a.Artist)
 
 
-                .SelectMany(a=>a.SecondArtist.Albums.SelectMany(alb=>alb.Songs))
-                .Where(rs => !allLibSongs.Contains(rs.Id))
-                .Distinct()
-                .OrderBy(a=>a.Name)
-                .Skip(filter.PageIndex * filter.PageSize)
-                .Take(filter.PageSize)
-                .Select(s=> SongCoreConverter.ToLongDTO(s))
-                .ToList() ;
+            //    .SelectMany(a=>a.SecondArtist.Albums.SelectMany(alb=>alb.Songs))
+            //    .Where(rs => !allLibSongs.Contains(rs.Id))
+            //    .Distinct()
+            //    .OrderBy(a=>a.Name)
+            //    .Skip(filter.PageIndex * filter.PageSize)
+            //    .Take(filter.PageSize)
+            //    .Select(s=> SongCoreConverter.ToLongDTO(s))
+            //    .ToList() ;
+
+
+            var similarArtistsIds = _context.SimilarArtistsRelationships
+               .Where(r => userArtistsIds.Contains(r.SecondArtistId))
+               .Select(s=>s.SecondArtistId)
+               .ToList();
+
+
+            var recommendedSongs = _context.Artists.Where(a=> similarArtistsIds.Contains(a.Id))
+               .Include(a => a.Albums)
+               .ThenInclude(alb => alb.Songs)
+               .SelectMany(a => a.Albums.SelectMany(alb => alb.Songs))
+               .Where(rs => !allLibSongs.Contains(rs.Id))
+               .Skip(filter.PageIndex * filter.PageSize)
+               .Take(filter.PageSize)
+                .Include(a => a.Album)
+               .ThenInclude(a => a.Artist)
+               .Select(s => SongCoreConverter.ToLongDTO(s))
+               .ToList();
 
             return recommendedSongs;
 

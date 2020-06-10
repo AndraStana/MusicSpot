@@ -9,9 +9,8 @@ using System.Text;
 
 namespace MusicMicroservice.Seeder
 {
-    public class AppSeeder
+    public class AppSeederRealistic
     {
-        
         private readonly IMongoCollection<Song> songsDbList;
         private readonly IMongoCollection<PopularityRanking> popularityRankingDbList;
         private readonly IMongoCollection<Artist> artistsDbList;
@@ -21,20 +20,21 @@ namespace MusicMicroservice.Seeder
 
 
         //100, 9, 10
-        public const int ARTISTS_NR = 10;
+        public const int ARTISTS_NR = 100;
         public const int ALBUMS_NR_PER_ARTIST = 9;
         public const int SONGS_NR_PER_ALBUM = 10;
 
 
         //100, 16
 
-        public const int SONGS_PER_LIBRARY_NR = 50;
+        public const int SONGS_PER_LIBRARY_NR = 100;
         public const int POPULARITY_RANKINGS_NR = 16;
 
 
-        public AppSeeder(IConfiguration config)
+
+        public AppSeederRealistic(IConfiguration config)
         {
-        MongoClient client = new MongoClient(config["ConnectionStrings:DefaultConnection"]);
+            MongoClient client = new MongoClient(config["ConnectionStrings:DefaultConnection"]);
 
             IMongoDatabase database = client.GetDatabase("MusicSpotMusic");
             songsDbList = database.GetCollection<Song>("Songs");
@@ -43,8 +43,101 @@ namespace MusicMicroservice.Seeder
             libraryDbList = database.GetCollection<Library>("Libraries");
             usersDbList = database.GetCollection<User>("Users");
 
-
         }
+
+        public List<string> SONGS = new List<string>()
+        {
+            "Telescope",
+            "Holy Branches",
+            "Youth",
+            "Toes",
+            "Wait",
+            "Special Needs",
+            "Narrow Margins",
+            "Full Circle",
+            "Lovely",
+            "Swim",
+            "The Crawl",
+            "Life Itself",
+            "Pools",
+            "Basic Instinct",
+            "Follow You",
+            "So Far Away",
+            "Lithium",
+            "Rough Hands",
+            "To believe",
+            "Brick",
+            "Original Me",
+            "Compass",
+            "We Turn Red",
+            "Heartbeats",
+            "D.I.P.",
+            "Awake",
+            "Edge",
+            "Shelter",
+            "Moondust",
+            "Paradise",
+            "Pills",
+            "Toxin",
+            "Dark Age",
+            "Falling",
+            "Stars",
+            "Last Time",
+            "Release",
+            "Orange Sky",
+            "Hold On",
+            "Slow Down",
+            "To Die For",
+            "Home",
+            "Broken",
+            "Intentions"
+        };
+
+        public List<string> ALBUMS = new List<string>()
+        {
+            "Amo",
+            "Spirit",
+            "Medicine",
+            "Drown",
+            "Sleepwalking",
+            "It Never Ends",
+            "Dark Hours",
+            "Joy",
+            "Troubles",
+            "High Violet",
+            "Boxer",
+            "Alligator",
+            "Sad Songs",
+            "The National",
+            "Villains"
+        };
+
+        public List<string> ARTISTS = new List<string>()
+        {
+            "Tailor Swift",
+            "David Bowie",
+            "Radiohead",
+            "Nirvana",
+            "Rolling Stones",
+            "Justin Bieber",
+            "Drake",
+            "Jonas Brothers",
+            "Rammstein",
+            "Linkin Park",
+            "Eminem",
+            "Placebo",
+            "Stromae",
+            "Johann Sebastian Bach",
+            "Queens of the Stone Age",
+            "Mogwai",
+            "Yelawolf",
+            "Rihanna",
+            "Paramore",
+            "The Pretty Reckless",
+            "Justin Timberlake"
+        };
+
+
 
         public List<string> ARTISTS_PICTURES = new List<string>()
             {
@@ -61,7 +154,7 @@ namespace MusicMicroservice.Seeder
                 //Justin Bieber
                 "https://i2.wp.com/bitcoincodesverigerecension.com/wp-content/uploads/2020/01/Justin-Bieber.jpg?fit=1964%2C1964",
                 //Drake
-                "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.protv.ro%2Fdivertisment%2Fcum-arata-spectaculoasa-casa-a-lui-drake-din-toronto-are-propriul-teren-de-baschet-si-piscina-interioara.html&psig=AOvVaw08RvUOos7H-XCr83w_F441&ust=1587486022234000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMCTuLW09-gCFQAAAAAdAAAAABAD",
+                "https://media.npr.org/assets/img/2011/11/16/gettyimages_122828434-b6c0a96c7492e43edd746647f0dc3b74baaffd7f-s800-c85.jpg",
                 //Jonas Brothers
                 "https://live.staticflickr.com/2361/2625522615_8c588c4e82_z.jpg",
                 //Rammstein
@@ -139,10 +232,10 @@ namespace MusicMicroservice.Seeder
 
                 var restOfUsers = users.Where(a => a.Id != user.Id).ToList();
 
-                if(restOfUsers != null)
+                if (restOfUsers != null)
                 {
 
-                    var listIds = restOfUsers.Select(u=> u.Id).ToList();
+                    var listIds = restOfUsers.Select(u => u.Id).ToList();
 
                     var filter = Builders<User>.Filter.Eq(x => x.Id, user.Id);
                     var update = Builders<User>.Update.Set("FriendsIds", listIds);
@@ -157,9 +250,9 @@ namespace MusicMicroservice.Seeder
 
             var artists = artistsDbList.Find(a => true).ToList();
 
-            foreach( var artist in artists)
+            foreach (var artist in artists)
             {
-                if(artist.SimilarArtistsIds.Count!=0)
+                if (artist.SimilarArtistsIds.Count != 0)
                 {
                     continue;
                 }
@@ -193,20 +286,22 @@ namespace MusicMicroservice.Seeder
 
             var random = new Random();
 
-            if (artistsDbList.CountDocuments(a=>true) ==0)
+            if (artistsDbList.CountDocuments(a => true) == 0)
             {
                 var artists = new List<Artist>();
                 for (int i = 0; i < ARTISTS_NR; i++)
                 {
-                    var artistId = Guid.NewGuid(); 
+                    var artistId = Guid.NewGuid();
                     var artist = new Artist
                     {
                         Id = artistId,
-                        Name = "Artist " + i,
-                        UrlPicture = ARTISTS_PICTURES[random.Next(0, ARTISTS_PICTURES.Count)],
+                        Name = ARTISTS[i % ARTISTS_PICTURES.Count],
+                        UrlPicture = ARTISTS_PICTURES[i % ARTISTS_PICTURES.Count],
+
+
                         Albums = CreateAlbumsForArtist(artistId, i),
                         SimilarArtistsIds = new List<Guid>()
-                };
+                    };
                     artists.Add(artist);
 
                     //SeedAlbumsForArtist(artist.Id, i);
@@ -232,7 +327,7 @@ namespace MusicMicroservice.Seeder
                 var album = new Album
                 {
                     Id = albumId,
-                    Name = "Album " + artistIndex + "_" + i,
+                    Name = ALBUMS[random.Next(0, ALBUMS_PICTURES.Count)],
                     UrlPicture = ALBUMS_PICTURES[random.Next(0, ALBUMS_PICTURES.Count)],
                     SongsIds = songsIds
                 };
@@ -244,7 +339,7 @@ namespace MusicMicroservice.Seeder
 
         private List<Guid> SeedSongsForAlbums(Guid albumId, int artistIndex, int albumIndex)
         {
-            var popularityRankings = popularityRankingDbList.Find(a=> true).ToList();
+            var popularityRankings = popularityRankingDbList.Find(a => true).ToList();
 
             var random = new Random();
 
@@ -254,7 +349,7 @@ namespace MusicMicroservice.Seeder
                 var song = new Song
                 {
                     Id = Guid.NewGuid(),
-                    Name = "Song " + artistIndex + "_" + albumIndex + "_" + i,
+                    Name = SONGS[i % SONGS.Count],
                     PopularityRankingId = popularityRankings.ElementAt(random.Next(0, POPULARITY_RANKINGS_NR)).Id,
                     Year = random.Next(1960, 2020),
                     Genre = (GenreEnum)random.Next(0, 16),
@@ -265,30 +360,27 @@ namespace MusicMicroservice.Seeder
             }
             songsDbList.InsertMany(songs);
             return songs.Select(s => s.Id).ToList();
-
         }
 
         public void SeedSongsForLibraries()
         {
-           
             var libraries = libraryDbList.Find(a => a.SongsIds == null || a.SongsIds.Count == 0).ToList();
 
-            foreach( var library in libraries)
+            foreach (var library in libraries)
             {
                 var random = new Random();
-                var songs = songsDbList.Find(s=> true).ToList();
+                var songs = songsDbList.Find(s => true).ToList();
                 var addedSongIds = new List<Guid>();
 
                 for (var i = 0; i < SONGS_PER_LIBRARY_NR; i++)
                 {
-                    var songId = songs.Where(s => !addedSongIds.Contains(s.Id)).ElementAt(random.Next(0, songs.Count - addedSongIds.Count)).Id;
+                    var songId = songs[i].Id;
                     addedSongIds.Add(songId);
                 }
 
                 library.SongsIds = addedSongIds;
-                libraryDbList.ReplaceOne(l=>l.Id == library.Id, library);
+                libraryDbList.ReplaceOne(l => l.Id == library.Id, library);
             }
-
         }
 
         private void SeedPopularityRankings()
@@ -390,9 +482,9 @@ namespace MusicMicroservice.Seeder
                     Name = "Top 100 in June 2020"
                 });
 
-               popularityRankingDbList.InsertMany(popularityRankings);
+                popularityRankingDbList.InsertMany(popularityRankings);
             }
 
-         }
+        }
     }
 }
