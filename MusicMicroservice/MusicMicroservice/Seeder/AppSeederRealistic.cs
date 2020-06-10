@@ -144,7 +144,7 @@ namespace MusicMicroservice.Seeder
                 //Tailor Swift
                 "https://i.insider.com/5e6f8652235c1811b7159ce3?width=1100&format=jpeg&auto=webp",
                 //David Bowie
-                "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.biography.com%2Fmusician%2Fdavid-bowie&psig=AOvVaw3v04PtniH87qEJrRl_4Cc0&ust=1587485796109000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCICMxsmz9-gCFQAAAAAdAAAAABAD",
+                "https://storage0.dms.mpinteractiv.ro/media/1/1/4728/17366735/2/bowie2.jpg?width=310",
                 //Radiohead
                 "https://www.rollingstone.com/wp-content/uploads/2020/03/Radiohead.jpg?resize=1800,1200&w=1800",
                 //Nirvana
